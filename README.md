@@ -2,9 +2,23 @@ Learning Perceptual Kernels for Visualization Design
 ====================================================
 
 This repo contains the results and source code from our crowdsourced experiments to estimate
-kernels for color, shape, size and combinations thereof. We estimated these kernels
-using five different judgment types — including Likert ratings among pairs, ordinal
-triplet comparisons, and manual spatial arrangement.
+kernels for color, shape, size and combinations thereof.
+Here are the visual variables used in our study. 
+![](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/png?raw=true)
+We estimated the kernels for each of these palettes  
+using five different judgment types to better understand the different trade-offs 
+in estimating perceptual kernels.  
++ Pairwise rating on 5-Point Scale (L5)
++ Pairwise rating on 9-Point scale (L9)
++ Triplet ranking with matching (Tm) 
++ Triplet ranking with discrimination (Td) 
++ Spatial arrangement (SA)
+
+
+How to use the data and source code in this repo? 
+------------------------------------------------
+
+
 
 
 What is a perceptual kernel?
