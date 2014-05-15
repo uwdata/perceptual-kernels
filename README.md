@@ -25,17 +25,3 @@ visualization evaluation and automated design.
 what is it useful for? 
 ----------------------
 
-
-<STYLE type=text/css>
-A:link {
- COLOR: red /*The color of the link*/
-}
-
-A:hover {
- COLOR: green /*The color of the mouseover or 'hover' link*/
-}
-
-h1{
-font-color:orangered;
-}
-</STYLE>
