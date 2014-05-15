@@ -1,5 +1,7 @@
-Learning Perceptual Kernels for Visualization Design
-====================================================
+Learning Perceptual Kernels for 
+===============================
+Visualization Design
+====================
 
 This repo contains the results and source code from our crowdsourced experiments to estimate
 kernels for color, shape, size and combinations thereof.
@@ -7,9 +9,7 @@ Here are the visual variables used in our study.
 
 <img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true>
 
-We estimated the kernels for each of these palettes  
-using five different judgment types to better understand the different trade-offs 
-in estimating perceptual kernels. These judgment tasks are: 
+We estimated the kernels for each of these palettes using five different judgment types to better understand the different trade-offs in estimating perceptual kernels. These judgment tasks are: 
 + Pairwise rating on 5-Point Scale (L5)
 + Pairwise rating on 9-Point scale (L9)
 + Triplet ranking with matching (Tm) 
