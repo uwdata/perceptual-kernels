@@ -7,7 +7,7 @@ using five different judgment types — including Likert ratings among pairs, or
 triplet comparisons, and manual spatial arrangement.
 
 
-what is a perceptual kernel?
+What is a perceptual kernel?
 ----------------------------
 Visualization design benefits from careful consideration of perception,
 as different assignments of visual encoding variables such as color, shape and size
@@ -22,6 +22,6 @@ visualization evaluation and automated design.
 ![](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png?raw=true)
 <p>(Left) A crowd-estimated perceptual kernel for a shape palette. (Right) A two-dimensional projection of the palette shapes obtained via multidimensional scaling of the perceptual kernel.
 
-what is it useful for? 
+What is it useful for? 
 ----------------------
 
