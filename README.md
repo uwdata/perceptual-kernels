@@ -13,7 +13,7 @@ within visual variables in a reusable form that is directly applicable to
 visualization evaluation and automated design.
 
 Here is an example of a perceptual kernel:
-![alt tag](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png)
+![(Left) A crowd-estimated perceptual kernel for a shape palette. (Right) A two-dimensional projection of the palette shapes obtained via multidimensional scaling of the perceptual kernel.](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png?raw=true)
 
 This repo contains the results from our crowdsourced experiments to estimate
 kernels for color, shape, size and combinations thereof. We estimated these kernels
