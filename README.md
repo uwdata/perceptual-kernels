@@ -6,7 +6,7 @@ Data and source code for the first phase of the perceptual kernels study.
 Visualization design benefits from careful consideration of perception,
 as different assignments of visual encoding variables such as color, shape and size
 affect how viewers interpret data. One important question is  how to engineer
- perceptual considerations into visualization design in a systematic way. In this
+ these perceptual considerations into visualization design in a systematic way. In this
  work, we introduce perceptual kernels: distance matrices derived from aggregate
  perceptual judgments. Perceptual kernels represent perceptual differences between and
 within visual variables in a reusable form that is directly applicable to
