@@ -5,7 +5,7 @@ This repo contains the results and source code from our crowdsourced experiments
 kernels for color, shape, size and combinations thereof.
 Here are the visual variables used in our study. 
 
-<img width="512" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true>
+<img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true>
 
 We estimated the kernels for each of these palettes  
 using five different judgment types to better understand the different trade-offs 
