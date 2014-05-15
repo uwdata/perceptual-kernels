@@ -1,7 +1,5 @@
-Learning Perceptual Kernels for 
-===============================
-Visualization Design
-====================
+Learning Perceptual Kernels for</br> Visualization Design
+===================================================
 
 This repo contains the results and source code from our crowdsourced experiments to estimate
 kernels for color, shape, size and combinations thereof.
