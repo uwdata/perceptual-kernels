@@ -31,7 +31,7 @@ Second, you can reproduce and extend our experiments using the source code provi
 Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
 setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
-out the task interface  by opening  color-sa.html in your browser. We recommend 
+out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
 you go through and perform the task to understand what it does. 
 If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
 first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and 
