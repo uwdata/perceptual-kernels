@@ -55,4 +55,6 @@ affect how viewers interpret data. Perceptual kernels represent perceptual diffe
 within visual variables in a reusable form that is directly applicable to
 visualization evaluation and automated design. In other words, perceptual kernels 
 provide a useful operational model for incorporating empirical perception data directly 
-into visualization design tools.
+into visualization design tools.  Please refer to our [draft on perceptual kernels]() for 
+further details. 
+
