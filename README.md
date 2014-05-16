@@ -34,10 +34,7 @@ setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uw
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
 you go through and perform the task to understand what it does. 
 If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
-first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and 
-then set two environment variables: MTURKCLT_HOME, which should point the installation 
-directory for Amazon's command line tools,  and STUDY_HOME , which should be set to the current  
-perceptual-kernels directory. 
+first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should be set to the current perceptual-kernels directory. 
 
 
 What is a perceptual kernel?
