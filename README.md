@@ -22,15 +22,15 @@ There are several ways to do that.
 
 First, you can take a look and use 
 the final perceptual kernels obtained for your own purposes, 
-research or otherwise. You will see thirty kernels in  data/ folder. 
+research or otherwise. You will see thirty kernels in  [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. 
 These are symmetric, normalized matrices, stored as comma-seperated text files. 
-File names reveal the variable and judgment task types used. For example, color-sa.txt 
+File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) 
 is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
 
 Second, you can reproduce and extend our experiments using the source code provided. 
 Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
-setup produced color-sa.txt, you can go to exp/color/sa/ directory. You can check 
+setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
 out the task interface  by opening  color-sa.html in your browser. We recommend 
 you go through and perform the task to understand what it does. 
 If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
