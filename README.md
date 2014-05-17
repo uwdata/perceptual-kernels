@@ -6,6 +6,7 @@ perceptual kernels for color, shape, size and combinations thereof. What is a pe
 It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual 
 contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
 to this set as a palette. In our study, we estimate perceptual kernels for the following six palettes. 
+
 <img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true>
 
 There can be several alternative ways for experimentally constructing perceptual kernels. 
@@ -14,19 +15,19 @@ Psychology literature offers several task types for similarity judgments.
 How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
-judgment tasks below: 
-+ Pairwise rating on 5-Point Scale (L5) 
-+ Pairwise rating on 9-Point scale (L9)
-+ Triplet ranking with matching (Tm) 
-+ Triplet ranking with discrimination (Td) 
-+ Spatial arrangement (SA)
+judgment tasks below---links show the task interfaces of the shape palette. 
++ [Pairwise rating on 5-Point Scale (L5)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l5/shape-l5.html)
++ [Pairwise rating on 9-Point scale (L9)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l9/shape-l9.html)
++ [Triplet ranking with matching (Tm)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/tm/shape-tm.html)
++ [Triplet ranking with discrimination (Td)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/td/shape-td.html)
++ [Spatial arrangement (SA)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/sa/shape-sa.html)
 
 
 How to use the data and source code in this repo? 
 ------------------------------------------------
 There are several ways to do that. 
 
-First, you can take directly access the final perceptual kernels and use them for your own purposes, 
+First, you can  directly access the final perceptual kernels and use them for your own purposes, 
 research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt)  is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
 
 Second, you can reproduce and extend our experiments using the source code provided. 
