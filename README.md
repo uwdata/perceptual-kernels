@@ -62,10 +62,10 @@ into visualization design tools.  Please refer to our [draft on perceptual kerne
 
 <div id="reorder">Example</div>
 
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
+<script src="lib/d3.min.js" charset="utf-8"></script>
 <script>  
 
+console.log('js is working');
 d3.select('#reorder').append('svg').append('circle').attr('rx',7); 
 </script>
-<div>
+
