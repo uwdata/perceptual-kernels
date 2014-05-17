@@ -16,7 +16,7 @@ How to choose one? What is the most effective judgment task in the context of pe
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
 judgment tasks below---links show the task interfaces of the shape palette. 
-+ [Pairwise rating on 5-Point Scale (L5)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l5/shape-l5.html?raw=true)
++ [Pairwise rating on 5-Point Scale (L5)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l5/shape-l5.html?raw=true?render=true)
 + [Pairwise rating on 9-Point scale (L9)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l9/shape-l9.html)
 + [Triplet ranking with matching (Tm)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/tm/shape-tm.html)
 + [Triplet ranking with discrimination (Td)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/td/shape-td.html)
@@ -28,7 +28,7 @@ How to use the data and source code in this repo?
 There are several ways to do that. 
 
 First, you can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt)  is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
 
 Second, you can reproduce and extend our experiments using the source code provided. 
 Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
