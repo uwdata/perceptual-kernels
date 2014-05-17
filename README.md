@@ -58,14 +58,14 @@ affect how viewers interpret data. Perceptual kernels represent perceptual diffe
 within visual variables in a reusable form that is directly applicable to
 visualization evaluation and automated design. In other words, perceptual kernels 
 provide a useful operational model for incorporating empirical perception data directly 
-into visualization design tools.  Please refer to our [draft on perceptual kernels](https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf) for further details. 
+into visualization design tools.  Please refer to our [draft on perceptual kernels](https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf) 
+for further details. 
 
-<div id="reorder">Example</div>
+Here are few examples of how the kernels can be used: 
 
-<script src="lib/d3.min.js" charset="utf-8"></script>
-<script>  
-
-console.log('js is working');
-d3.select('#reorder').append('svg').append('circle').attr('rx',7); 
-</script>
+Automatically designing new palettes
+------------------------------------ 
+Given an estimated perceptual kernel, we can use it to revisit existing palettes. 
+For example, we can choose a set of stimuli that maximizes perceptual distance or 
+conversely minimizes perceptual similarity according to the kernel.
 
