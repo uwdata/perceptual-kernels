@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="perceptual-kernels : Data and source code for the first phase of the perceptual kernels study. " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>perceptual-kernels</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/uwdata/perceptual-kernels">View on GitHub</a>
+
+          <h1 id="project_title">perceptual-kernels</h1>
+          <h2 id="project_tagline">Data and source code for the first phase of the perceptual kernels study. </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/uwdata/perceptual-kernels/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/uwdata/perceptual-kernels/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="learning-perceptual-kernels-for-visualization-design" class="anchor" href="#learning-perceptual-kernels-for-visualization-design"><span class="octicon octicon-link"></span></a>Learning Perceptual Kernels for Visualization Design</h1>
+
+<p>This repo contains the results and source code from our crowdsourced experiments to estimate
+perceptual kernels for color, shape, size and combinations thereof. What is a perceptual kernel? 
+It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual kernel 
+contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
+to this set as a palette. In our study, we estimate perceptual kernels for the following six palettes. </p>
+
+<p><img width="512" align="middle" src="https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true"></p>
+
+<p>There can be several alternative ways for experimentally constructing perceptual kernels. 
+For example, we construct perceptual kernels from subjective similarity judgments. 
+Psychology literature offers several task types for similarity judgments. 
+How to choose one? What is the most effective judgment task in the context of perceptual 
+kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
+We estimate five perceptual kernels for each of the palettes above using the five different 
+judgment tasks below---links show the task interfaces of the shape palette. </p>
+
+<ul>
+<li><a href="https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l5/shape-l5.html">Pairwise rating on 5-Point Scale (L5)</a></li>
+<li><a href="https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l9/shape-l9.html">Pairwise rating on 9-Point scale (L9)</a></li>
+<li><a href="https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/tm/shape-tm.html">Triplet ranking with matching (Tm)</a></li>
+<li><a href="https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/td/shape-td.html">Triplet ranking with discrimination (Td)</a></li>
+<li><a href="https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/sa/shape-sa.html">Spatial arrangement (SA)</a></li>
+</ul><h2>
+<a name="how-to-use-the-data-and-source-code-in-this-repo-" class="anchor" href="#how-to-use-the-data-and-source-code-in-this-repo-"><span class="octicon octicon-link"></span></a>How to use the data and source code in this repo? </h2>
+
+<p>There are several ways to do that. </p>
+
+<p>First, you can  directly access the final perceptual kernels and use them for your own purposes, 
+research or otherwise. You will see thirty kernels in <a href="https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels">data/kernels/</a> folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, <a href="https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt">color-sa.txt</a> is the perceptual kernel for the color palette and was obtained using  spatial arragement. </p>
+
+<p>Second, you can reproduce and extend our experiments using the source code provided. 
+Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
+be as self-contained as possible. For example, if you would like to see the experiment 
+setup produced color-sa.txt, you can go to <a href="https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa">exp/color/sa/</a> directory. You can check 
+out the task interface  by opening  <a href="https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html">color-sa.html</a> in your browser. We recommend 
+you go through and perform the task to understand what it does. 
+If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
+first install  <a href="https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694">Amazon Mechanical Turk Command Line Tools</a> and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should be set to the current perceptual-kernels directory. </p>
+
+<h2>
+<a name="what-is-a-perceptual-kernel" class="anchor" href="#what-is-a-perceptual-kernel"><span class="octicon octicon-link"></span></a>What is a perceptual kernel?</h2>
+
+<p>Perceptual kernels are distance matrices derived from aggregate perceptual similarity judgments. 
+Here is an example of a perceptual kernel:</p>
+
+<p><img src="https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png?raw=true" alt=""></p><p>(Left) A crowd-estimated perceptual kernel for a shape palette. Darker entries indicate 
+perceptually closer (similar) shapes. (Right) A two-dimensional projection of the palette 
+shapes obtained via <a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">multidimensional scaling</a> of the perceptual kernel. </p>
+
+<h2>
+<a name="what-is-it-useful-for-" class="anchor" href="#what-is-it-useful-for-"><span class="octicon octicon-link"></span></a>What is it useful for? </h2>
+
+<p>Visualization design benefits from careful consideration of perception,
+as different assignments of visual encoding variables such as color, shape and size
+affect how viewers interpret data. Perceptual kernels represent perceptual differences between and
+within visual variables in a reusable form that is directly applicable to
+visualization evaluation and automated design. In other words, perceptual kernels 
+provide a useful operational model for incorporating empirical perception data directly 
+into visualization design tools.  Please refer to our <a href="https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf">draft on perceptual kernels</a> for further details. </p>
+
+<div>Example</div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">perceptual-kernels maintained by <a href="https://github.com/uwdata">uwdata</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
