@@ -16,7 +16,7 @@ How to choose one? What is the most effective judgment task in the context of pe
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
 judgment tasks below---links show the task interfaces of the shape palette. 
-+ [Pairwise rating on 5-Point Scale (L5)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l5/shape-l5.html)
++ [Pairwise rating on 5-Point Scale (L5)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l5/shape-l5.html?raw=true)
 + [Pairwise rating on 9-Point scale (L9)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/l9/shape-l9.html)
 + [Triplet ranking with matching (Tm)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/tm/shape-tm.html)
 + [Triplet ranking with discrimination (Td)](https://github.com/uwdata/perceptual-kernels/tree/master/exp/shape/td/shape-td.html)
