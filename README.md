@@ -3,7 +3,7 @@ Learning Perceptual Kernels for</br> Visualization Design
 
 This repo contains the results and source code from our crowdsourced experiments to estimate
 perceptual kernels for color, shape, size and combinations thereof. What is a perceptual kernel? 
-It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual 
+It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual kernel 
 contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
 to this set as a palette. In our study, we estimate perceptual kernels for the following six palettes. 
 
