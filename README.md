@@ -60,7 +60,7 @@ visualization evaluation and automated design. In other words, perceptual kernel
 provide a useful operational model for incorporating empirical perception data directly 
 into visualization design tools.  Please refer to our [draft on perceptual kernels](https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf) for further details. 
 
-<div id="reorder">
+<div id="reorder">Example
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>  
 d3.select('#reorder').append('svg').append('circle').attr('rx',7); 
