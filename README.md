@@ -2,13 +2,19 @@ Learning Perceptual Kernels for</br> Visualization Design
 ===================================================
 
 This repo contains the results and source code from our crowdsourced experiments to estimate
-perceptual kernels for color, shape, size and combinations thereof. A perceptual kernel is a
-distance matrix derived from aggregate perceptual judgments. 
-Here are the visual variables for which we estimated perceptual kernels in our study. 
-
+perceptual kernels for color, shape, size and combinations thereof. What is a perceptual kernel? 
+It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual 
+contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
+to this set as a palette. In our study, we estimate perceptual kernels for the following six palettes. 
 <img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/allpalettes.svg?raw=true>
 
-We estimated the kernels for each of these palettes using five different judgment types to better understand the different trade-offs in estimating perceptual kernels. These judgment tasks are: 
+There can be several alternative ways for experimentally constructing perceptual kernels. 
+For example, we construct perceptual kernels from subjective similarity judgments. 
+Psychology literature offers several task types for similarity judgments. 
+How to choose one? What is the most effective judgment task in the context of perceptual 
+kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
+We estimate five perceptual kernels for each of the palettes above using the five different 
+judgment tasks below: 
 + Pairwise rating on 5-Point Scale (L5) 
 + Pairwise rating on 9-Point scale (L9)
 + Triplet ranking with matching (Tm) 
