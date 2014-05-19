@@ -15,7 +15,7 @@ Psychology literature offers several task types for similarity judgments.
 How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
-judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you a garbled image). 
+judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you see a garbled image). 
 + [Pairwise rating on 5-Point Scale (L5)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l5/shape-l5.html)
 + [Pairwise rating on 9-Point scale (L9)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l9/shape-l9.html)
 + [Triplet ranking with matching (Tm)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/tm/shape-tm.html)
