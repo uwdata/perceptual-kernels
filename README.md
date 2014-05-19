@@ -15,7 +15,7 @@ Psychology literature offers several task types for similarity judgments.
 How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
-judgment tasks below---links show the task interfaces of the shape palette. 
+judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you a garbled image). 
 + [Pairwise rating on 5-Point Scale (L5)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l5/shape-l5.html)
 + [Pairwise rating on 9-Point scale (L9)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l9/shape-l9.html)
 + [Triplet ranking with matching (Tm)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/tm/shape-tm.html)
@@ -72,9 +72,8 @@ The following shows the n most discriminable subsets of the shape, size, and col
 (We include size for completeness,  though in practice this palette is better suited to quantitative, 
 rather than categorical, data.)  To compute a subset with n elements, we first initialize the set with 
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
-whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
+whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
 <img width="600"src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
 
-Here is an illustration of 
 
