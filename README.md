@@ -72,6 +72,9 @@ The following shows the n most discriminable subsets of the shape, size, and col
 (We include size for completeness,  though in practice this palette is better suited to quantitative, 
 rather than categorical, data.)  To compute a subset with n elements, we first initialize the set with 
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
-whose minimum distance to the existing subset is the maximum (i.e., the Hausdorff distance between two point sets).
+whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
+
 <img width="600"src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
+
+Here is an illustration of 
 
