@@ -45,7 +45,7 @@ What is a perceptual kernel?
 Perceptual kernels are distance matrices derived from aggregate perceptual similarity judgments. 
 Here is an example of a perceptual kernel:
 
-![](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png?raw=true)
+![](https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png?raw=true)
 <p>(Left) A crowd-estimated perceptual kernel for a shape palette. Darker entries indicate 
 perceptually closer (similar) shapes. (Right) A two-dimensional projection of the palette 
 shapes obtained via [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) of the perceptual kernel. 
