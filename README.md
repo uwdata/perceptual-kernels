@@ -73,6 +73,5 @@ The following shows the n most discriminable subsets of the shape, size, and col
 rather than categorical, data.)  To compute a subset with n elements, we first initialize the set with 
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
 whose minimum distance to the existing subset is the maximum (i.e., the Hausdorff distance between two point sets).
-
 <img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
 
