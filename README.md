@@ -61,11 +61,18 @@ provide a useful operational model for incorporating empirical perception data d
 into visualization design tools.  Please refer to our [draft on perceptual kernels](https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf) 
 for further details. 
 
-Here are few examples of how the kernels can be used: 
+Here are few examples of how the kernels can be used. 
 
 Automatically designing new palettes
 ------------------------------------ 
 Given an estimated perceptual kernel, we can use it to revisit existing palettes. 
 For example, we can choose a set of stimuli that maximizes perceptual distance or 
 conversely minimizes perceptual similarity according to the kernel.
+The following shows the n most discriminable subsets of the shape, size, and color variables. 
+(We include size for completeness,  though in practice this palette is better suited to quantitative, 
+rather than categorical, data.)  To compute a subset with n elements, we first initialize the set with 
+the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
+whose minimum distance to the existing subset is the maximum (i.e., the Hausdorff distance between two point sets).
+
+<img width="512" align="middle" src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
 
