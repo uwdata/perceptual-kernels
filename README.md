@@ -74,7 +74,7 @@ rather than categorical, data.)  To compute a subset with n elements, we first i
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
 whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
-<img width="600"src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
+<img width="600"src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg>
 
 You may also want to check out [this illustration](http://uwdata.github.io/perceptual-kernels/#reorder-demo)
 ---note that we cannot run js code from this page directly.  
