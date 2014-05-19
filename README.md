@@ -76,4 +76,5 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 
 <img width="600"src=https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmnewpalette.svg?raw=true>
 
-
+You may also want to check out [this illustration](http://uwdata.github.io/perceptual-kernels/#reorder-demo)
+---note that we cannot run js code from this page directly.  
