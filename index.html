@@ -15,6 +15,10 @@
             /*left:65%;*/
             width:60px !important;
         }
+        #reorder-demo-shape, #reorder-demo-color, #reorder-demo-size{
+            width:512px;
+            height:128px;
+        }
     </style>
 
     <title>perceptual-kernels</title>
@@ -120,8 +124,10 @@
 
         <p><img width="600" src="https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg?raw=true"></p>
 
-        <div  href="#reorder-demo"> An illustration of reordering of the shape palette based on the algorithm above.
-            <div id="reorder-demo"></div>
+        <div  href="#reorder-demo"> Animations illustrating palette reordering based on the algorithm described above.
+            <div id="reorder-demo-shape"></div>
+            <div id="reorder-demo-color"></div>
+            <div id="reorder-demo-size"></div>
         </div>
     </section>
 </div>
@@ -140,11 +146,17 @@
 <script src="lib/stim.js" charset="utf-8"></script>
 <script src="lib/palettes.js" charset="utf-8"></script>
 <script src="javascripts/reorder.js" charset="utf-8"></script>
-<script>
-    var p =  {size:10, scale:{x:18, y:18},draw:shape10},
-            rep =  [[0,2], 9,1,4,3,5,7,8,6];
-    reorder('#reorder-demo', p, rep);
 
+<script>
+    var p1 = {size:10, scale:{x:18, y:18}, draw:'shape10'},
+        p2 = {size:10, scale:{x:18, y:18}, draw:'color10'},
+        p3 = {size:10, scale:{x:18, y:18}, draw:'size10'},
+        repshape = [[0,2], 9,1,4,3,5,7,8,6],
+        repcolor = [[2,6], 7,9,5,3,8,4,1,0],
+        repsize  = [[0,9], 3,6,1,2,5,7,8,4],
+     a1 = new ReorderAnim('#reorder-demo-shape', p1, repshape),
+     a2 = new ReorderAnim('#reorder-demo-color', p2, repcolor),
+     a3 = new ReorderAnim('#reorder-demo-size', p3, repsize);
 </script>
 
 
