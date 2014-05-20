@@ -31,16 +31,16 @@ commands  or by downloading and uncompressing the [zipped repo](https://github.c
 
 You can  directly access the final perceptual kernels and use them for your own purposes, 
 research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. The kernels under 
-[data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf).  We are also going to put the raw datasets  under data/raw  directory soon, which will include unprocessed per-subject data. You can use these raw datasets to do your own data processing and agregation or, more interesting, perform per-subject data analysis. 
+[data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  We are also going to put the raw datasets  under data/raw  directory soon, which will include unprocessed per-subject data. You can use these raw datasets to do your own data processing and agregation or, more interestingly, perform per-subject data analysis. 
 
 In addition to accessing the data, you can reproduce and extend our experiments using the source code 
 provided. Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
-setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
+setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
-you go through and perform the task to understand what it does. 
+you go through and perform the task to understand what it entails. 
 If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
-first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should be set to the current perceptual-kernels directory. 
+first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should be set to your local perceptual-kernels directory. 
 
 
 What is a perceptual kernel?
