@@ -25,10 +25,13 @@ judgment tasks below---links show the task interfaces of the shape palette (refr
 
 How to use the data and source code in this repo? 
 ------------------------------------------------
-There are several ways to do that. 
+There are several ways to use the data and source code provided here. 
+To start, get a local copy of the directory structure, either using git 
+commands  or by downloading and uncommpressing the zipped repo provided 
+by  the link on the right panel. 
 
-First, you can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
+You can  directly access the final perceptual kernels and use them for your own purposes, 
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
 
 Second, you can reproduce and extend our experiments using the source code provided. 
 Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
