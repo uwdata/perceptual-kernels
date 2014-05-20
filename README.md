@@ -27,14 +27,14 @@ How to use the data and source code in this repo?
 ------------------------------------------------
 There are several ways to use the data and source code provided here. 
 To start, get a local copy of the directory structure, either using git 
-commands  or by downloading and uncommpressing the zipped repo provided 
-by  the link on the right panel. 
+commands  or by downloading and uncompressing the [zipped repo](https://github.com/uwdata/perceptual-kernels/archive/master.zip).  
 
 You can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. The kernels under 
+[data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf).  We are also going to put the raw datasets  under data/raw  directory soon, which will include unprocessed per-subject data. You can use these raw datasets to do your own data processing and agregation or, more interesting, perform per-subject data analysis. 
 
-Second, you can reproduce and extend our experiments using the source code provided. 
-Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
+In addition to accessing the data, you can reproduce and extend our experiments using the source code 
+provided. Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
 setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
