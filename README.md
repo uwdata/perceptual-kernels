@@ -44,18 +44,25 @@ you go through and complete the task to understand what it entails.
 
 If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
 first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which describes the properties of the experiment, from its 
-description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to change anything in this file but make sure you understand its contents. You will need, 
-however, to edit the files  [color-sa.html](exp/sa/color-sa.html) and [colo-sa.question](exp/sa/color-sa.question). 
+description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
+however, to edit the files  [color-sa.html](exp/sa/color-sa.html) and [color-sa.question](exp/sa/color-sa.question). 
 
-In [color-sa.html](exp/sa/color-sa.html), to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment
+In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/sa/color-sa.html)
 ```html
 <form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">
 ```
-and comment the next line 
+and comment out the next line 
 ```html
 <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
 ```
-Of course, you shouldn't do this if you want to use the production site.
+Of course, you shouldn't do this if you want to use the production site (i.e., www.turk.com). 
+
+[color-sa.html](exp/sa/color-sa.html) implements the task (HIT) as a dynamic single page web application. 
+Next step is to make it publicly available so that Turkers can access it as an embedded iframe 
+on Amazon's site. Copy [color-sa.html](exp/sa/colo-sa.html)
+somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/sa/color-sa.question). If you are not using an http server (as opposed to https), 
+remember to remove the http keyword from the url address---see [color-sa.question](exp/sa/color-sa.question) for 
+an example. 
 
 
 What is a perceptual kernel?
