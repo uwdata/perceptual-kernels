@@ -59,8 +59,8 @@ Of course, you shouldn't do this if you want to use the production site (i.e., w
 
 [color-sa.html](exp/sa/color-sa.html) implements the task as a dynamic single page web application. 
 Next step is to make it publicly available so that Turkers can access it as an embedded iframe 
-on Amazon's site. Copy [color-sa.html](exp/sa/color-sa.html)
-somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/sa/color-sa.question). If you are not using an http server (as opposed to https), 
+on Amazon's site. Copy [color-sa.html](exp/sa/color-sa.html) (with its dependencies) 
+somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/sa/color-sa.question). If you are  using an http server (as opposed to https), 
 remember to remove the http keyword from the url address---see [color-sa.question](exp/sa/color-sa.question) for 
 an example. 
 
