@@ -11,8 +11,8 @@ to this set as a palette. In our study, we estimate perceptual kernels for the f
 
 There can be several alternative ways for experimentally constructing perceptual kernels. 
 For example, we construct perceptual kernels from subjective similarity judgments. 
-Psychology literature offers several task types for similarity judgments. 
-How to choose one? What is the most effective judgment task in the context of perceptual 
+Psychology literature offers several task types for these judgments. 
+How to choose one then? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
 judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you see a garbled image). 
@@ -25,19 +25,44 @@ judgment tasks below---links show the task interfaces of the shape palette (refr
 
 How to use the data and source code in this repo? 
 ------------------------------------------------
-There are several ways to do that. 
+There are several ways to use the data and source code provided here. 
+To start, get a local copy of the directory structure, either using git 
+commands  or by downloading and uncompressing the [zipped repo](https://github.com/uwdata/perceptual-kernels/archive/master.zip).  
 
-First, you can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices, stored as comma-seperated text files. File names reveal the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. 
+<h3> Accessing the data </h3> 
+You can  directly access the final perceptual kernels and use them for your own purposes, 
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. The kernels under 
+[data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  We are also going to put the raw datasets  under data/raw  directory soon, which will include unprocessed per-subject data. You can use these raw datasets to do your own data processing and agregation or, more interestingly, perform per-subject data analysis. 
 
-Second, you can reproduce and extend our experiments using the source code provided. 
-Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
+<h3>Reproducing the experiments</h3> 
+In addition to accessing the data, you can reproduce and extend our experiments using the source code 
+provided. Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
-setup produced color-sa.txt, you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
+setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
-you go through and perform the task to understand what it does. 
-If you want to reproduce this experiment (or other experiments in exp/, for that matter), you need to 
-first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should be set to the current perceptual-kernels directory. 
+you go through and complete the task to understand what it entails. 
+
+If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
+first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which describes the properties of the experiment, from its 
+description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
+however, to edit the files  [color-sa.html](exp/sa/color-sa.html) and [color-sa.question](exp/sa/color-sa.question). 
+
+In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/sa/color-sa.html)
+```html
+<form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">
+```
+and comment out the next line 
+```html
+<form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
+```
+Of course, you shouldn't do this if you want to use the production site (i.e., www.turk.com). 
+
+[color-sa.html](exp/sa/color-sa.html) implements the task as a dynamic single page web application. 
+Next step is to make it publicly available so that Turkers can access it as an embedded iframe 
+on Amazon's site. Copy [color-sa.html](exp/sa/color-sa.html) (with its dependencies) 
+somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/sa/color-sa.question). If you are  using an http server (as opposed to https), 
+remember to remove the http keyword from the url address---see [color-sa.question](//github.com/perceptual-kernels/exp/sa/color-sa.question) for 
+an example. 
 
 
 What is a perceptual kernel?
@@ -45,7 +70,7 @@ What is a perceptual kernel?
 Perceptual kernels are distance matrices derived from aggregate perceptual similarity judgments. 
 Here is an example of a perceptual kernel:
 
-![](https://github.com/uwdata/perceptual-kernels/blob/master/doc/imgs/tmshape.png?raw=true)
+![](https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png?raw=true)
 <p>(Left) A crowd-estimated perceptual kernel for a shape palette. Darker entries indicate 
 perceptually closer (similar) shapes. (Right) A two-dimensional projection of the palette 
 shapes obtained via [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) of the perceptual kernel. 
