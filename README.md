@@ -42,9 +42,9 @@ setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/col
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
 you go through and complete the task to understand what it entails. 
 
+
 If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
-first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which describes the properties of the experiment, from its 
-description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
+first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which contains the properties of the experiment, from its summary description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
 however, to edit the files  [color-sa.html](exp/color/sa/color-sa.html) and [color-sa.question](exp/color/sa/color-sa.question). 
 
 In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/color/sa/color-sa.html)
