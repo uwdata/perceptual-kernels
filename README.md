@@ -64,7 +64,7 @@ somewhere on your web server and provide its url address within `<ExternalURL></
 remember to remove the http keyword from the url address---see [color-sa.question](/exp/color/sa/color-sa.question) for an example. Make sure that the .js and .css files that [color-sa.html](exp/color/sa/color-sa.html) uses are also publicly accessible, either on your web server or somewhere else. 
 Assuming you have set up your Amazon Mechanical Turk account properly, you are now ready to upload the task  
 by running the script `runSandbox.sh`. This will try to  upload the task on Amazon Mechanical Turk's sandbox 
-site and, if successful, will create a file called `color-sa.success`.  Note that `runSandbox.sh` calls [`$MTURKCLT_HOME/bin/loadHITs.sh`](http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkCLT/CLTReference_LoadHITsCommand.html) with `-sandbox` argument. If you're ready to use the production site, you should run  `runProduction.sh`, while making sure `service_url` in `$MTURKCLT_HOME/bin/mturk.properties` is set to the Amazon Mechanical Turk's production site.
+site and, if successful, will create a file called `color-sa.success`.  Note that `runSandbox.sh` calls `$MTURKCLT_HOME/bin/[loadHITs.sh`](http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkCLT/CLTReference_LoadHITsCommand.html) with `-sandbox` argument. If you're ready to use the production site, you should run  `runProduction.sh`, while making sure `service_url` in `$MTURKCLT_HOME/bin/mturk.properties` is set to the Amazon Mechanical Turk's production site.
 
 
 
