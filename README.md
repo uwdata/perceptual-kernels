@@ -45,24 +45,27 @@ you go through and complete the task to understand what it entails.
 If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
 first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which describes the properties of the experiment, from its 
 description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
-however, to edit the files  [color-sa.html](exp/sa/color-sa.html) and [color-sa.question](exp/sa/color-sa.question). 
+however, to edit the files  [color-sa.html](exp/color/sa/color-sa.html) and [color-sa.question](exp/color/sa/color-sa.question). 
 
-In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/sa/color-sa.html)
+In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/color/sa/color-sa.html)
 ```html
 <form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">
 ```
-and comment out the next line 
+and make sure the next line 
 ```html
 <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
 ```
-Of course, you shouldn't do this if you want to use the production site (i.e., www.turk.com). 
+is commented out. Of course, you shouldn't do this if you want to use the production site. 
 
-[color-sa.html](exp/sa/color-sa.html) implements the task as a dynamic single page web application. 
-Next step is to make it publicly available so that Turkers can access it as an embedded iframe 
-on Amazon's site. Copy [color-sa.html](exp/sa/color-sa.html) (with its dependencies) 
-somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/sa/color-sa.question). If you are  using an http server (as opposed to https), 
-remember to remove the http keyword from the url address---see [color-sa.question](//github.com/perceptual-kernels/exp/sa/color-sa.question) for 
-an example. 
+[color-sa.html](exp/color/sa/color-sa.html) implements the task as a dynamic single page web application. 
+Next step is to make it publicly available so that Turkers can access it embedded in an iframe 
+on Amazon's site. Copy [color-sa.html](exp/color/sa/color-sa.html) (with its dependencies) 
+somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/color/sa/color-sa.question). If you are  using an http server (as opposed to https), 
+remember to remove the http keyword from the url address---see [color-sa.question](/exp/color/sa/color-sa.question) for an example. Make sure that the .js and .css files that [color-sa.html](exp/color/sa/color-sa.html) uses are also publicly accessible, either on your web server or somewhere else. 
+Assuming you have set up your Amazon Mechanical Turk account properly, you are now ready to upload the task  
+by running the script `runSandbox.sh`. This will try to  upload the task on Amazon Mechanical Turk's sandbox 
+site and, if successful, will create a file called `color-sa.success`.  Note that `runSandbox.sh` calls [`$MTURKCLT_HOME/bin/loadHITs.sh`](http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkCLT/CLTReference_LoadHITsCommand.html) with `-sandbox` argument. If you're ready to use the production site, you should run  `runProduction.sh`, while making sure `service_url` in `$MTURKCLT_HOME/bin/mturk.properties` is set to the Amazon Mechanical Turk's production site.
+
 
 
 What is a perceptual kernel?
