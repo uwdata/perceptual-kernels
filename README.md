@@ -39,11 +39,7 @@ In addition to accessing the data, you can reproduce and extend our experiments 
 provided. Or you can just copy them to bootstrap your own new experiments. Each experiment is designed to 
 be as self-contained as possible. For example, if you would like to see the experiment 
 setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
-out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend 
-you go through and complete the task to understand what it entails. 
-
-
-If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
+out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend you go through and complete the task to understand what it entails. If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
 first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.properties](exp/color/sa/color-sa.properties), which contains the properties of the experiment, from its summary description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
 however, to edit the files  [color-sa.html](exp/color/sa/color-sa.html) and [color-sa.question](exp/color/sa/color-sa.question). 
 
@@ -112,7 +108,7 @@ You may also want to check out [this illustration](http://uwdata.github.io/perce
 Perceptual kernels can also guide [visual embedding](http://vis.stanford.edu/papers/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
 The following scatter plot  compares color distance measures. 
 
-<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
+<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
 
 The plotting symbols were chosen automatically using visual embedding. We use the correlation matrix of the 
 color models below  as the distances in the data domain, and the triplet matching (Tm) kernel for the shape palette as the distances in the perceptual range. 
@@ -132,4 +128,4 @@ This automatic assignment reflects the correlations between the variables. The c
 
 In a second example, we use visual embedding to encode community clusters in a character co-occurrence graph derived from [Victor Hugo](wikipedia.org/Victor_Hugo)’s novel [Les Miserables](http://en.wikipedia.org/wiki/Les_Miserables). Cluster memberships were computed using a standard modularity-based community-detection algorithm (see [15]). For the data space distances, we count all inter-cluster edges and then normalize by the theoretically maximal number of edges between groups. To provide more dynamic range, we re-scale these normalized values to the range [0.2,0.8]. Clusters that share no connecting edges are given a maximal distance of 1. We then perform separate visual embeddings using univariate color and shape kernels (both estimated using triplet matching). As shown in the following figure, the assigned colors and shapes perceptually reflect the inter-cluster relations.
 
-<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg?raw=true>
+<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg?raw=true>
