@@ -44,7 +44,7 @@ you go through and complete the task to understand what it entails.
 
 
 If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
-first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.input](exp/color/sa/color-sa.properties), which contains the properties of the experiment, from its summary description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
+first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.properties](exp/color/sa/color-sa.properties), which contains the properties of the experiment, from its summary description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
 however, to edit the files  [color-sa.html](exp/color/sa/color-sa.html) and [color-sa.question](exp/color/sa/color-sa.question). 
 
 In order to run the experiment in a test mode on Amazon's Mechanical Turk sandbox, uncomment the following line in [color-sa.html](exp/color/sa/color-sa.html)
@@ -55,9 +55,9 @@ and make sure the next line
 ```html
 <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
 ```
-is commented out. Of course, you shouldn't do this if you want to use the production site. [color-sa.html](exp/color/sa/color-sa.html) implements the task as a dynamic single page web application. 
+is commented out. Of course, you shouldn't do this if you want to use the production site. 
 
-
+[color-sa.html](exp/color/sa/color-sa.html) implements the task as a dynamic single page web application. 
 Next step is to make it publicly available so that Turkers can access it embedded in an iframe 
 on Amazon's site. Copy [color-sa.html](exp/color/sa/color-sa.html) (with its dependencies) 
 somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/color/sa/color-sa.question). If you are  using an http server (as opposed to https), 
@@ -91,8 +91,8 @@ for further details.
 
 Here are few examples of how the kernels can be used. 
 
-Automatically designing new palettes
------------------------------------- 
+<h3> Automatically designing new palettes</h3> 
+
 Given an estimated perceptual kernel, we can use it to revisit existing palettes. 
 For example, we can choose a set of stimuli that maximizes perceptual distance or 
 conversely minimizes perceptual similarity according to the kernel.
@@ -106,3 +106,30 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 
 You may also want to check out [this illustration](http://uwdata.github.io/perceptual-kernels/#reorder-demo)
 ---note that we cannot run js code from this page directly.  
+
+<h3> Visual embedding </h3> 
+
+Perceptual kernels can also guide [visual embedding](http://vis.stanford.edu/papers/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
+The following scatter plot  compares color distance measures. 
+
+<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
+
+The plotting symbols were chosen automatically using visual embedding. We use the correlation matrix of the 
+color models below  as the distances in the data domain, and the triplet matching (Tm) kernel for the shape palette as the distances in the perceptual range. 
+
+
+|             | Kernel (Tm) | CIELAB | CIEDE2000 | Color Name |
+|-------------|:-------------:|:--------:|:-----------:|:------------:|
+| **Kernel (Tm)** | 1.00        | 0.67   | 0.59      | 0.75       |
+| **CIELAB**      | 0.67        | 1.00   | 0.87      | 0.81       |
+| **CIEDE2000**   | 0.59        | 0.87   | 1.00      | 0.77       |
+| **Color Name**  | 0.75        | 0.81   | 0.77      | 1.00       |
+<h4>Rank correlations between the crowd-estimated perceptual-kernel and <br> 
+the kernels derived from the existing models. Higher values indicate more <br>
+similar kernels.</h4>
+
+This automatic assignment reflects the correlations between the variables. The correlation between [CIELAB](http://en.wikipedia.org/wiki/Lab_color_space) and [CIEDE2000](http://en.wikipedia.org/wiki/Color_difference#CIEDE2000) is higher than the correlation between the triplet matching kernel and color names, and the assigned shapes reflect this relationship perceptually. For example, the perceptual distance between upward- and downward-pointing triangles is smaller than the perceptual distance between circle and square.
+
+In a second example, we use visual embedding to encode community clusters in a character co-occurrence graph derived from [Victor Hugo](wikipedia.org/Victor_Hugo)’s novel [Les Miserables](http://en.wikipedia.org/wiki/Les_Miserables). Cluster memberships were computed using a standard modularity-based community-detection algorithm (see [15]). For the data space distances, we count all inter-cluster edges and then normalize by the theoretically maximal number of edges between groups. To provide more dynamic range, we re-scale these normalized values to the range [0.2,0.8]. Clusters that share no connecting edges are given a maximal distance of 1. We then perform separate visual embeddings using univariate color and shape kernels (both estimated using triplet matching). As shown in the following figure, the assigned colors and shapes perceptually reflect the inter-cluster relations.
+
+<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg?raw=true>
