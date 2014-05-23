@@ -124,7 +124,9 @@ color models below  as the distances in the data domain, and the triplet matchin
 | **CIELAB**      | 0.67        | 1.00   | 0.87      | 0.81       |
 | **CIEDE2000**   | 0.59        | 0.87   | 1.00      | 0.77       |
 | **Color Name**  | 0.75        | 0.81   | 0.77      | 1.00       |
-<h4>Rank correlations between the crowd-estimated perceptual-kernel and <br> the kernels derived from the existing models. Higher values indicate more similar kernels.</h4>
+<h4>Rank correlations between the crowd-estimated perceptual-kernel and <br> 
+the kernels derived from the existing models. Higher values indicate more <br>
+similar kernels.</h4>
 
 This automatic assignment reflects the correlations between the variables. The correlation between [CIELAB](http://en.wikipedia.org/wiki/Lab_color_space) and [CIEDE2000](http://en.wikipedia.org/wiki/Color_difference#CIEDE2000) is higher than the correlation between the triplet matching kernel and color names, and the assigned shapes reflect this relationship perceptually. For example, the perceptual distance between upward- and downward-pointing triangles is smaller than the perceptual distance between circle and square.
 
