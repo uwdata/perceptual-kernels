@@ -34,7 +34,7 @@ You can  directly access the final perceptual kernels and use them for your own 
 research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using  spatial arragement. The kernels under 
 [data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  
 
-You can also access the raw datasets in [data/raw](data/raw), which include unprocessed per-subject data. 
+You can also access the raw datasets in [data/raw](data/raw), which include unprocessed per-subject measurements. 
 You can use the raw data, e.g., to perform your own custom data processing and agregation or, more interestingly, 
 per-subject data analysis. 
 
