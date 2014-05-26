@@ -7,7 +7,7 @@ It is a distance matrix derived from aggregate perceptual judgments. In its basi
 contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
 to this set as a palette. In our study, we estimate perceptual kernels for the following six palettes. 
 
-<img width="512" align="middle" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/allpalettes.svg?raw=true>
+<img width="600" align="middle" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/allpalettes.svg>
 
 There can be several alternative ways for experimentally constructing perceptual kernels. 
 For example, we construct perceptual kernels from subjective similarity judgments. 
