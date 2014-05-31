@@ -16,18 +16,18 @@ if (process.argv.length < 3 ) {
 }
 
 var   tasks = ['l5', 'l9', 'sa', 'tm', 'td'],
-    fndict = {shape:'{drawfn:shape10, width:375, height:375,',
-        color:'{drawfn:color10, width:375, height:375,',
+     fndict = {shape:'{drawfn:shape10, width:375, height:375,',
+        color:' {drawfn:color10, width:375, height:375,',
         size:' {drawfn:size10, width:375, height:375,',
         shapecolor:' {drawfn:shapeXcolor4, width:600, height:600,',
         shapesize:' {drawfn:shapeXsize4, width:600, height:600,',
         sizecolor:' {drawfn:sizeXcolor4, width:600, height:600,'},
     kernel = process.argv[2].split('-'),
     kerneldraw = fndict[kernel[0]],
-    path = process.argv[2] + '.txt';
+    path = process.argv[2].trim() + '.txt';
 
-
-if(kerneldraw === 'undefined' || tasks.indexOf(kernel[1]) === -1) {
+if( kerneldraw === 'undefined' ||
+    tasks.indexOf(kernel[1]) === -1) {
     console.log('Unknown perceptual kernel!');
     return;
 }else{
@@ -42,40 +42,26 @@ var express =  require("express"),
 app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/../data/kernels/'));
 
-var body = d3.select('body');
+var body = d3.select('body'),
+    jsurls =['d3.v3.min.js', 'stim.js','palettes.js', 'drawkernel.js', 'heatmap.js'];
 
 body.append('div')
     .attr('id', 'chart');
 
-var d3url='d3.v3.min.js';
-body.append("script")
+body.selectAll("script")
+    .data(jsurls)
+    .enter()
+    .append("script")
     .attr('type', 'text/javascript')
-    .attr('src',d3url);
-
-body.append("script")
-    .attr('type', 'text/javascript')
-    .attr('src','stim.js');
-
-body.append("script")
-    .attr('type', 'text/javascript')
-    .attr('src','palettes.js');
-
-body.append("script")
-    .attr('type', 'text/javascript')
-    .attr('src','drawkernel.js');
-
-body.append("script")
-    .attr('type', 'text/javascript')
-    .attr('src','heatmap.js');
-
+    .attr('src',function(d){return d;});
 var run = kerneldraw +'\n' +
     'drawKernel("#chart", kernel);';
+
 body.append("script")
     .html(run);
 
 app.use(function(req, res, next){
-	//console.log('request received.');
-    res.send(d3.select('body').node().innerHTML);
+    res.send(body.node().innerHTML);
 }).listen(8080);
 
 open('http://localhost:8080/');
