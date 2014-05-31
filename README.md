@@ -39,13 +39,16 @@ You can use the raw data, e.g., to perform your own custom data processing and a
 per-subject data analysis. 
 
 <h3>Viewing the data</h3>
-The kernels in [data/kernels](data/kernels) can be viewed as an interactive grayscale heatmap by running [view/showkernel.js](view/showkernel.js) from command line. For example, 
+The kernels in [data/kernels](data/kernels) can be viewed as  interactive grayscale heatmaps by running [view/showkernel.js](view/showkernel.js) from the command line. For example, 
 ```shell
 ./showkernel.js  color-tm
 ```
 will draw the corresponding color kernel as a grayscale heatmap in your default  browser. 
 <img width="400"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
 
+`showkernel.js` requires [node.js](nodejs.org) and the node packages for express, d3, and open (pretty easy with 
+[npm](https://www.npmjs.org/), a package manager for node.js; `npm install <package>` will install 
+the package for you). 
 
 
 <h3>Reproducing the experiments</h3> 
