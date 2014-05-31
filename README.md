@@ -38,6 +38,16 @@ You can also access the raw datasets in [data/raw](data/raw), which include unpr
 You can use the raw data, e.g., to perform your own custom data processing and agregation or, more interestingly, 
 per-subject data analysis. 
 
+<h3>Viewing the data</h3>
+The kernels in [data/kernels](data/kernels) can be viewed as an interactive grayscale heatmap by running [view/showkernel.js](view/showkernel.js) from command line. For example, 
+```shell
+./showkernel.js  color-tm
+```
+will draw the corresponding color kernel as a grayscale heatmap in your default  browser. 
+<img width="400"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
+
+
+
 <h3>Reproducing the experiments</h3> 
 In addition to accessing the data, you can reproduce and extend our experiments using the source code 
 provided. Each experiment is designed tobe as self-contained as possible. For example, if you would like to see the experiment setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
