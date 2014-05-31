@@ -54,6 +54,7 @@ body.selectAll("script")
     .append("script")
     .attr('type', 'text/javascript')
     .attr('src',function(d){return d;});
+    
 var run = kerneldraw +'\n' +
     'drawKernel("#chart", kernel);';
 
