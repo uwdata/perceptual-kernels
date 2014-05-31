@@ -46,14 +46,14 @@ The kernels in [data/kernels](data/kernels) can be viewed as  interactive graysc
 will draw the corresponding color kernel as a grayscale heatmap in your default  browser. 
 <img width="400"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
 
-`showkernel.js` requires [node.js](nodejs.org) and the node packages for express, d3, and open (pretty easy with 
-[npm](https://www.npmjs.org/), a package manager for node.js; `npm install <package>` will install 
-the package for you). 
+`showkernel.js` requires [node.js](nodejs.org) and the node modules for express.js and d3.js (pretty easy with 
+[npm](https://www.npmjs.org/), a package manager for node.js;  `npm install <modulename>` will install 
+the module for you). 
 
 
 <h3>Reproducing the experiments</h3> 
 In addition to accessing the data, you can reproduce and extend our experiments using the source code 
-provided. Each experiment is designed tobe as self-contained as possible. For example, if you would like to see the experiment setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
+provided. Each experiment is designed to be as self-contained as possible. For example, if you would like to see the experiment setup produced [color-sa.txt](exp/color/sa/color-sa.txt), you can go to [exp/color/sa/](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa) directory. You can check 
 out the task interface  by opening  [color-sa.html](https://github.com/uwdata/perceptual-kernels/tree/master/exp/color/sa/color-sa.html) in your browser. We recommend you go through and complete the task to understand what it entails. If you want to reproduce this experiment (or other experiments in [exp/](exp/), for that matter), you need to 
 first install  [Amazon Mechanical Turk Command Line Tools](https://aws.amazon.com/developertools/Amazon-Mechanical-Turk/694) and then set two environment variables: MTURKCLT_HOME, which should point the installation directory for Amazon's command line tools,  and STUDY_HOME , which should point your local perceptual-kernels directory. Now, take a look at [color-sa.properties](exp/color/sa/color-sa.properties), which contains the properties of the experiment, from its summary description to the number and qualifications of subjects (Turkers)  requested. Since the goal is to repeat the experiment, you don't need to edit this file but make sure you understand its contents. You will need, 
 however, to edit the files  [color-sa.html](exp/color/sa/color-sa.html) and [color-sa.question](exp/color/sa/color-sa.question). 
