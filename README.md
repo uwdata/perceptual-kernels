@@ -46,9 +46,9 @@ The kernels in [data/kernels](data/kernels) can be viewed as  interactive graysc
 will draw the corresponding color kernel as a grayscale heatmap in your default  browser. 
 <img width="400"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
 
-`showkernel.js` requires [node.js](nodejs.org) and the node modules for express.js and d3.js (pretty easy with 
-[npm](https://www.npmjs.org/), a package manager for node.js;  `npm install <modulename>` will install 
-the module for you). 
+`showkernel.js` requires [node.js](http://nodejs.org) and the node modules for express.js and d3.js (pretty easy with 
+[npm](https://www.npmjs.org/), a package manager for node.js; for example, `npm install d3` will install 
+the d3 module for you). 
 
 
 <h3>Reproducing the experiments</h3> 
