@@ -3,15 +3,15 @@
  *
  * File  : showkernel.js
  * Author: Cagatay Demiralp (cagatay)
- * Desc  : Visualizes a given perceptual kernel
- *         as a grayscale heatmap
+ * Desc  : Visualizes a given perceptual kernel as a grayscale heatmap. 
+ *         
+ * Example: showkernel.js shape-l9
  *
- * Example: showkernel shape-l9
  */
 
 if (process.argv.length < 3 ) {
     console.log('Please provide the name of the kernel you would like to see!');
-    console.log('Usage: showkernel <kernelname>')
+    console.log('Usage: showkernel.js <kernelname>')
     return;
 }
 
@@ -54,7 +54,7 @@ body.selectAll("script")
     .append("script")
     .attr('type', 'text/javascript')
     .attr('src',function(d){return d;});
-    
+
 var run = kerneldraw +'\n' +
     'drawKernel("#chart", kernel);';
 
