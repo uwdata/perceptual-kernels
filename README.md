@@ -44,6 +44,7 @@ The kernels in [data/kernels](data/kernels) can be viewed as  interactive graysc
 ./showkernel.js  color-tm
 ```
 will draw the corresponding color kernel as a grayscale heatmap in your default browser along with a two-dimensional projection of the kernel. 
+
 <img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
 
 Hovering over a cell in the heatmap  will show the corresponding distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection
