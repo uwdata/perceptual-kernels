@@ -43,8 +43,11 @@ The kernels in [data/kernels](data/kernels) can be viewed as  interactive graysc
 ```shell
 ./showkernel.js  color-tm
 ```
-will draw the corresponding color kernel as a grayscale heatmap in your default  browser. 
-<img width="400"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
+will draw the corresponding color kernel as a grayscale heatmap in your default browser along with a two-dimensional projection of the kernel. 
+<img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
+
+Hovering over a cell in the heatmap  will show the corresponding distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection
+view shows the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel as two-dimensional projections are lossy representations of distance matrices. 
 
 `showkernel.js` requires [node.js](http://nodejs.org) and the node modules for express.js and d3.js (pretty easy with 
 [npm](https://www.npmjs.org/), a package manager for node.js; for example, `npm install d3` will install 
