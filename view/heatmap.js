@@ -12,12 +12,13 @@
  */
 function heatmap(el,p) {
 
-    var p = p || {width:100, height:100, drawfn:null, margin:{top:100, left:100, bottom:0, right:0}},
+    var p = p || {width:100, height:100, drawfn:null, margin:{top:50, left:50, bottom:0, right:0}},
         width = p.width,
         height = p.height,
         drawfn = p.drawfn,
         margin= p.margin,
-        tt= true,
+        hlrange = null,
+        tt= true, //tooltip
         ttwidth=150,
         ttheight = 50,
         tooltip = d3.select(el)
@@ -40,20 +41,23 @@ function heatmap(el,p) {
           .attr('width',ttwidth)
           .attr('height',ttheight)
           .append('g'),
-     tooltiptxt = tooltipshape.append('text');
+     tooltiptxt = tooltipshape.append('text'),
     svg = d3.select(el)
-        .append('svg');
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
 
    function hm(data) {
       var numrows = data.length,
           numcols = data[0].length,
           l = margin.left,
           t = margin.top,
-          x = d3.scale.ordinal().domain(d3.range(numrows)).rangeRoundBands([l, width+l]),
-          y = d3.scale.ordinal().domain(d3.range(numcols)).rangeRoundBands([t, height+t]),
+          x = d3.scale.ordinal().domain(d3.range(numrows)).rangeRoundBands([l, width]),
+          y = d3.scale.ordinal().domain(d3.range(numcols)).rangeRoundBands([t, height]),
           w = x.rangeBand(),
           h = y.rangeBand(),
-          c = d3.scale.linear().domain([0,1]).range(['black', 'white']);
+          c = d3.scale.linear().domain([0,1]).range(['#000', '#eee']);
 
        var rowlabels = svg.selectAll('.rowlabel')
            .data(d3.range(numrows))
@@ -64,7 +68,6 @@ function heatmap(el,p) {
                return ['translate(', (l - 0.5*w),',', y(i)+0.5*h, ') scale(20)'].join('');
            })
            .each(appendStim);
-
 
        var collabels= svg.selectAll('.collabel')
            .data(d3.range(numrows))
@@ -151,17 +154,32 @@ function heatmap(el,p) {
         return s;
     }
 
+    function inrange(v, R){
+
+        var i = 0, n = R.length, f=false, r;
+
+        for(i; i < n; i++){
+           r = R[i];
+           f = v.i >= r.i0 &&
+               v.i <= r.i1 &&
+               v.j >= r.j0 &&
+               v.j <= r.j1;
+            if(f) break;
+        }
+        return f;
+    }
+
     hm.height= function(value) {
-//        console.log(value);
         if (!arguments.length) return height;
         height= value;
+        svg.attr('height',height);
         return hm;
     };
 
     hm.width = function(value) {
-//        console.log(value);
         if (!arguments.length) return width;
         width = value;
+        svg.attr('width',width);
         return hm;
     };
 
@@ -175,6 +193,41 @@ function heatmap(el,p) {
        if (!arguments.length)  return tt;
        tt =  value;
        return hm;
+    };
+
+    //highlights
+    hm.highlight = function(r){
+
+        if(!arguments.length) return hlrange;
+
+        hlrange = r;
+
+       // highlight cells if they are in
+       // the selection range
+       svg.selectAll('.row')
+           .each(function(dd,i){
+            d3.select(this).selectAll('.cell')
+                .transition()
+                .duration(500)
+                .style('opacity', function(d,j){
+                    return (inrange({i:i, j:j}, hlrange))?1:0.0125;
+                });
+           });
+
+      return hm;
+
+    };
+
+    hm.removeHighlight = function(){
+
+        svg.selectAll('.row')
+           .each(function(dd,i){
+            d3.select(this).selectAll('.cell')
+                .transition()
+                .duration(500)
+                .style('opacity', 1.0);
+           });
+      return hm;
     };
 
     return hm;
