@@ -35,7 +35,7 @@ if( kerneldraw === undefined  ||
     kerneldraw = 'var kernel = ' +  kerneldraw +  ' filename:"' + path +'"};';
 }
 
-var express =  require("express"),
+var express = require("express"),
     app = express(),
     open = require("open"),
     d3 = require("d3");
