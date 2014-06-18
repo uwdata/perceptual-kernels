@@ -50,12 +50,11 @@ will draw the corresponding color kernel as a grayscale heatmap in your default 
 
 <img width="512" style="float:left" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample2.png?raw=true>
 
-Hovering over a cell of  heatmap   will show the corresponding perceptual kernel distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection scatter plot  shows the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the planar projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel distances as two-dimensional projections are lossy representations in general. 
+Hovering over a cell of the heatmap will show the corresponding perceptual kernel distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection scatter plot  show the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the planar projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel distances as two-dimensional projections are lossy representations in general. 
 
 `showkernel.js` requires [node.js](http://nodejs.org) and the node modules for express.js and d3.js (pretty easy with 
 [npm](https://www.npmjs.org/), a package manager for node.js; for example, `npm install d3` will install 
 the d3 module for you). 
-
 
 <h3>Reproducing the experiments</h3> 
 In addition to accessing the data, you can reproduce and extend our experiments using the source code 
