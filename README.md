@@ -44,7 +44,7 @@ plots by running [view/showkernel.js](view/showkernel.js) from the command line.
 ```shell
 ./showkernel.js  color-tm
 ```
-will draw the corresponding color kernel as a grayscale heatmap in your default browser along with a two-dimensional projection of the kernel, where in-plane distances between the colors approximate the perceptual distances of the kernel.  We obtain the projection points by multidimensional scaling [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) of the perceptual kernel. 
+will draw the corresponding color kernel as a grayscale heatmap in your default browser along with a two-dimensional projection of the kernel, where in-plane distances between the colors approximate the perceptual distances of the kernel.  We obtain the projection points with [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) on the perceptual kernel. 
 
 <img width="512" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
 
