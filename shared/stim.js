@@ -64,8 +64,19 @@ function starPolygon(n,r){
         -0.3757, 0.1191,
         -0.9512, -0.3125,
         -0.2318,-0.3125].map(function(d){return d*r;}).join(" ")
-        :(console.error("not implemented!"));
-
+          :n == 6 ? [ 0.57735,0, //hexagram  
+          0.86603,0.5,
+          0.28868,0.5,
+          0,1,
+          -0.28868,0.5,
+          -0.86603,0.5,
+          -0.57735,0,
+          -0.86603,-0.5,
+          -0.28868,-0.5,
+          0,-1,
+          0.28868,-0.5,
+          0.86603,-0.5].map(function(d){return d*r;}).join(" ")
+           :(console.error("not implemented!"));
 }
 
 // symbol table for the original polygonal set Vp
@@ -118,7 +129,6 @@ function shape7(g, i){
 //symbol table used for training
 //contains a pentagon, an octagon, a star, and a hypercycloid.
 function shape4(g, i){
-
     var s, r0 = 1/Math.sqrt(2);
 
     switch (i) {
@@ -150,7 +160,7 @@ function _shape10(g,i){
         r0 = 1,
         r1 = Math.sqrt(2),
         r2 = 1;
-        r6 = 1; 
+        r6 = 1;
         theta = Math.PI/4,
         beta = Math.PI/ 6,
         x  = 1; //r0*Math.cos(theta),

@@ -129,7 +129,7 @@ function hypercycloid(k,r){
 
 }
 
-// TODO: implement other stars?
+// TODO: generalize to any n
 function starPolygon(n,r){
     return n == 5 ? [0,-1, //vertices for a pentagram at the origin
         0.2318, -0.3125,
@@ -141,8 +141,19 @@ function starPolygon(n,r){
         -0.3757, 0.1191,
         -0.9512, -0.3125,
         -0.2318,-0.3125].map(function(d){return d*r;}).join(" ")
-        :(console.error("not implemented!"));
-
+          :n == 6 ? [0.57735,0, //hexagram
+          0.86603,0.5,
+          0.28868,0.5,
+          0,1,
+          -0.28868,0.5,
+          -0.86603,0.5,
+          -0.57735,0,
+          -0.86603,-0.5,
+          -0.28868,-0.5,
+          0,-1,
+          0.28868,-0.5,
+          0.86603,-0.5].map(function(d){return d*r;}).join(" ")
+           :(console.error("not implemented!"));
 }
 
 // symbol table for the original polygonal set Vp
@@ -324,7 +335,6 @@ function shape10(g,i){
             break;
 
         case 2: //plus
-
             s=g.append("path").attr("d",
                 ["M",r0, 0, "H", -r0, "M", 0, r0, "V", -r0].join(" ")
             );
@@ -473,4 +483,150 @@ return gg.attr("vector-effect", "non-scaling-stroke")
     .style("stroke-width", 2.5);
 }
 
+function ggplot2(g,i) {
 
+    var s, s1, s2;
+
+    switch (i) {
+
+        case 0:  // square
+            s = shape10(g, 1);
+            break;
+
+        case 1:  // circle
+            s = shape10(g, 0);
+            break;
+
+        case 2: // tri up
+            s = shape10(g, 6);
+            break;
+
+        case 3: // +
+            s = shape10(g, 2);
+            break;
+
+        case 4: // x
+            s = shape10(g, 3);
+            break;
+
+        case 5: //diamond
+            s = shape10(g, 5);
+            break;
+
+        case 6: //tri down
+            s = shape10(g, 7);
+            break;
+
+        case 7: // square || x
+            s1 = shape10(g, 1);
+            s2 = shape10(g, 3);
+            break;
+
+        case 8: // + || x
+            s1 = shape10(g, 2);
+            s2 = shape10(g, 3);
+            break;
+
+        case 9: // diamond || +
+            s1 = shape10(g, 2);
+            s2 = shape10(g, 5);
+            break;
+
+        case 10: // o || +
+            s1 = shape10(g, 0);
+            s2 = shape10(g, 2);
+            break;
+
+        case 11: // tri-up || tri-down
+            s1 = shape10(g, 6);
+            s2 = shape10(g, 7);
+            break;
+
+        case 12: // square || +
+//            s1 = shape10(g, 1);
+            s1 = defaults(square(g,1));
+//            s2 = shape10(g, 2);
+            s2 = defaults(plus(g,1));
+            break;
+
+        case 13: // x || o
+            s1 = shape10(g, 3);
+            s2 = shape10(g, 0);
+            break;
+
+        case 14: // square || tri-down
+            s1 = shape10(g, 1);
+            s2 = shape10(g, 7);
+            break;
+
+        default:
+            console.warn('Unknown shape!');
+            break;
+    }
+
+    return g;
+}
+
+function square(g,R){
+  var r = 0.5*R;
+ return  g.append("polygon")
+     .attr('points', [r, r, -r, r, -r, -r, r, -r]);
+
+}
+
+function plus(g,R) {
+    var r = 0.5*R;
+    return g.append("path").attr("d",
+        ["M", r, 0, "H", -r, "M", 0, r, "V", -r].join(" ")
+    );
+}
+
+
+function cross(g, R){
+    var x = 0.5 * (R/Math.sqrt(2));
+    return g.append("path")
+        .attr("d", ["M", x, x, "L" , -x, -x, "M", -x, x, "L", x, -x].join(" "));
+}
+
+
+function pentagram(g,s){
+    return g.append('polygon')
+        .attr('points',
+        [0, -1, //vertices for a pentagram at the origin
+        0.2318, -0.3125,
+        0.9512, -0.3125,
+        0.3757, 0.1191,
+        0.5835, 0.8066,
+        0, 0.3989,
+        -0.5835, 0.8066,
+        -0.3757, 0.1191,
+        -0.9512, -0.3125,
+        -0.2318, -0.3125].map(function(d){ return d*s; }).join(" "));
+}
+
+function hexagram(g,s){
+
+    return g.append('polygon')
+        .attr('points', [0.57735,0, //hexagram
+          0.86603,0.5,
+          0.28868,0.5,
+          0,1,
+          -0.28868,0.5,
+          -0.86603,0.5,
+          -0.57735,0,
+          -0.86603,-0.5,
+          -0.28868,-0.5,
+          0,-1,
+          0.28868,-0.5,
+          0.86603,-0.5].map(function(d){return d*s;}).join(" "));
+}
+
+function defaults(s) {
+    s.attr("vector-effect", "non-scaling-stroke")
+        .style("fill", "white")
+        .style('fill-opacity', 0.0725) // for easy hover interaction
+        .style("stroke-width", 2.5)
+        .style("stroke-linecap", "round")
+        .style("stroke-linejoin", "round")
+        .style('stroke', 'black');
+}

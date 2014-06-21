@@ -73,9 +73,7 @@
     </div>
 
     <!-- submit (hidden)-->
-
     <!--<form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">-->
-
 
     <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
 
@@ -245,7 +243,8 @@ function showOrientation(s){
 
 function appendStimuli(d){
 
-// console.log(d);
+    //console.log(study.numTrainStim);
+
     var n = 6;//study.numTrainStim;//   d = (study.training) ? d : d+n;
     var g = d3.select(this);
     var symbol = (d < n) ? shapeXcolor3(g,d) : shapeXcolor4(g,d-n);
@@ -341,7 +340,7 @@ function initTaskInterface(s){
 
         var v = s.currentRating, vmax = s.maxRating, k=d3.event.keyCode;
 
-//        console.log(k);
+        //console.log(k);
         if(k ==65){
             s.r0[0][0].checked=true;
             updateRating(1,s);
