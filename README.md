@@ -40,9 +40,7 @@ per-subject data analysis.
 
 <h3>Viewing the data</h3>
 First, you will need to install  [node.js](http://nodejs.org) and the node modules for express.js and d3.js (pretty easy with [npm](https://www.npmjs.org/), a package manager for node.js; for example, `npm install d3` will install 
-the d3 module for you). 
-
-The kernels in [data/kernels](data/kernels) can be then viewed as interactive grayscale heatmaps and two-dimensional scatter plots by running [view/showkernel.js](view/showkernel.js) from the command line. For example, 
+the d3 module for you). The kernels in [data/kernels](data/kernels) can be then viewed as interactive grayscale heatmaps and two-dimensional scatter plots by running [view/showkernel.js](view/showkernel.js) from the command line. For example, 
 ```shell
 ./showkernel.js  color-tm
 ```
