@@ -5,12 +5,12 @@ function [newC, refindx] = alignFilterLayouts(C)
 % Desc  : Aligns and filters given two-dimensional spatial 
 %         arrangements (SAs).  
 %
-% 	Input  : 
+%   Input  : 
 % 
 % 	  C - N by 2M matrix containing N two-dimensional layouts 
 % 	      (coordinates) of M points.   
 %
-% 	Output : 
+%   Output : 
 %
 %     newC - n by 2M matrix containing aligned and filtered n 
 % 	         layouts.
