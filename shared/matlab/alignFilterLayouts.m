@@ -15,7 +15,7 @@ function [newC, refindx] = alignFilterLayouts(C)
 %     newC - n by 2M matrix containing aligned and filtered n 
 % 	         layouts.
 % 
-% 	  refindx - index of the reference layout--in newC--to which all 
+%     refindx - index of the reference layout--in newC--to which all 
 % 	            the layouts are aligned. Note that the reference layout 
 % 	            is automatically computed from C. 
 %
