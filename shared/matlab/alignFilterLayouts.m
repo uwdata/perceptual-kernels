@@ -27,7 +27,7 @@ if (nargin < 1)
   error('alignFilterLayouts:ArgChk','Insufficient number of input arguments!');
 end
 
-N  = size(C,1);  % number of users
+N  = size(C,1);  % number of subjects
 M  = size(C,2)/2; % number of variables
 
 D = zeros(N,N);
