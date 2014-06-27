@@ -16,8 +16,8 @@ function [newC, refindx] = alignFilterLayouts(C)
 % 	         layouts.
 % 
 %     refindx - index of the reference layout--in newC--to which all 
-% 	            the layouts are aligned. Note that the reference layout 
-% 	            is automatically computed from C. 
+%               the layouts are aligned. Note that the reference layout 
+%               is automatically computed from C. 
 %
 %
 % Date    : Sun Mar 23 11:58:19 2014
