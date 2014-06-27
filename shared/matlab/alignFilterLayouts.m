@@ -56,7 +56,7 @@ e     = sum(D);
 refXY = XY{refindx};
 
 % align all to the reference now  
-% (already computed in the previous step)
+% (use the transformations already computed in the previous step)
 for i = 1:N
     if (i ~= refindx)
         XY{i} =  A(refindx,i);
