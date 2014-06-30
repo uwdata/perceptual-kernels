@@ -12,7 +12,7 @@ to this set as a palette. In our study, we estimate perceptual kernels for the f
 There can be several alternative ways for experimentally constructing perceptual kernels. 
 For example, we construct perceptual kernels from subjective similarity judgments. 
 Psychology literature offers several task types for these judgments. 
-How to choose one then? What is the most effective judgment task in the context of perceptual 
+How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
 judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you see a garbled image). 
@@ -31,8 +31,7 @@ commands  or by downloading and uncompressing the [zipped repo](https://github.c
 
 <h3> Accessing the data </h3> 
 You can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is the perceptual kernel for the color palette and was obtained using the spatial arrangement (SA) 
-task. The kernels under [data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is a perceptual kernel for the color palette that was elicited using spatial arrangement (SA). The kernels under [data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  
 
 You can also access the raw datasets in [data/raw](data/raw), which include unprocessed per-subject measurements. 
 You can use the raw data, e.g., to perform your own custom data processing and agregation or, more interestingly, 
