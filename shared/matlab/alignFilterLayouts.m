@@ -40,8 +40,8 @@ for i = 1:N
 end
 
 
-% find a reference layout
-% pairwise align first 
+% find a reference layout:
+% 1) pairwise align first 
 for i = 1:N
     for j = 1:N
      [d,a] = procrustes(XY{i}, XY{j});
@@ -49,13 +49,13 @@ for i = 1:N
      A(i,j) = a;
     end
 end
-% then designate the layout that requires the minimum total 
-% transfromation to align with all the other layouts. 
-e     = sum(D);
+% 2) then designate the layout that requires the minimum total 
+% transfromation to align with the rest of layouts 
+e = sum(D);
 [~, refindx] = min(e);
 refXY = XY{refindx};
 
-% align all to the reference now  
+% 3) align all to the reference now  
 % (use the transformations already computed in the previous step)
 for i = 1:N
     if (i ~= refindx)
