@@ -55,7 +55,7 @@ e = sum(D);
 [~, refindx] = min(e);
 refXY = XY{refindx};
 
-% 3) align all to the reference now  
+% now align all to the reference  
 % (use the transformations already computed in the previous step)
 for i = 1:N
     if (i ~= refindx)
@@ -65,7 +65,7 @@ end
 
 t = (mean(e) + 2*std(e)); % threshold for filtering 
 
-% now filter by thresholding the total 
+% finally, filter by thresholding the total 
 % transformation scores in e   
 j=1;
 for i=1:N
