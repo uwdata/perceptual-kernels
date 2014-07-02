@@ -34,7 +34,7 @@ D = zeros(N,N);
 A = zeros(N,N); 
 XY = cell(1,N);
 
-% reshape the flattened coords 
+% reshape the flattened coords to M-by-2 matrices 
 for i = 1:N
     XY{i} = reshape(C(i,:),2,M)';
 end
@@ -50,7 +50,7 @@ for i = 1:N
     end
 end
 % 2) then designate the layout that requires the minimum total 
-% transfromation to align with the rest of layouts 
+% transformation to align with the rest of the layouts 
 e = sum(D);
 [~, refindx] = min(e);
 refXY = XY{refindx};
@@ -74,7 +74,7 @@ for i=1:N
         if(refindx == i)
             refindx = j; % update refindx  
         end
-        newC(j,:)= xy(:)';
+        newC(j,:)= xy(:)'; % flatten back the aligned coords 
         j = j+1;
     end
 end
