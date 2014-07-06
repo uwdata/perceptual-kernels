@@ -50,7 +50,7 @@ for i = 1:N
     end
 end
 % 2) then designate the layout that requires the minimum total 
-% transformation to align with the rest of the layouts 
+% transformation to align with the rest of the layouts as the reference
 e = sum(D);
 [~, refindx] = min(e);
 refXY = XY{refindx};
