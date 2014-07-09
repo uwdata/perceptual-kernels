@@ -3,7 +3,16 @@
  *
  * File  : showkernel.js
  * Author: Cagatay Demiralp (cagatay)
- * Desc  : Visualizes a given perceptual kernel as a grayscale heatmap.
+ * Desc  : Visualizes a given perceptual kernel with an interactive grayscale heatmap 
+ *         and a scatterplot. The heatmap represents the perceptual kernel entries 
+ *         with shades of gray, where darker cells indicate more similar variables.
+ *         The columns and rows of the heatmap matrix are labeled with  the corresponding 
+ *         visual variables of the kernel. The scatterplot shows a two-dimensional 
+ *         projection of the perceptual kernel, where in-plane distances approximate 
+ *         the perceptual kernel values.  The projection is obtained using multidimensional 
+ *         scaling on the kernel. 
+ *       
+ * 
  *
  * Example: showkernel.js shape-l9
  *
