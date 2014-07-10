@@ -49,7 +49,7 @@ will draw the corresponding color kernel as a grayscale heatmap in your default 
 
 <img width="512" style="float:left" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample2.png?raw=true>
 
-Hovering over a cell of the heatmap will show the corresponding perceptual kernel distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection scatter plot  show the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the planar projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel distances as two-dimensional projections are lossy representations, in general. 
+Hovering over a cell of the heatmap will show the corresponding perceptual kernel distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection scatter plot  show the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the planar projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel distances as two-dimensional projections are lossy representations in general. 
 
 
 <h3>Reproducing the experiments</h3> 
