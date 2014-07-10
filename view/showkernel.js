@@ -4,13 +4,27 @@
  * File  : showkernel.js
  * Author: Cagatay Demiralp (cagatay)
  * Desc  : Visualizes a given perceptual kernel with an interactive grayscale heatmap 
- *         and a scatterplot. The heatmap represents the perceptual kernel entries 
+ *         and a scatterplot, side-by-side.
+ *         The heatmap represents the perceptual kernel entries 
  *         with shades of gray, where darker cells indicate more similar variables.
  *         The columns and rows of the heatmap matrix are labeled with  the corresponding 
- *         visual variables of the kernel. The scatterplot shows a two-dimensional 
- *         projection of the perceptual kernel, where in-plane distances approximate 
- *         the perceptual kernel values.  The projection is obtained using multidimensional 
- *         scaling on the kernel. 
+ *         visual variables of the kernel. 
+ *         The scatterplot shows a two-dimensional projection of the perceptual kernel, where 
+ *         in-plane distances approximate the perceptual kernel values. The projection is obtained 
+ *         using multidimensional scaling on the kernel. Since  planar distances of 
+ *         the projection will not exactly match with  distances in the kernel in general 
+ *         (i.e., dimension is a topological invariant), it is useful to show  how accurate 
+ *         the projection is. For this, we compute the rank correlation between the perceptual 
+ *         kernel and the distance matrix directly derived from the planar projection by calculating 
+ *         the Euclidean distances between the projection points. We also compute the rank correlations 
+ *         between the corresponding rows (or columns, as the matrices here are all symmetric) of the two 
+ *         matrices. While the former quantifies the overall accuracy of the projection, row-based rank 
+ *         correlations quantify the projection accuracy for each variable separately. Both types 
+ *         of correlations are visualized with two horizontal green bars right under the scatterplot view. 
+ *         The top bar (dark green) shows the overall correlation while the bottom bar (light green) shows 
+ *         the rank correlation for the currently-hovered variable in the scatterplot.
+ *         
+ * 
  *       
  * 
  *
