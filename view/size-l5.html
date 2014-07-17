@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<div id="chart">
+</div>
+</body>
+<script type="text/javascript" src="../lib/d3.v3.min.js"></script>
+<script type="text/javascript" src="../js/stim.js"></script>
+<script type="text/javascript" src="../js/drawkernel.js"></script>
+<script type="text/javascript" src="../js/heatmap.js"></script>
+<script type="text/javascript" src="../js/scatter.js"></script>
+<script type="text/javascript" src="../js/bar.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script>
+var kernel = {drawfn: size10, width: 425, height: 425, filename: "size-l5.txt"};
+drawKernel("#chart", kernel);
+</script>
+</html>
+
