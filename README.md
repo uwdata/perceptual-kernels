@@ -38,6 +38,40 @@ You can use the raw data, e.g., to perform your own custom data processing and a
 per-subject data analysis. 
 
 <h3>Viewing the data</h3>
+<h4>On the web</h4> 
+By just clicking the corresponding links below, you can view any kernel in our dataset. Resulting visualizations are the same as using the viewer `view/showkernel.js`  locally. 
++ shape-[l5](http://uwdata.github.io/perceptual-kernels/shape-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/shape-l9.html), 
+[sa](http://uwdata.github.io/perceptual-kernels/shape-sa.html), 
+[tm](http://uwdata.github.io/perceptual-kernels/shape-tm.html), 
+[td](http://uwdata.github.io/perceptual-kernels/shape-td.html)
++ color-[l5](http://uwdata.github.io/perceptual-kernels/color-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/color-l9.html), 
+[sa](http://uwdata.github.io/perceptual-kernels/color-sa.html), 
+[tm](http://uwdata.github.io/perceptual-kernels/color-tm.html), 
+[td](http://uwdata.github.io/perceptual-kernels/color-td.html)
++ size-[l5](http://uwdata.github.io/perceptual-kernels/size-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/size-l9.html), 
+[sa](http://uwdata.github.io/perceptual-kernels/size-sa.html), 
+[tm](http://uwdata.github.io/perceptual-kernels/size-tm.html), 
+[td](http://uwdata.github.io/perceptual-kernels/size-td.html)
++ shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/shapecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/shapecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/shapecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/shapecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/shapecolor-td.html)
++ shapesize-[l5](http://uwdata.github.io/perceptual-kernels/shapesize-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/shapesize-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/shapesize-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/shapesize-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/shapesize-td.html)
++ sizecolor-[l5](http://uwdata.github.io/perceptual-kernels/sizecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/sizecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/sizecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/sizecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/sizecolor-td.html)
+
+<h4>Locally </h4>
 First, you will need to install  [node.js](http://nodejs.org) and the node modules for express.js and d3.js (pretty easy with [npm](https://www.npmjs.org/), a package manager for node.js; for example, `npm install d3` will install 
 the d3 module for you). The kernels in [data/kernels](data/kernels) can be then viewed as interactive grayscale heatmaps and two-dimensional scatter plots by running [view/showkernel.js](view/showkernel.js) from the command line. For example, 
 ```shell
