@@ -1,7 +1,7 @@
 Learning Perceptual Kernels for</br> Visualization Design
 ===================================================
 
-This repo contains the results and source code from our crowdsourced experiments to estimate
+This repo contains the results and source code from our crowdsourced experiments (see our [InfoVis'14 paper](http://cs.stanford.edu/~cagatay/projects/pk/PerceptualKernels-InfoVis14.pdf) for details) to estimate
 perceptual kernels for color, shape, size and combinations thereof. What is a perceptual kernel? 
 It is a distance matrix derived from aggregate perceptual judgments. In its basic form, a perceptual kernel 
 contains pairwise perceptual dissimilarity values for a specific set of perceptual stimuli---we refer 
@@ -31,7 +31,7 @@ commands  or by downloading and uncompressing the [zipped repo](https://github.c
 
 <h3> Accessing the data </h3> 
 You can  directly access the final perceptual kernels and use them for your own purposes, 
-research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is a perceptual kernel for the color palette that was elicited using spatial arrangement (SA). The kernels under [data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [draft](doc/perceptual-kernels.pdf?raw=true).  
+research or otherwise. You will see thirty kernels in [data/kernels/](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels) folder. These are symmetric, normalized matrices stored as comma-seperated text files. File names denote the variable and judgment task types used. For example, [color-sa.txt](https://github.com/uwdata/perceptual-kernels/tree/master/data/kernels/color-sa.txt) is a perceptual kernel for the color palette that was elicited using spatial arrangement (SA). The kernels under [data/kernels](data/kernels) are all filtered and  aggregated as discussed in our [paper](http://cs.stanford.edu/~cagatay/projects/pk/PerceptualKernels-InfoVis14.pdf).  
 
 You can also access the raw datasets in [data/raw](data/raw), which include unprocessed per-subject measurements. 
 You can use the raw data, e.g., to perform your own custom data processing and agregation or, more interestingly, 
@@ -129,8 +129,7 @@ affect how viewers interpret data. Perceptual kernels represent perceptual diffe
 within visual variables in a reusable form that is directly applicable to
 visualization evaluation and automated design. In other words, perceptual kernels 
 provide a useful operational model for incorporating empirical perception data directly 
-into visualization design tools.  Please refer to our [draft on perceptual kernels](https://rawgit.com/uwdata/perceptual-kernels/master/doc/perceptual-kernels.pdf) 
-for further details. 
+into visualization design tools.  
 
 Here are few examples of how the kernels can be used. 
 
