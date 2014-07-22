@@ -90,7 +90,7 @@ function submitForm(){
 
 function showStimuli(div, data, o){
 
-    var svg = div.append("svg"),
+    var svg  = div.append("svg").attr("width","100%").attr("height","100%"),
           s = study,
          sx = o.symbolScaleX,
          sy = o.symbolScaleY;
@@ -193,7 +193,7 @@ function showColorExample(div) {
 
     var dy = 0.1*(ys.rangeBand());
 
-    var svg =  div.append("svg"), rgb;
+    var svg  = div.append("svg").attr("width","100%").attr("height","100%"), rgb;
 
     for (var a = -100; a <= 100;  a+=10) {
 

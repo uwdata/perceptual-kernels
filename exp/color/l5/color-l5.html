@@ -549,8 +549,8 @@ function stimMatrix(s){
 
     s.matrix  = div.append("svg")
             .attr("class", ".matrix")
-            .attr("width", o.width)
-            .attr("height",o.height);
+            .attr("width", "100%")
+            .attr("height","100%");
 
     s.matrix.selectAll(".row")
             .data(s.matrixData)
@@ -621,7 +621,7 @@ function stimMatrix(s){
 
         var dx = o.colorScaleX, dy = o.colorScaleY;
 
-        study.matrixColLabels = div.append("svg");
+        study.matrixColLabels = div.append("svg").attr("width","100%").attr("height","100%");
 
                 study.matrixColLabels.selectAll(".collabel")
                 .data(data)
@@ -639,7 +639,7 @@ function stimMatrix(s){
 
         var dx = o.colorScaleX, dy = o.colorScaleY;
 
-        study.matrixRowLabels = div.append("svg");
+        study.matrixRowLabels = div.append("svg").attr("width","100%").attr("height","100%");
 
                 study.matrixRowLabels.selectAll(".rowlabel")
                 .data(data)
