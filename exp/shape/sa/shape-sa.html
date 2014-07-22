@@ -88,7 +88,11 @@ function submitForm(){
 
 function showStimuli(div, data, o){
 
-    var r = 20, svg = div.append("svg"), s = study;
+    var r = 20,
+            svg = div.append("svg")
+                    .attr('width','100%')
+                    .attr('height','100%'),
+            s = study;
 
 //
 //            //this is a simple box selection

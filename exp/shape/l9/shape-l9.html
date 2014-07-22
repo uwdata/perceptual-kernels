@@ -543,8 +543,8 @@ function stimMatrix(s){
 
     s.matrix  = div.append("svg")
             .attr("class", ".matrix")
-            .attr("width", o.width)
-            .attr("height",o.height);
+            .attr("width", "100%")
+            .attr("height","100%");
 
     s.matrix.selectAll(".row")
             .data(s.matrixData)
@@ -615,7 +615,9 @@ function stimMatrix(s){
 
         var dx = o.symbolScaleX, dy = o.symbolScaleY;
 
-        study.matrixColLabels = div.append("svg");
+        study.matrixColLabels  =  div.append("svg")
+                .attr('width','100%')
+                .attr('height','100%');
 
                 study.matrixColLabels.selectAll(".collabel")
                 .data(data)
@@ -633,7 +635,9 @@ function stimMatrix(s){
 
         var dx = o.symbolScaleX, dy = o.symbolScaleY;
 
-        study.matrixRowLabels = div.append("svg");
+        study.matrixRowLabels = div.append("svg")
+                .attr('width','100%')
+                .attr('height','100%');
 
                 study.matrixRowLabels.selectAll(".rowlabel")
                 .data(data)
@@ -709,7 +713,9 @@ function startOrientation(){
 
     s.taskInterface.style("visibility","hidden");
 
-    d3.select("#symbol-set").append("svg").attr("id","symbol-set-svg")
+    d3.select("#symbol-set")
+            .append("svg")
+            .attr("id","symbol-set-svg")
             .selectAll(".symbol")
             .data(d3.range(s.numTestStim))
             .enter()
@@ -730,19 +736,13 @@ function startOrientation(){
 function startTraining(){
     var s = study; // o = s.opts;
 
-    //console.log("initTrainingData");
     //init training data
     initTrainData(s);
 
-//console.log("updateOptions");
-    updateOptions(s);
+   updateOptions(s);
 
+   updateStudyIndex(0);
 
-// console.log("updateStudyIndex");
-    updateStudyIndex(0);
-
-
- //console.log("stimMatrix");    //update the matrix
    stimMatrix(s);
 
     //get the interface ready
@@ -825,7 +825,7 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q,
 samp, small, strong, sub, sup, svg, var, b, i, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, figure, footer, header, hgroup, menu, nav, section, time,
+article, aside, figure, footer, header, menu, nav, section, time,
 mark, audio, video {
     /*margin: 0;*/
     padding: 0;
@@ -883,6 +883,12 @@ mark, audio, video {
     height: 80px;
     background: white;
 }
+
+#symbol-set-svg {
+    width: 100%;
+    height: 100%;
+}
+
 
 #orient-instructs{
     display: block;
