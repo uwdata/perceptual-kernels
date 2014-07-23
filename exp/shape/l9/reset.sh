@@ -3,8 +3,8 @@
 #use it judiciously; it WIPES OUT all the HITs running on your account!
 
 #comment out the following line to reset your sandbox account
-#$MTURKCLT/bin/resetAccount.sh -force -sandbox
+#$MTURKCLT_HOME/bin/resetAccount.sh -force -sandbox
 
 #comment out the following line to reset your production account
-#$MTURKCLT/bin/resetAccount.sh -force
+#$MTURKCLT_HOME/bin/resetAccount.sh -force
 
