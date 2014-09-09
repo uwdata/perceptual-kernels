@@ -2,9 +2,9 @@
  *
  * File  : heatmap.js
  * Author: Cagatay Demiralp (cagatay)
- * Desc  : 
+ * Desc  :
  *
- * 	Example: 
+ * 	Example:
  *
  * Date    : Thu May 29 22:56:56 2014
  * Modified: $Id$
@@ -89,7 +89,7 @@ function heatmap(el,p) {
            })
            .each(row);
 
-      function row(d,i) {
+      function row(d,i){
           var cells = d3.select(this).selectAll(".cell")
               .data(d)
               .enter()

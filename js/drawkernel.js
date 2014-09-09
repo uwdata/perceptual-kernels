@@ -2,11 +2,9 @@
  *
  * File  : drawkernel.js
  * Author: Cagatay Demiralp (cagatay)
- * Desc  : Draws a given kernel.  
+ * Desc  : Draws a given kernel.
  *
- * 	Example: Mon Mar 31 00:15:43 PDT 2014
- *
- * Date    :
+ * Date    :Mon Mar 31 00:15:43 PDT 2014
  * Modified: $Id$
  *
  */

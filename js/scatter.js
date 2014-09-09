@@ -100,9 +100,9 @@ Scatter.prototype.defaults = function(){
         height:128,
         margin: {top:8, bottom:8, left:8, right:8},
         axis:{x:null, y:null},
-        scale:{x:18, y:18}, //shape scale
+        scale:{x:18, y:18}, 
         drawfn:function(s){return s.append('circle').attr('r',7);},
-        k:{x:'X', y:'Y'} //key
+        k:{x:'X', y:'Y'} 
     };
 };
 
@@ -119,9 +119,9 @@ Scatter.prototype.on = function(e) {
 
     var shapes = this.svg_.selectAll('.shape'),
         interacts = this.interacts_,
-        n =  interacts['hover'].length;
+        n = interacts['hover'].length;
 
-    if (e === 'hover') {
+    if (e === 'hover'){
         shapes.on('mouseover', function(d,i){
             for (var j=0; j<n; j++) interacts['hover'][j].on(d,i);
         })
@@ -129,6 +129,5 @@ Scatter.prototype.on = function(e) {
                 for (var j=0; j<n; j++) interacts['hover'][j].off(d,i);
             });
     }
-
 };
 
