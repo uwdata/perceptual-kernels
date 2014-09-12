@@ -1,0 +1,27 @@
+body{
+background-color:lightgray;
+}
+
+#symbol-set{
+background-color:lightgray;
+}
+
+#progressbar{
+background-color:darkgray;
+}
+
+#progress{
+    background-color: #c4c4c4;
+}
+
+#alabel{
+color: #adadad;
+}
+
+#r0label{
+color:#adadad;
+
+}
+#r1label{
+    color: #adadad;
+}
