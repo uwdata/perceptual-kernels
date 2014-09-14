@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+    <link rel="stylesheet" href="../../../../css/view.css"/>
+</head>
 <body>
 <div id="chart">
+</div>
+<div>
+    <form>
+        <label><input type="radio" name="density" checked
+                      onclick="setDensity(0)"/>density-0</label><br>
+        <label><input type="radio" name="density"
+                      onclick="setDensity(1)"/>density-1</label>
+    </form>
 </div>
 </body>
 <script type="text/javascript" src="../../../../js/d3.v3.min.js"></script>
@@ -13,8 +23,14 @@
 <script type="text/javascript" src="../../../../js/bar.js"></script>
 <script type="text/javascript" src="../../../../js/utils.js"></script>
 <script>
-var kernel = {drawfn:shape10, width: 425, height: 425, filename: "k.txt"};
-drawKernel("#chart", kernel);
+    var kernel = {drawfn:shape10, width: 425, height: 425, filename: "k.txt"};
+    drawKernel("#chart", kernel);
+
+    var context = {density:0};
+    var setDensity = function(v){ context.density=v; updateKernel();};
+    var updateKernel = function(){
+        window.open('../../density'+ context.density +'/results/view.html', '_self');
+    };
 </script>
 </html>
 
