@@ -100,9 +100,9 @@ Scatter.prototype.defaults = function(){
         height:128,
         margin: {top:8, bottom:8, left:8, right:8},
         axis:{x:null, y:null},
-        scale:{x:18, y:18}, 
+        scale:{x:18, y:18},
         drawfn:function(s){return s.append('circle').attr('r',7);},
-        k:{x:'X', y:'Y'} 
+        k:{x:'X', y:'Y'}
     };
 };
 

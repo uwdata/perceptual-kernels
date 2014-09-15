@@ -1,3 +1,11 @@
+.shape{
+    opacity:0.8;
+}
+
+#chart{
+    float:left;
+}
+
 label{
   font-weight: 200;
   font-size:12px;
@@ -5,14 +13,12 @@ label{
   color:gray;
 }
 
-#chart{
-    float:left;
-}
 
 form{
     float:right;
     margin-right: 20%;
 }
+
 
 body{
     /*margin-top: 25px;*/
