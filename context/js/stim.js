@@ -82,6 +82,7 @@ palettes.excel10 = [
     "#365e96", "#983334", "#77973d", "#5d437c", "#36869f",
     "#d1702f", "#8197c5", "#c47f80", "#acc484", "#9887b0"
 ];
+
 //regular polygon centered at the origin
 function regularPolygon(n,r) {
 
