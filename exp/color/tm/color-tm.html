@@ -228,7 +228,9 @@ function showOrientation(s){
 
     var dx=72, dy=dx, halfdx=0.5*dx, halfdy=0.5*dy;
 
-    d3.select("#color-set").append("svg").attr("id","color-set-svg")
+    d3.select("#color-set").append("svg")
+            .attr("id","color-set-svg")
+            .attr("width","100%")
             .selectAll(".color")
             .data(d3.range(s.numTrainStim, s.numTrainStim+ s.numTestStim))
             .enter()
@@ -496,7 +498,7 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q,
 samp, small, strong, sub, sup, svg, var, b, i, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, figure, footer, header, hgroup, menu, nav, section, time,
+article, aside, figure, footer, header, menu, nav, section, time,
 mark, audio, video {
     /*margin: 0;*/
     padding: 0;
@@ -573,6 +575,11 @@ h2 {
     top: 10px;
     left: 100px;
 }
+
+/*#color-set-svg{*/
+    /*width:100%;*/
+    /*height:100%;*/
+/*}*/
 
 #color-set{
     width: 800px;
