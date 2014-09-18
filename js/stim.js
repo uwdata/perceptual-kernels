@@ -82,6 +82,21 @@ palettes.excel10 = [
     "#365e96", "#983334", "#77973d", "#5d437c", "#36869f",
     "#d1702f", "#8197c5", "#c47f80", "#acc484", "#9887b0"
 ];
+
+palettes.excel2011_mac = [
+    [85, 135, 179],
+    [189, 89, 86],
+    [152, 177, 106],
+    [134, 110, 157],
+    [75,  169, 187],
+    [229, 149, 88],
+    [163, 185, 214],
+    [220, 164, 164],
+    [196, 213, 171],
+    [185, 173, 199]
+];
+
+
 //regular polygon centered at the origin
 function regularPolygon(n,r) {
 
@@ -198,7 +213,7 @@ function shape7(g, i){
             break;
     }
 
-    return defaults(s);
+    return  s.attr("vector-effect", "non-scaling-stroke");
 }
 
 
@@ -397,6 +412,20 @@ function  color10(g,i){
 }
 
 
+function  excel10(g,i){
+    var rgb = palettes.excel2011_mac[i];
+    return g.append("rect")
+        .attr("vector-effect","non-scaling-stroke")
+        .attr("class","chip")
+        .attr("width", 1.25)
+        .attr("height",1.25)
+        .attr("x", -0.5*1.25) // make sure it is centered at the 'origin'
+        .attr("y", -0.5*1.25)
+        .style('stroke', 'none')
+        .style("fill", d3.rgb(rgb[0],rgb[1],rgb[2]).toString());
+}
+
+
 function  color4(g,i){
   return g.append("rect")
         .attr("vector-effect","non-scaling-stroke")
@@ -433,7 +462,7 @@ function size10(g,i){
         .attr("r",r)
         .attr("vector-effect","non-scaling-stroke")
         .style("fill", "white")
-        .style('fill-opacity',0.0725) //for easy hover interaction
+//        .style('fill-opacity',0.0725) //for easy hover interaction
         .style("stroke-width", 2.5)
         .style("stroke-linecap", "round")
         .style("stroke-linejoin", "round")

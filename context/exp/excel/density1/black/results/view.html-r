@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../../../../css/view.css"/>
+</head>
+<body>
+<div id="chart">
+</div>
+<div>
+    <form><label><input?type="radio"?name="density"?onclick="setDensity(-1)"/>nodensity</label><br><label><input?type="radio"?name="density"?onclick="setDensity(-1)"/>nodensity</label><br>
+        <label><input type="radio" name="density"
+                      onclick="setDensity(0)"/>density-0</label><br>
+        <label><input type="radio" name="density"
+                      onclick="setDensity(1)" checked/>density-1</label><br>
+        <label><input type="radio" name="bgcolor"
+                      onclick="setColor('white')"/>background-white</label><br>
+        <label><input type="radio" name="bgcolor"
+                      onclick="setColor('gray')" />background-gray</label><br>
+        <label><input type="radio" name="bgcolor"
+                      onclick="setColor('black')" checked/>background-black</label>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../../../../../js/d3.v3.min.js"></script>
+<script type="text/javascript" src="../../../../../js/stim.js"></script>
+<script type="text/javascript" src="../../../../../js/drawkernel.js"></script>
+<script type="text/javascript" src="../../../../../js/heatmap.js"></script>
+<script type="text/javascript" src="../../../../../js/scatter.js"></script>
+<script type="text/javascript" src="../../../../../js/bar.js"></script>
+<script type="text/javascript" src="../../../../../js/utils.js"></script>
+<script>
+var kernel = {drawfn:excel10, width: 425, height: 425, filename: "k.txt"};
+drawKernel("#chart", kernel);
+
+var context = {color:'black', density:1};
+var setDensity = function(v){ context.density=v; updateKernel();};
+var setColor= function(v){ context.color=v; updateKernel();};
+var updateKernel = function(){
+    window.open('../../../density'+ context.density +'/' + context.color + '/results/view.html', '_self');
+};
+</script>
+</html>
+
