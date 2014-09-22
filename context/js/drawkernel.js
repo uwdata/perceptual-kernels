@@ -82,7 +82,10 @@ function drawKernel(el,kernel){
                         width: 300,
                         height: 16,
                         position:cp1.position,
-                        fill:function(d,i){return i?palettes.tableau10[2]:'green'; }
+//                        fill:function(d,i){return i ? palettes.tableau10[2]:'green';
+                        fill:function(d,i){return i ? palettes.tableau10[2]:'black';
+                        }
+
                     },
                 errbar = new Bar(el, [d[0], 0], cp2);
 

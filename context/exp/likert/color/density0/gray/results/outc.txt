@@ -1,0 +1,4 @@
+no strategy, I just judged the colors
+ 
+number of x color, their color chart difference
+None

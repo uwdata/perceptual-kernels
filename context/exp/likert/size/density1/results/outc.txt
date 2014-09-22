@@ -1,0 +1,6 @@
+tried to see if the circles  had about the same curve to it, 
+No real strategy aside from comparing the circles to see if they were the same size or a different size.
+I just compared the two sizes.
+Tried to base them off of other circles nearby to see how big/small they were in comparison.
+I tried to stay consistent with how I grade the relative size difference between the two circles. I set a range early in the task and I tried to stick to it as much as possible. Those 0 and 1 or 8 and 9 were very tricky. I just went with my intuition on those calls.
+I just scrutinized them very carefully first noting size then analyzing the relation to size of each.
