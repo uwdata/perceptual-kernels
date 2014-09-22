@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+
     @import url(../../../lib/bootstrap/css/bootstrap.css);
     @import url(../../../lib/bootstrap/css/bootstrap-responsive.css);
+
 </style>
 <body onclick="bodyClickHandle()">
 <div id="intro">
@@ -28,13 +30,14 @@
 <div id="orient-interface">
     <div id="symbol-set"></div>
     <div id="orient-instructs" class="instructs">
-        <ul>
-<li>GREAT! You are done with training.</li>
 
+        <ul>
+            <li>GREAT! You are done with training.</li>
             <li>Take a moment and look at the symbols above. How similar are they?
                 What are the most similar and different pairs?</li>
             <li>When you are ready, click the following button to continue. <em>Thanks for helping!</em></li>
         </ul>
+
         <button id="start" class="btn btn-large" onclick="startTesting()">continue</button>
     </div>
 </div>
@@ -334,7 +337,6 @@ function submitForm(){
         d3.select("#train-time-field").attr("value", study.trainMatrixTime.toString());
         d3.select("#train-perm-field").attr("value", study.trainStimData.toString());
 
-//        console.log(study.trainMatrixData.toString());
 
         d3.select("#studytime-field").attr("value", (new Date().getTime())-study.time);
         document.getElementById("form").submit(); // d3.select("#form")[0][0].submit() would also work
@@ -765,7 +767,7 @@ function startTesting(){
     s.orientInterface.style("visibility","hidden");
 
 
-//    console.log("initTestingData");
+// console.log("initTestingData");
     initTestData(s);
 
 //    console.log("updateOptions");
@@ -813,8 +815,6 @@ var study  = {
 };
 
 initStudy(study);
-
-//stimMatrix(d3.select("#matrix"), study);
 
 </script>
 </body>
@@ -875,6 +875,10 @@ mark, audio, video {
     position: absolute;
     top: 10px;
     left: 100px;
+}
+
+#symbol-set-svg{
+    width:100%;
 }
 
 #symbol-set{
