@@ -32,21 +32,21 @@ judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point 
 [sa](http://uwdata.github.io/perceptual-kernels/exp/color/size-sa.html),
 [tm](http://uwdata.github.io/perceptual-kernels/exp/color/size-tm.html),
 [td](http://uwdata.github.io/perceptual-kernels/exp/color/size-td.html)
-+ shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/shapecolor-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/shapecolor-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/shapecolor-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/shapecolor-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/shapecolor-td.html)
-+ shapesize-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapesize/shapesize-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/shapesize/shapesize-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/shapesize/shapesize-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/shapesize/shapesize-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/sahpesize/shapesize-td.html)
-+ sizecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sizecolor-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sizecolor-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sizecolor-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sizecolor-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sizecolor-td.html)
++ shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l5/shapecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l9/shapecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/sa/shapecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/tm/shapecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/td/shapecolor-td.html)
++ shapesize-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapesize/l5/shapesize-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/shapesize/l9/shapesize-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/shapesize/sa/shapesize-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/shapesize/tm/shapesize-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/sahpesize/td/shapesize-td.html)
++ sizecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/l5/sizecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/l9/sizecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/sa/sizecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/tm/sizecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/sizecolor/td/sizecolor-td.html)
 
 
 How to use the data and source code in this repo? 
