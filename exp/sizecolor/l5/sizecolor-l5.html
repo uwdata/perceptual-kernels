@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    @import url(../../../lib/bootstrap/css/bootstrap.css);
+    @import url(../../../lib/bootstrap/css/bootstrap-responsive.css);
+</style>
+<body onclick="bodyClickHandle()">
+<div id="intro">
+    <h2 class="title">How different does a given pair of circles look?</h2>
+    <ul>
+        <li>We are going to show you 55 pairs of circles and your task is to rate how visually different they look to you!  </li>
+
+        <li>You will enter your rating as a number between 0 and 5 (valid entries: 0, 1, 2, 3, 4, 5). The following picture
+            shows a snapshot of the task interface.</li>
+        <img id="intro-img" src="sizecolor-l5.png">
+        <li>A rating of <strong>0</strong> means that  there is NO DIFFERENCE between the two circles (they are the SAME).</li>
+
+        <li> <strong>1</strong> means that the two circles look VERY SIMILAR.</li>
+
+        <li> <strong>5</strong> means that the two circles look VERY DIFFERENT (for example, 5 times as different as a very similar circle pair).</li>
+        <li>Any rating between 1 and 5 should reflect the degree of visual difference between the circles.</li>
+
+        <li>Complete each task as accurately and quickly as possible.</li>
+
+        <li>To get you familiarized with the task interface, we will have a very short training session using squares.</li>
+    </ul>
+    <button id="start-training" class="btn btn-large" onclick="startTraining()">start training</button>
+</div>
+
+<div id="orient-interface">
+    <div id="symbol-set"></div>
+    <div id="orient-instructs" class="instructs">
+        <ul>
+					<li>GREAT! You are done with training.</li>
+
+          <li>Take a moment and look at the circles above. How similar do
+					they look? What are the most similar and different pairs?</li>
+            <li>When you are ready, click the following button to continue. <em>Thanks for helping!</em></li>
+        </ul>
+        <button id="start" class="btn btn-large" onclick="startTesting()">continue</button>
+    </div>
+</div>
+
+
+<div id="task-interface" tabindex="0">
+    <!--  navigation bar  -->
+    <div id="tasknav">
+        <div id="rating-interface">
+            <div id="stimulusA" class="stimulus"></div>
+            <div id="stimulusB" class="stimulus"></div>
+            <div id="rating" class="text-int"></div>
+            <div id="choice">
+                <input id="r0" class="radio" type="radio"  name="rating" value="0" onclick="updateRating(this.value)"> 0 (no difference)<br>
+                <input id="r1" class="radio" type="radio"  name="rating" value="1" onclick="updateRating(this.value)"> 1 <br>
+                <input id="r2" class="radio" type="radio"  name="rating" value="2" onclick="updateRating(this.value)"> 2<br>
+                <input id="r3" class="radio" type="radio"  name="rating" value="3" onclick="updateRating(this.value)"> 3<br>
+                <input id="r4" class="radio" type="radio"  name="rating" value="4" onclick="updateRating(this.value)"> 4<br>
+                <input id="r5" class="radio" type="radio"  name="rating" value="5" onclick="updateRating(this.value)"> 5 (very different)<br>
+            </div>
+
+            <button id="next"  class="btn" type="button" onclick="nextTask()">next</button>
+        </div>
+        <div id="reminder-rescale">
+            <ul>
+                <li>DONE! You have rated all the pairs.
+                <li>Now, take a moment and look at all your ratings together. ADJUST them
+                    so that the most similar, but not identical,
+                    circle pair(s) gets the value of <strong>1</strong> and the most
+                    dissimilar pair(s) gets the highest value <strong>5</strong>.</li>
+                <li>You can change a given rating by clicking on the corresponding cell.</li>
+                <li>When you are satisfied with the results, continue to the final step of the study.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--- distance  matrix -->
+    <div id="matrix-area">
+        <div id="matrix-title"></div>
+        <div id="matrix-collabels"></div>
+        <div id="matrix-rowlabels"></div>
+        <div id="matrix"></div>
+    </div>
+    <button id="done-button" class="btn btn-large" onclick="getComments()">continue</button>
+    <div id="textband">
+        <div id="task-instructs">
+            <p id="question">How different does the <span class="sizename">square</span> pair look to you?</p>
+            Enter your rating as a number between 0 and 5 by clicking the
+            corresponding radio button or by typing the number directly
+            on the keyboard.
+            <ul>
+							<li>A rating of <strong>0</strong> means there is NO DIFFERENCE between the two <span class="sizename">square</span>s (THE SAME).</li>
+                <li><strong>1</strong> means the two <span class="sizename">square</span>s look VERY SIMILAR.</li>
+                <li><strong>5</strong> means that the two <span class="sizename">square</span>s look VERY DIFFERENT (for example, 5 times
+                    as different as a very similar <span class="sizename">square</span> pair).</li>
+                <li>Any rating between 1 and 5 should reflect the degree of visual difference between
+                    the <span class="sizename">square</span>s.</li>
+            </ul>
+            <p id="training-label"><em> training session </em></p>
+        </div>
+        <div id="key-help">
+            <ul>Shortcut Keys:
+                <li><strong>n</strong>:[0-5] - set rating to n</li>
+                <li><strong>up</strong> - move up in the radio buttons</li>
+                <li><strong>down</strong> - move down in the radio buttons</li>
+                <li><strong>enter</strong> or <strong>space bar</strong> - advance to next task</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="completion-instructs">
+        <p>DONE!  Please tell us about any strategy you have used for scoring
+            differences of circles with additional comments you might have
+            in the text box.</p>
+    </div>
+
+    <!-- submit (hidden)-->
+    <!--<form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">-->
+
+    <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
+
+        <textarea id="comment-box" class="textbox" name="comment" cols="30" rows="3" onfocusout="stopCommenting()" onclick="startCommenting(this)">Enter your comments here ... </textarea>
+
+        <button id="submit-button" class="btn btn-large"  type="button" onclick="submitForm()">submit</button>
+
+        <!-- adapted from Jeff's area study code  -->
+        <input type="hidden" name="workerId" id="wid-field" value="-1" />
+        <input type="hidden" name="assignmentId" id="aid-field" value="-1" />
+
+         <input type="hidden" name="taskTimes" id="time-field" value=""/>
+        <input type="hidden" name="estimates" id="es-field" value="" />
+        <input type="hidden" name="permutation" id="perm-field" value="" />
+
+        <input type="hidden" name="trainTaskTimes" id="train-time-field" value=""/>
+        <input type="hidden" name="trainEstimates" id="train-es-field" value="" />
+        <input type="hidden" name="trainPermutation" id="train-perm-field" value="" />
+
+        <input type="hidden" name="studyTime" id="studytime-field" value="-1"/>
+
+        <input type="hidden" name="screenWidth" id="sw-field" value="-1" />
+        <input type="hidden" name="screenHeight" id="sh-field" value="-1" />
+        <input type="hidden" name="colorDepth" id="cd-field" value="-1" />
+        <input type="hidden" name="userAgent" id="ua-field" value="-1" />
+    </form>
+
+</div>
+
+
+<!-- control --->
+<script type="text/javascript" src="../../../lib/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../shared/utils.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../shared/palettes.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../shared/stim.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+function initStudy(s){
+
+
+    var o = s.opts;
+
+    s.intro = d3.select("#intro").style("visibility","visible");
+    s.startTrainingButton= d3.select("#start-training");
+    s.orientInterface = d3.select("#orient-interface").style("visibility","hidden");
+    s.startButton = d3.select("#start");
+
+
+    //init the task interface
+    initTaskInterface(s,o);
+
+    s.completionInstructs = d3.select("#completion-instructs").style("visibility","hidden");
+    s.commentBox  = d3.select("#comment-box").attr("disabled",true).style("visibility","hidden");
+    s.submitButton = d3.select("#submit-button")
+            .attr("disabled",true)
+            .style("visibility","hidden");
+
+
+    //init the submission form
+    d3.select("#sw-field").attr("value", screen.width);
+    d3.select("#sh-field").attr("value", screen.height);
+    d3.select("#cd-field").attr("value", screen.colorDepth);
+    d3.select("#ua-field").attr("value", navigator.userAgent + "||" + navigator.vendor);
+    d3.select("#aid-field").attr("value", getParam("assignmentId"));
+    d3.select("#wid-field").attr("value", getParam("workerId"));
+
+    //
+    // Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
+    //
+    if (getParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE"){
+
+        s.accepted = false;
+        s.startTrainingButton[0][0].disabled = true;
+        s.startTrainingButton.classed("btn-danger",true);
+        s.startTrainingButton.text("You must ACCEPT the HIT before you can start.");
+
+    } else {
+        s.accepted = true;
+        s.time  = new Date().getTime();
+        s.startTrainingButton.text("start training");
+        s.startTrainingButton.classed("btn-danger",false);
+        s.startTrainingButton[0][0].disabled = false;
+
+//       var form = document.getElementById('mturk_form');
+//       if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+//           form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+//       }
+
+    }
+
+
+}
+
+function initTaskInterface(s,o) {
+
+    var   d   = d3.range(s.numTrainStim + s.numTestStim),
+            ssx = o.symbolScaleX,
+            ssy = o.symbolScaleY;
+
+    s.ratingInterface = d3.select("#rating-interface");
+    s.nextButton = d3.select("#next").attr("disabled",true);
+    s.ratingText = d3.select("#rating").append("text").attr("class","text-int").text("");
+    s.reminderRescale = d3.select("#reminder-rescale").style("visibility","hidden");
+    s.doneButton = d3.select("#done-button").style("visibility","hidden");
+    s.clickedCell = "";
+
+    //init view
+    var a = d3.select("#stimulusA")
+            .append("svg")
+            .attr("width", 3*ssx)
+            .attr("height",3*ssy);
+
+    s.stimuliA = a.selectAll(".symbol")
+            .data(d)
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("transform",
+                    "translate("+(ssx+2)+","+(ssy+2)+") " +
+                            "scale("+ssx+","+ssy+")")
+            .each(appendStimuli)
+            .style("stroke", "black")
+            .style("visibility","hidden");
+
+    var b =  d3.select("#stimulusB")
+            .append("svg")
+            .attr("width", 3*ssx)
+            .attr("height",3*ssy);
+
+
+    s.stimuliB = b.selectAll(".symbol")
+            .data(d)
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("transform",
+                    "translate("+(ssx+2)+","+(ssy+2)+") " +
+                            "scale("+ssx+","+ssy+")")
+            .each(appendStimuli)
+            .style("stroke", "black")
+            .style("visibility", "hidden");
+
+    s.taskInterface = d3.select("#task-interface")
+            .style("visibility","hidden")
+            .on("keydown", function(){
+
+                if(this.style.visibility == "hidden" ||
+                        s.ratingInterface[0][0].visibility == "hidden") return;
+
+                var v = s.currentRating, vmax = s.maxRating, k=d3.event.keyCode;
+
+                //console.log(k);
+
+                if(k >= 48 && k<=57){
+
+                    s.choice[0][k-48].checked=true;
+                    updateRating(k-48);
+
+                }else if(k == 40){ //up
+
+                    d3.event.preventDefault();
+                    v = ++v > vmax ? vmax : v;
+                    s.choice[0][v].checked=true;
+                    updateRating(v);
+
+                }else if(k == 38){ //down
+
+                    d3.event.preventDefault();
+                    v = --v < 0 ? 0 : v;
+                    s.choice[0][v].checked=true;
+
+                    updateRating(v);
+
+                }else if(k == 32 || k == 13) {
+
+                    if(!s.commentBoxFocus) d3.event.preventDefault();
+
+                    if(!(s.nextButton[0][0].disabled)) s.nextButton[0][0].onclick();
+                }
+
+            });
+
+}
+
+
+
+function getComments(){
+    var s = study;
+    //hide previous
+    s.taskInterface[0][0].style.visibility = "hidden";
+    s.reminderRescale[0][0].style.visibility = "hidden";
+    s.ratingInterface[0][0].style.visibility = "hidden";
+    s.doneButton[0][0].style.visibility = "hidden";
+
+    //show the comment box
+    s.completionInstructs[0][0].style.visibility = "visible";
+    s.commentBox[0][0].disabled = false;
+    s.commentBox[0][0].style.visibility = "visible";
+    s.submitButton[0][0].style.visibility = "visible";
+
+}
+
+//submit the collected data back to amazon server
+function submitForm(){
+
+    if(study.accepted){
+
+        d3.select("#es-field").attr("value", study.matrixData.toString());  //joins matrix in row order
+        d3.select("#time-field").attr("value", study.matrixTime.toString());
+        d3.select("#perm-field").attr("value", study.stimData.toString());
+
+//        console.log(study.matrixData.toString());
+
+        //post also the training data
+        d3.select("#train-es-field").attr("value", study.trainMatrixData.toString());  //joins matrix in row order
+        d3.select("#train-time-field").attr("value", study.trainMatrixTime.toString());
+        d3.select("#train-perm-field").attr("value", study.trainStimData.toString());
+
+//        console.log(study.trainMatrixData.toString());
+
+        d3.select("#studytime-field").attr("value", (new Date().getTime())-study.time);
+        document.getElementById("form").submit(); // d3.select("#form")[0][0].submit() would also work
+    } else {
+        alert("You must ACCEPT the HIT before you can submit the results.");
+
+    }
+
+}
+
+
+function initTrainData(s){
+
+    var n = s.numTrainStim;
+    s.numTrainTasks = n*(n+1)/2;
+    s.numTasks = s.numTrainTasks;
+    s.taskOrder = s.trainTaskOrder = permute(d3.range(s.numTasks));
+    s.numStim  = n;
+
+    var data = [], time = [], n = s.numTrainStim;
+
+    for(var i=0; i < n;i++){
+        data[i]=d3.range(-n,0,+1);
+        time[i]=d3.range(-n,0,+1);
+    }
+
+    s.matrixData = s.trainMatrixData = data;
+    s.matrixTime = s.trainMatrixTime = time;
+    s.stimData = s.trainStimData = permute(d3.range(n)); //permute the ordering of stimuli
+
+}
+
+
+function initTestData(s) {
+
+    var n = s.numTestStim;
+
+    s.numTestTasks = n*(n+1)/2;
+    s.numTasks = s.numTestTasks;
+    s.taskOrder = s.testTaskOrder = permute(d3.range(s.numTasks));
+    s.numStim = n;
+
+    var data = [], time = [];
+
+    for(var i=0; i < n;i++){
+        data[i]=d3.range(-n,0,+1);
+        time[i]=d3.range(-n,0,+1);
+    }
+
+    s.matrixData = s.testMatrixData = data;
+    s.matrixTime = s.testMatrixTime = time;
+    s.stimData = s.testStimData = permute(d3.range(n)); //permute the ordering of stimuli
+
+}
+
+
+function updateRating(val) {
+
+    var s = study, i=s.rowIndx, j=s.colIndx;
+
+    d3.select("#text"+i+""+j).text(val);
+    s.ratingText.text(val);
+    s.currentRating = (+val);
+
+   //*** important ***  -- unroll permutation
+    var I = s.stimData[i], J = s.stimData[j];
+    s.matrixData[I][J] = s.matrixData[J][I]=+val;
+
+    if(!s.completed) s.nextButton[0][0].disabled=false;
+
+}
+
+function startCommenting(commentbox){
+
+    if(!study.startedCommenting){
+        commentbox.value="";
+        study.startedCommenting = true;
+        commentbox.style.color="black";
+        study.submitButton[0][0].disabled = false;
+    }
+
+    study.commentBoxFocus = true;
+}
+
+function stopCommenting(){
+    study.commentBoxFocus = false;
+}
+
+function showTask(i,j){
+
+    var s = study,
+        m = s.matrixData,
+        c = s.opts.color,
+        I = s.stimData[s.rowIndx],
+        J = s.stimData[s.colIndx];
+
+    d3.select("#cell"+s.rowIndx+""+s.colIndx).style("fill",c(m[I][J]));
+
+    updateStudyIndex(i,j);
+
+    I = s.stimData[s.rowIndx];
+    J = s.stimData[s.colIndx];
+    if(m[I][J] < 0){
+        s.matrixTime[I][J] = new Date().getTime();
+        s.nextButton[0][0].disabled=true;
+        s.ratingText.text("");
+    }else{
+        s.ratingText.text(s.matrixData[I][J]);
+    }
+
+
+    // correct for the offset (the number of training stimuli)
+    // due to the linear stacking of the symbols in stimuliA
+    // and stimuliB
+    I = (s.training) ? I : (I + s.numTrainStim);
+    J = (s.training) ? J : (J + s.numTrainStim);
+
+    s.stimuliA.style("visibility",function(d,k){return I==k?"visible":"hidden"; });
+    s.stimuliB.style("visibility",function(d,k){return J==k?"visible":"hidden"; });
+
+    if(s.currentRating>=0)
+        s.choice[0][s.currentRating].checked=false; // clear last
+
+    s.currentRating = ~~(Math.random()*(s.maxRating+1));
+
+    if(s.reminderRescale[0][0].style.visibility=="hidden")
+        d3.select("#cell"+s.rowIndx+""+s.colIndx).style("fill","orange");
+
+}
+
+
+function updateStudyIndex(indx0, indx1){
+
+    var s = study, k = s.taskOrder[indx0], n = s.numStim;
+
+    // use the permuted order
+    if(indx1 == undefined){
+        s.taskIndx = k;
+        //linear to matrix
+        var j = k, i = 0;
+        for(; j >= n; j-=n--, i++);
+        s.rowIndx = i;
+        s.colIndx = i+j;
+
+    } else { //use absolute the ij location
+
+        s.rowIndx = indx0;
+        s.colIndx = indx1;
+        s.taskIndx = n*indx0 - (indx0*(indx0+1)/2) +indx1; // matrix to linear
+
+    }
+
+}
+
+function nextTask(){
+
+    var s = study, I= s.stimData[s.rowIndx], J= s.stimData[s.colIndx];
+
+    if(s.accepted && !(s.completed)){
+        s.matrixTime[I][J] = (new Date().getTime()) - s.matrixTime[I][J];
+        s.matrixTime[J][I] = s.matrixTime[I][J];
+    }
+
+    if(++s.indx == s.numTasks){
+
+        s.nextButton[0][0].disabled = true;
+
+        if(s.training){
+
+            s.training = false;
+            //reset indexes
+            s.indx =  s.taskIndx  = s.rowIndx = s.colIndx = 0;
+            startOrientation();
+
+        }else{
+
+            s.completed = true;
+            s.indx = 0;
+
+            s.reminderRescale.style("visibility","visible");
+            s.ratingInterface.style("visibility","hidden");
+            s.doneButton.style("visibility","visible");
+        }
+    }
+
+    showTask(s.indx);
+}
+
+
+// shows the distance matrix to be filled
+// in upper triangular form
+function stimMatrix(s){
+
+    var o = s.opts, div=d3.select("#matrix");
+
+    if(!s.training) {
+        s.matrixRowLabels.remove();
+        s.matrixColLabels.remove();
+        s.matrix.remove();
+    }
+
+
+    addColLabels(d3.select("#matrix-collabels"), s.stimData, o);
+    addRowLabels(d3.select("#matrix-rowlabels"), s.stimData, o);
+
+    s.matrix  = div.append("svg")
+            .attr("class", ".matrix")
+            .attr("width", "100%")
+            .attr("height","100%");
+
+    s.matrix.selectAll(".row")
+            .data(s.matrixData)
+            .enter()
+            .append("g")
+            .attr("class", "row")
+            .attr("transform", function(d,i) {
+                return "translate(0,"+o.yScale(i)+")"; })
+            .each(row);
+
+    function row(rowdata,k){
+
+        d3.select(this).selectAll(".cell")
+                .data(function(d){ return d; })
+                .enter()
+                .append("rect")
+                .attr("id",function(d,i){return "cell"+k+""+i; })
+                .attr("class", "cell")
+                .attr("x", function(d,i)   {return o.xScale(i); })
+                .attr("width", o.xScale.rangeBand)
+                .attr("height",o.yScale.rangeBand)
+                .on("click", function(d,i){
+                    d3.event.stopPropagation();
+                    if(study.completed){
+                        if((s.ratingInterface.style("visibility"))  == "hidden"){
+                            s.ratingInterface.style("visibility","visible");
+                            s.reminderRescale.style("visibility","hidden");
+                        }
+                        study.clickedCell="cell"+k+""+i;
+                        showTask(k,i);
+                    }
+                })
+                .each(function(d,i){
+                    if(i<k)
+                        d3.select(this).style("display","none");
+                });
+
+        d3.select(this).selectAll(".celltext")
+                .data(function(d){ return d; })
+                .enter()
+                .append("text")
+                .text("")
+                .attr("id",function(d,i){return "text"+k+""+i;})
+                .attr("class", "celltext")
+                .attr("x", function(d,i)   {return o.xScale(i); })
+                .attr("dx", o.cellScaleX*0.35)
+                .attr("dy", o.cellScaleY*0.65)
+                .attr("width", o.xScale.rangeBand)
+                .attr("height",o.yScale.rangeBand)
+                .on("click", function(d,i){
+                    d3.event.stopPropagation();
+                    if(study.completed){
+                        if((s.ratingInterface.style("visibility"))  == "hidden"){
+                            s.ratingInterface.style("visibility","visible");
+                            s.reminderRescale.style("visibility","hidden");
+                        }
+                        study.clickedCell="cell"+k+""+i;
+                        showTask(k,i);
+                    }
+                })
+                .each(function(d,i){ //hide the cells in the lower triangular matrix
+                    if(i<k)
+                        d3.select(this).style("display","none");
+                });
+    }
+
+    function addColLabels(div, data, o){
+
+        var dx = o.cellScaleX, dy = o.cellScaleY;
+
+        study.matrixColLabels = div.append("svg").attr("width","100%").attr("height","100%");
+
+                study.matrixColLabels.selectAll(".collabel")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("class", "collabel")
+                .attr("id", function(d,i){return "collabel"+i; })
+                .attr("transform",
+                function(d,i){return "translate("+(i*dx+dx/2)+","+(0.5*dy)+") scale(10,10)";})
+                .each(appendStimuli)
+								.style("opacity",0.4);
+    }
+
+    function addRowLabels(div, data, o){
+
+        var dx = o.cellScaleX, dy = o.cellScaleY;
+
+        study.matrixRowLabels = div.append("svg").attr("width","100%").attr("height","100%");
+                study.matrixRowLabels.selectAll(".rowlabel")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("id", function(d,i){return "rowlabel"+i; })
+                .attr("class", "rowlabel")
+                .attr("transform",
+                function(d,i){return "translate("+(0.5*dx)+","+(i*dy+dy/2)+") scale(10,10)";})
+                .each(appendStimuli)
+                .style("opacity", 0.4);
+
+    }
+}
+
+
+function updateOptions(s){
+
+//   n = (s.training)? s.numTrainStim : s.numTestStim,
+    var  n = s.numStim,  o = s.opts;
+
+    o.numMatrixRows = o.numMatrixCols=n;
+    o.matrixWidth = n*o.cellScaleX;
+    o.matrixHeight = n*o.cellScaleY;
+    o.xScale = d3.scale
+            .ordinal()
+            .domain(d3.range(n))
+            .rangeBands([0, o.matrixWidth]);
+
+    o.yScale=d3.scale
+            .ordinal()
+            .domain(d3.range(n))
+            .rangeBands([0, o.matrixHeight]);
+
+
+    o.color = d3.scale.linear()
+            .domain([0, s.maxRating])
+            .range(["#3c3c3c", "#e6e6e6"]); // [(60,60,60), (190,190,190)]
+}
+
+
+function appendStimuli(d){
+
+	var n = study.numTrainStim,   
+			d = (study.training) ? d : d+ n, 
+			p = this.getAttribute('class'),  
+			g = d3.select(this), 
+			symbol = (d < n) ? sizeXcolor3(g,d) : sizeXcolor4(g, d-n);
+   var w =  (p == "collabel" || p =="rowlabel" ) ? 2.5 : 4.5;
+		symbol.attr("vector-effect","non-scaling-stroke").style("stroke-width", w)
+            .style("stroke-linecap", "round")
+            .style("stroke-linejoin", "round");
+
+}
+
+
+function bodyClickHandle(){
+
+
+    var s = study, m = study.matrixData, p = s.stimData, I=p[s.rowIndx], J=p[s.colIndx], c = s.opts.color;
+
+    if(s.clickedCell != ""){
+        document.getElementById(s.clickedCell).style.fill = c(m[I][J]); // vis deselection of prev
+        s.clickedCell = "";
+    }
+}
+
+function startOrientation(){
+
+    var s = study, dx = s.opts.symbolScaleX, dy=dx, ssx=0.75*dx, ssy=0.75*dy;
+
+    s.taskInterface.style("visibility","hidden");
+    d3.select("#symbol-set").append("svg").attr("id","symbol-set-svg")
+            .selectAll(".symbol")
+            .data(d3.range(s.numTestStim))
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("id", function(d,i){return "collabel"+i; })
+            .attr("transform",
+            function(d,i){
+                return "translate("+(i*1.4*dx+ssx)+","+ssy+") scale("+ssx+","+ssy+")";
+            })
+            .each(appendStimuli);
+
+    s.orientInterface.style("visibility", "visible");
+
+}
+
+
+
+function startTraining(){
+
+    var s = study; // o = s.opts;
+
+
+//    console.log("initTrainingData");
+    //init training data
+    initTrainData(s);
+
+//    console.log("updateOptions");
+    updateOptions(s);
+
+
+//    console.log("updateStudyIndex");
+    updateStudyIndex(0);
+
+
+//    console.log("stimMatrix");    //update the matrix
+    stimMatrix(s);
+
+    //get the interface ready
+    s.intro.style("visibility","hidden");
+		//d3.selectAll("span.sizename").text("square");
+    s.taskInterface.style("visibility", "visible");
+    s.taskInterface[0][0].focus();
+
+
+    showTask(0); //start
+
+}
+
+
+
+function startTesting(){
+
+
+    var s = study;// , o = study.opts;
+
+    s.orientInterface.style("visibility","hidden");
+
+
+//    console.log("initTestingData");
+    initTestData(s);
+
+//    console.log("updateOptions");
+    updateOptions(s);
+
+//    console.log("updateStudyIndex-T") ;
+    updateStudyIndex(0);
+
+
+//    console.log("stimMatrix-T") ;
+   //update the matrix
+    stimMatrix(s);
+
+//    s.trainingLabel =
+      d3.select("#training-label").style("visibility","hidden");
+			d3.selectAll("span.sizename").text("circle");
+    s.taskInterface.style("visibility", "visible");
+
+    s.taskInterface[0][0].focus();
+
+    showTask(0); //start
+
+}
+
+
+
+var study  = {
+
+    accepted:false,
+    completed:false,
+    training: true,
+    testing: false,
+    startedCommenting:false,
+    commentBoxFocus:false,
+    numTestStim: 16,
+    numTrainStim: 6,
+    time:0,
+    indx:0,
+    taskIndx:0,
+    rowIndx:0,
+    colIndx:0,
+    maxRating:5,//0-5
+    currentRating:-1,
+    choice:d3.select("#choice").selectAll(".radio"),
+    opts:{symbolScaleX:36, symbolScaleY:36, cellScaleX:27, cellScaleY:27}
+};
+
+initStudy(study);
+
+//stimMatrix(d3.select("#matrix"), study);
+
+</script>
+</body>
+
+<style>
+    /* reset the style first */
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q,
+samp, small, strong, sub, sup, svg, var, b, i, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section, time,
+mark, audio, video {
+    /*margin: 0;*/
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+#intro{
+    width: 850px;
+    height: 670px;
+    display: block;
+    margin: auto;
+    background: lightgray;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+#reminder-rescale ul{
+    list-style-type: none;
+    margin:0;
+}
+
+#reminder-rescale ul li{
+}
+
+#intro-img{
+    display:block;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    width:600px;
+}
+
+#start-training{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+#orient-interface{
+    width: 840px;
+    height: 670px;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+#symbol-set-svg{
+ width:100%;
+ height:100%
+}
+#symbol-set{
+    width: 840px;
+    height: 80px;
+    margin-left: -5px;
+    background: white;
+}
+
+#orient-instructs{
+    display: block;
+    width: 800px;
+    height: 200px;
+    background: lightgray;
+    font-size: 18px;
+    font-weight: 200;
+    margin-top:20px;
+    margin-bottom:40px;
+}
+
+.instructs ul{
+    padding-top: 10px;
+    padding-right: 5px;
+    list-style-type: none;
+}
+
+.instructs ul li {
+    margin-top:10px
+}
+
+#start{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#task-interface{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 800px;
+}
+
+#tasknav {
+    width:500px;
+    height:500px;
+    position:absolute;
+    left:20px;
+    top:175px;
+}
+
+.stimulus{
+    width:100px;
+    height:100px;
+    position: absolute;
+    top:0
+}
+
+#stimulusA{
+    left:50px
+}
+
+#stimulusB{
+    left:150px;
+}
+
+#rating{
+    width:50px;
+    height:50px;
+    position:absolute;
+    top:90px;
+    left:136px;
+}
+
+.text-int{
+    font-size:20px;
+}
+
+#choice{
+    width:200px;
+    height:200px;
+    position:absolute;
+    top: 140px;
+    left:122px;
+    font-size:13px;
+    color: gray;
+}
+#choice input{
+    /*position: absolute;*/
+    margin-top:-5px;
+    /*left: 1px;*/
+}
+
+
+#textband{
+    position: absolute;
+    width:100%;
+    height:140px;
+    background: lightgray;
+    /*background: #dedede;*/
+    /*dedede*/
+}
+
+
+#question{
+    /*position: absolute;*/
+    /*top:10px;*/
+    margin: 0;
+    width: 500px;
+    font-size: 16px;
+    font-weight: 200;
+    color: #5a5a5a;
+}
+#task-instructs{
+    position: absolute;
+    /*top: 10px;*/
+    left: 10px;
+    width: 650px;
+    font-size: 12px;
+    font-weight: 200;
+    color: gray;
+}
+
+
+#training-label{
+   /*color:#eee;*/
+color:lightgray;
+}
+
+#key-help{
+    position: absolute;
+    top:20px;
+    left: 675px;
+    width: 320px;
+    font-size: 12px;
+    font-weight: 200;
+    color: gray;
+}
+
+#textband ul{
+    list-style-type: none;
+    margin:0;
+}
+#textband ul li{
+    margin-top:-1px;
+    margin-left:5px;
+}
+
+#next{
+    position: absolute;
+    left:300px;
+    top:180px
+}
+
+#matrix-area{
+    clear:both;
+    width:460px;
+    height:460px;
+    position:absolute;
+    left:450px;
+    top:100px;
+}
+#matrix-title{
+    width:600px;
+    height:50px;
+    position:absolute;
+    left:50px
+}
+#matrix-collabels{
+    width:600px;
+    height:50px;
+    position:absolute;
+    left:50px;
+    top:70px
+}
+#matrix-rowlabels{
+    position:absolute;
+    top:100px;
+    left:20px;
+    height:600px;
+    width:50px
+}
+#matrix{
+    position:absolute;
+    left:50px;
+    width:600px;
+    height:600px;
+    top:100px
+}
+
+.cell{
+    fill:none;
+    stroke:lightgray;
+    shape-rendering:crisp-edges
+}
+
+.celltext {
+    font-size:14px;
+    fill:white;
+    /*visibility:hidden;*/
+    cursor:default
+}
+
+body {
+    /*font-family: "Helvetica Neue", Helvetica, sans-serif;*/
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 300;
+    letter-spacing: -2px;
+    margin: .3em 0 .1em 0;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+#intro ul{
+    list-style-type: none;
+}
+#intro ul li {
+    margin-top:5px
+}
+#intro h2 {
+    margin-bottom: 20px
+}
+
+#reminder-rescale {
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    background: lightgray;
+    margin-top: 115px;
+    width: 440px;
+    border-radius: 4px;
+}
+
+#reminder-rescale ul{
+    line-height: 1.5;
+}
+
+#comment-box {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    left: 500px;
+    top: 300px;
+    color: lightgray;
+    resize: none;
+}
+#done-button{
+    position: absolute;
+    left: 615px;
+    top: 550px;
+}
+
+#submit-button {
+    position:absolute;
+    left:660px;
+    top:440px;
+}
+
+
+#completion-instructs{
+    width: 400px;
+    height: 110px;
+    position: absolute;
+    left: 50px;
+    top: 300px;
+    background: lightgray;
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+    border-radius: 4px;
+}
+
+
+#completion-instructs p{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    width: 90%;
+}
+
+
+</style>
+
+

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<head>
+    <title>Arrange Colors Based on Their Visual Resemblance</title>
+</head>
+<body>
+<div id="task-interface">
+    <div id="instructs">
+        <ul>
+            <li>Arrange the circles on the right so that similar circles
+                are nearer each other and dissimilar circles are farther
+                away from each other.
+
+            <li>The final layout should accurately reflect your sense
+                of the visual similarities and differences among the circles.</li>
+
+            <li>Drag and drop the circles to change their position.</li>
+
+            <li>Please perform the task as accurately and quickly as possible.
+                When you are done, click the next button. </li>
+
+            <li>Consider the example below. Here, we have placed each
+                color such that similar colors are near each other and
+                dissimilar colors are farther apart. </li>
+        </ul>
+        <p><em>example:</em></p>
+        <img id="example-img" src="size-sa.png">
+    </div>
+    <div id="game-area">
+    </div>
+    <button id="next" class="btn" onclick="next()">next</button>
+</div>
+<div id="submit-interface">
+
+    <p id="comment-instructs"> Please tell us about any strategy you have used for determining
+        visual similarities or differences of circles with additional comments you might have
+        in the text box.</p>
+
+    <!-- submit (hidden)-->
+    <!--<form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">-->
+
+    <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
+
+        <textarea id="comment-box"
+                  class="textbox"
+                  name="comment"
+                  cols="80" rows="10"
+                  onfocusout="stopCommenting()"
+                  onclick="startCommenting(this)">Enter your comments here ... </textarea>
+
+        <button id="submit-button" class="btn btn-large" type="button" onclick="submitForm()">submit</button>
+
+        <!-- adapted from Jeff's area study code  -->
+        <input type="hidden" name="workerId" id="wid-field" value="-1" />
+        <input type="hidden" name="assignmentId" id="aid-field" value="-1" />
+        <input type="hidden" name="studyTime" id="time-field" value="" />
+        <input type="hidden" name="dragToNext" id="dragtonext-field" value="" />
+        <input type="hidden" name="coords" id="coords-field" value="" />
+        <input type="hidden" name="screenWidth" id="sw-field" value="-1" />
+        <input type="hidden" name="screenHeight" id="sh-field" value="-1" />
+        <input type="hidden" name="colorDepth" id="cd-field" value="-1" />
+        <input type="hidden" name="userAgent" id="ua-field" value="-1" />
+    </form>
+</div>
+
+<script src="../../../lib/d3.v3.min.js" charset="utf-8"></script>
+<script src="../../../shared/stim.js" charset="utf-8"></script>
+<script src="../../../shared/palettes.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+//submit the collected data back to amazon server
+function submitForm(){
+
+    if(study.accepted){ //
+
+        //         console.log(study.coords.toString());
+        document.getElementById("coords-field").value = study.coords.toString(); //joins matrix in row order
+        document.getElementById("time-field").value = new Date().getTime() - study.startTime;
+        document.getElementById("dragtonext-field").value = study.dragToNext;
+        document.getElementById("form").submit(); // d3.select("#form")[0][0].submit() would also work
+
+    } else {
+        alert("You must ACCEPT the HIT before you can submit the results.");
+    }
+}
+
+function showStimuli(div, data, o){
+
+    var svg  = div.append("svg").attr("width","100%").attr("height","100%"), s = study,
+            sx = o.chipScaleX, sy=o.chipScaleY;
+
+
+
+    var drag = d3.behavior.drag()
+            .origin(function(d,i){return {x:s.coords[i][0], y:s.coords[i][1]};})
+            .on("dragstart", start)
+            .on("drag", move)
+            .on("dragend",stop);
+
+    svg.selectAll(".color")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("id", function(d,i){return "color"+i; })
+            .attr("class", "color")
+            .attr("transform",
+            function(d,i){
+                var x = o.s(Math.random()), y = o.s(Math.random());
+                s.coords[i][0] = x;
+                s.coords[i][1] = y;
+                return ["translate(",x, ",",y,") scale(",sx,",",sy,")"].join("");
+            })
+            .each(appendStimuli)
+            .call(drag);
+
+    function start(d,i) {
+        if(!study.accepted)
+            return alert("You must ACCEPT the HIT before you can arrange the colors.");
+    }
+
+    function move(d,i) {
+
+        if(!study.accepted) return;
+
+        var x = Math.max(o.pad + 0.75*o.chipScaleX, Math.min(o.w - (o.pad+0.75*o.chipScaleX), d3.event.x)),
+                y = Math.max(o.pad + 0.75*o.chipScaleY, Math.min(o.h - (o.pad+0.75*o.chipScaleY), d3.event.y));
+
+        d3.select(this)
+                .attr("transform",
+                        "translate(" + x + "," + y + ") scale("+sx+","+sy+")");
+        s.coords[i][0]=x;
+        s.coords[i][1]=y;
+    }
+
+    function stop() {
+        if(!study.accepted) return;
+        if(!study.draggedBefore){
+            study.draggedBefore = true;
+            study.dragToNext= new Date().getTime();
+//            study.nextButton[0][0].disabled=false;
+        }
+    }
+
+}
+
+function appendStimuli(d) {
+    var g = d3.select(this), c= size10(g,d);
+
+    c.style("fill", "white")
+            .style("stroke", "black")
+            .style("stroke-width",1/8)
+            .style("stroke-linecap", "round")
+            .style("stroke-linejoin", "round");
+}
+
+function next(){
+    //hide task interface
+    var s = study;
+    s.taskInterface.style("visibility", "hidden");
+    s.submitInterface.style("visibility", "visible");
+    s.dragToNext =  (new Date().getTime()) - s.dragToNext;
+
+}
+
+
+function setOptions(o){
+
+    o.chipScaleX= 36;
+    o.chipScaleY= 36;
+    o.s=d3.scale
+            .linear()
+            .domain([0,1])
+            .range([o.pad+0.75*o.chipScaleX, o.w-(0.75*o.chipScaleX+o.pad)]);
+}
+
+function showColorExample(div) {
+
+    var xs = d3.scale
+            .ordinal()
+            .domain(d3.range(-100,101,10))
+            .rangeBands([0,500]);
+
+    var dx = 0.1 * (xs.rangeBand());
+
+    var ys = d3.scale
+            .ordinal()
+            .domain(d3.range(-100,101,10))
+            .rangeBands([500,0]);
+
+    var dy = 0.1*(ys.rangeBand());
+
+    var svg  = div.append("svg").attr("width","100%").attr("height","100%"), rgb;
+
+    for (var a = -100; a <= 100;  a+=10) {
+
+        for(var b = -100; b<= 100; b+=10) {
+
+            rgb = d3.lab(70, a, b).rgb();
+
+            if(rgb.r<=255 && rgb.r>=0 &&
+                    rgb.g<=255 && rgb.g>=0 &&
+                    rgb.b<=255 && rgb.b>=0 &&
+                    Math.random()>0.5){
+
+
+                svg.append("rect")
+                        .attr("class","colorchip")
+                        .attr("x", xs(a))
+                        .attr("y", ys(b))
+                        .attr("rx", 4)
+                        .attr("ry", 4)
+                        .attr("width", (xs.rangeBand()-2*dx))
+                        .attr("height",(xs.rangeBand()-2*dx))
+                        .style("fill", rgb)
+                        .style("stroke", "none")
+                        .call(d3.behavior.drag().on("drag", move));
+//                svg.append("circle")
+//                        .attr("class","colorchip")
+//                        .attr("cx", xs(a))
+//                        .attr("cy", ys(b))
+//                        .attr("r", 0.5*(xs.rangeBand()-2*dx))
+//                        .style("fill", rgb)
+//                        .style("stroke", "none");
+//                            .call(d3.behavior.drag().on("drag", move));
+
+            }
+
+        }
+    }
+
+
+//
+
+        function move() {
+
+            d3.select(this).attr("x", d3.event.x).attr("y",d3.event.y);
+
+        }
+
+
+}
+
+//
+//function submit(){
+//    html2canvas(document.getElementById("submit"),
+//            {
+//                onrendered: function(canvas){
+//                imagefield.value=canvas.toDataUrl("image/png");
+//                //post to a hidden form field
+//            },
+//                width: 675,
+//                height: 675
+//   });
+//}
+
+
+//extracts url-encoded param--adapted from mturk external hit sample
+function getParam(param){
+
+    var regexS = "[\\?&]"+param+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var tmpURL = window.location.href;
+    var results = regex.exec( tmpURL );
+    //   return "ASSIGNMENT_ID_NOT_AVAILABLE"; //test;
+    return  (results == null) ? "" : results[1];
+}
+
+function initStudy(){
+
+    var s = study;
+    s.taskInterface = d3.select("#task-interface");
+    s.gameArea  = d3.select("#game-area");
+    s.submitInterface = d3.select("#submit-interface").style("visibility", "hidden");
+    s.nextButton =  d3.select("#next");//.attr("disabled", true);
+    s.submitButton =  d3.select("#submit-button").attr("disabled", true);
+    s.accepted = false;
+    s.draggedBefore = false;
+    s.dragToNext = 0;
+    s.startedCommenting = false;
+    s.commentBoxFocus = false;
+
+    s.coords = d3.range(10);
+    for(var i=0; i< 10; s.coords[i++]=[0,0]);
+
+
+    if (getParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE"){
+
+        s.accepted = false;
+        s.nextButton[0][0].disabled = true;
+        s.nextButton.classed("btn-danger",true);
+        s.nextButton.text("You must ACCEPT the HIT before you can submit.");
+        s.nextButton.style("right","125px");
+
+    } else {
+
+        s.accepted = true;
+
+        d3.select("#sw-field").attr("value", screen.width);
+        d3.select("#sh-field").attr("value", screen.height);
+        d3.select("#cd-field").attr("value", screen.colorDepth);
+        d3.select("#ua-field").attr("value", navigator.userAgent + "||" + navigator.vendor);
+        d3.select("#aid-field").attr("value", getParam("assignmentId"));
+        d3.select("#wid-field").attr("value", getParam("workerId"));
+
+        s.nextButton.text("next");
+        s.nextButton.classed("btn-large",true);
+        s.nextButton[0][0].disabled = false;
+        s.nextButton.style("right","270px");
+        s.startTime = new Date().getTime();
+
+//        var form = document.getElementById('mturk_form');
+//        if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+//            form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+//        }
+
+    }
+}
+
+function startCommenting(commentbox) {
+
+    if(!study.startedCommenting){
+        commentbox.value="";
+        study.startedCommenting = true;
+        study.submitButton[0][0].disabled=false;
+    }
+
+    study.commentBoxFocus = true;
+}
+
+function stopCommenting() {
+
+    study.commentBoxFocus = false;
+}
+
+
+//showColorExample(d3.select("#instructs"));
+var opts = {w:500, h:500, pad:2}, study={};
+setOptions(opts);
+initStudy();
+showStimuli(study.gameArea, d3.range(10), opts);
+</script>
+</body>
+
+<style>
+
+    @import url(../../../lib/bootstrap/css/bootstrap.css);
+    @import url(../../../lib/bootstrap/css/bootstrap-responsive.css);
+
+    body{
+        background:lightgray;
+    }
+
+    #instructs{
+        float:left;
+        font-size: 15px;
+        font-weight: 200;
+        margin:auto;
+        width :400px;
+        height:400px;
+    }
+
+    #instructs p{
+        margin-left:24px;
+    }
+    ul{
+        margin-top:5px;
+    }
+
+    ul li{
+        margin-top:4px;
+    }
+
+    #example-img{
+        display:block;
+        margin-top:-12px;
+        margin-left:auto;
+        margin-right:auto;
+        width:300px;
+    }
+
+    #game-area{
+        float:left;
+        width: 500px;
+        height: 500px;
+        margin-left: 10px;
+        margin-right: auto;
+        margin-top:5px;
+        background:white;
+        cursor:default;
+        /*border: 2px solid;*/
+        /*border-color: black;*/
+    }
+
+    #next{
+        position: absolute;
+        top: 512px;
+    }
+
+    #submit-interface{
+        position: absolute;
+        width:100%;
+        height:100%;
+    }
+
+    #comment-instructs{
+        display: block;
+        float: left;
+        font-size: 15px;
+        font-weight: 200;
+        width:400px;
+        margin-top:50px;
+        margin-left:20px;
+        margin-right:auto;
+    }
+
+    #comment-box{
+        display: block;
+        float: left;
+        width: 300px;
+        margin-top:50px;
+        margin-left:20px;
+        margin-right:auto;
+        resize: none;
+    }
+
+    #submit-button {
+        display: block;
+        float: left;
+        margin-top: 125px;
+        margin-left: 50px;
+        margin-right:auto;
+    }
+
+</style>
+
