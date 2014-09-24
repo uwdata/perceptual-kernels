@@ -420,8 +420,6 @@ function nextTask(s) {
 
     s.timePerTask[s.taskIndx] = (new Date().getTime()) - s.timePerTask[s.taskIndx];
 
-//    console.log(s.timePerTask[s.taskIndx], s.taskIndx)
-
     var n = s.training ? s.taskIndx + 1: s.taskIndx - s.trainTriplet.length + 1;
     var z = s.training ? s.trainTriplet.length : s.testTriplet.length;
 
@@ -432,13 +430,13 @@ function nextTask(s) {
             // training done!
             // now, show the orientation
             ++(s.taskIndx);
-            s.training = false;
+            s.training=false; s.progress.style("width", "0%");
             s.trainingLabel.style("visibility","hidden");
             showOrientation(s);
             return;
+
     } else if(s.taskIndx  == s.tripletData.length-1){
             s.completed = true;
-
             //hide the navigation & progress bar  and show the final instructs
             s.taskNav.style("visibility","hidden");
             s.progressBar.style("visibility", "hidden");
