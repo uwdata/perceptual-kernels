@@ -15,12 +15,39 @@ Psychology literature offers several task types for these judgments.
 How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
-judgment tasks below---links show the task interfaces of the shape palette (refresh your page if you see a garbled image). 
-+ [Pairwise rating on 5-Point Scale (L5)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l5/shape-l5.html)
-+ [Pairwise rating on 9-Point scale (L9)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/l9/shape-l9.html)
-+ [Triplet ranking with matching (Tm)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/tm/shape-tm.html)
-+ [Triplet ranking with discrimination (Td)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/td/shape-td.html)
-+ [Spatial arrangement (SA)](https://rawgit.com/uwdata/perceptual-kernels/master/exp/shape/sa/shape-sa.html)
+judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point Likert scale (L9),  triplet ranking with matching (Tm) and with discrimination (Td), and manual spatial arrangement (SA). You can run any of these experiments by following the links below. 
+
+<h4>Experiments</h4> 
++ shape-[l5](http://uwdata.github.io/perceptual-kernels/exp/shape/l5/shape-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/shape/l9/shape-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/shape/sa/shape-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/shape/tm/shape-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/shape/td/shape-td.html)
++ color-[l5](http://uwdata.github.io/perceptual-kernels/view/color-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/view/color-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/view/color-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/view/color-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/view/color-td.html)
++ size-[l5](http://uwdata.github.io/perceptual-kernels/view/size-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/view/size-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/view/size-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/view/size-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/view/size-td.html)
++ shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/view/shapecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/view/shapecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/view/shapecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/view/shapecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/view/shapecolor-td.html)
++ shapesize-[l5](http://uwdata.github.io/perceptual-kernels/view/shapesize-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/view/shapesize-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/view/shapesize-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/view/shapesize-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/view/shapesize-td.html)
++ sizecolor-[l5](http://uwdata.github.io/perceptual-kernels/view/sizecolor-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/view/sizecolor-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/view/sizecolor-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/view/sizecolor-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/view/sizecolor-td.html)
 
 
 How to use the data and source code in this repo? 
