@@ -145,9 +145,7 @@ the variable pair that  has the highest perceptual distance. We then add new ele
 whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
 <img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg?raw=true>
-
-You may also want to check out [this illustration](http://uwdata.github.io/perceptual-kernels/#reorder-demo)
----note that we cannot run js code from this page directly.  
+ 
 
 <h3> Visual embedding </h3> 
 
