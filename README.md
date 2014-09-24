@@ -22,16 +22,16 @@ judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point 
 [sa](http://uwdata.github.io/perceptual-kernels/exp/shape/sa/shape-sa.html),
 [tm](http://uwdata.github.io/perceptual-kernels/exp/shape/tm/shape-tm.html),
 [td](http://uwdata.github.io/perceptual-kernels/exp/shape/td/shape-td.html)
-+ color-[l5](http://uwdata.github.io/perceptual-kernels/exp/color/color-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/color/color-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/color/color-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/color/color-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/color/color-td.html)
-+ size-[l5](http://uwdata.github.io/perceptual-kernels/exp/color/size-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/color/size-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/color/size-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/color/size-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/color/size-td.html)
++ color-[l5](http://uwdata.github.io/perceptual-kernels/exp/color/l5/color-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/color/l9/color-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/color/sa/color-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/color/tm/color-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/color/td/color-td.html)
++ size-[l5](http://uwdata.github.io/perceptual-kernels/exp/color/l5/size-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/color/l9/size-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/color/sa/size-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/color/tm/size-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/color/td/size-td.html)
 + shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l5/shapecolor-l5.html),
 [l9](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l9/shapecolor-l9.html),
 [sa](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/sa/shapecolor-sa.html),
