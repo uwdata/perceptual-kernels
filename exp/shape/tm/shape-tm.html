@@ -411,7 +411,7 @@ function nextTask(s) {
             // training done!
             // now, show the orientation
             ++(s.taskIndx);
-            s.training = false;
+            s.training=false; s.progress.style("width", "0%");
             s.trainingLabel.style("visibility","hidden");
             showOrientation(s);
             return;
