@@ -15,7 +15,9 @@ Psychology literature offers several task types for these judgments.
 How to choose one? What is the most effective judgment task in the context of perceptual 
 kernels? So, understanding the trade-offs between different designs of judgment tasks is important. 
 We estimate five perceptual kernels for each of the palettes above using the five different 
-judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point Likert scale (L9),  triplet ranking with matching (Tm) and with discrimination (Td), and manual spatial arrangement (SA). You can run any of these experiments by following the links below. 
+judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point Likert scale (L9),  
+triplet ranking with matching (Tm) and with discrimination (Td), and manual spatial arrangement (SA). 
+You can run any of these experiments by following the links below. 
 <h4>Experiments</h4> 
 + shape-[l5](http://uwdata.github.io/perceptual-kernels/exp/shape/l5/shape-l5.html),
 [l9](http://uwdata.github.io/perceptual-kernels/exp/shape/l9/shape-l9.html),
