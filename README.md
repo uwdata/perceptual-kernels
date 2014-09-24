@@ -27,11 +27,11 @@ judgment tasks: pairwise rating on a 5-point Likert scale (L5) and on a 9-point 
 [sa](http://uwdata.github.io/perceptual-kernels/exp/color/sa/color-sa.html),
 [tm](http://uwdata.github.io/perceptual-kernels/exp/color/tm/color-tm.html),
 [td](http://uwdata.github.io/perceptual-kernels/exp/color/td/color-td.html)
-+ size-[l5](http://uwdata.github.io/perceptual-kernels/exp/color/l5/size-l5.html),
-[l9](http://uwdata.github.io/perceptual-kernels/exp/color/l9/size-l9.html),
-[sa](http://uwdata.github.io/perceptual-kernels/exp/color/sa/size-sa.html),
-[tm](http://uwdata.github.io/perceptual-kernels/exp/color/tm/size-tm.html),
-[td](http://uwdata.github.io/perceptual-kernels/exp/color/td/size-td.html)
++ size-[l5](http://uwdata.github.io/perceptual-kernels/exp/size/l5/size-l5.html),
+[l9](http://uwdata.github.io/perceptual-kernels/exp/size/l9/size-l9.html),
+[sa](http://uwdata.github.io/perceptual-kernels/exp/size/sa/size-sa.html),
+[tm](http://uwdata.github.io/perceptual-kernels/exp/size/tm/size-tm.html),
+[td](http://uwdata.github.io/perceptual-kernels/exp/size/td/size-td.html)
 + shapecolor-[l5](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l5/shapecolor-l5.html),
 [l9](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/l9/shapecolor-l9.html),
 [sa](http://uwdata.github.io/perceptual-kernels/exp/shapecolor/sa/shapecolor-sa.html),
