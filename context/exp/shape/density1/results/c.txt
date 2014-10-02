@@ -1,0 +1,20 @@
+How many lines were off from matching.
+I felt like 9 degrees were too many.  Also I think that I loosened up my criteria a little by the end.
+I mostly looked at how many sides they had and if the shape was open (+,*) or closed. If they were rotated, I usually said they were identical but sometimes, like for squares and Xs, when they are rotated they look like diamonds and + signs so I said they were a little different.
+just looked at the shapes
+half way though it was perfect match or not at all; at that point I tried to consider orientation as well.
+Even if shapes were tilted in a different direction, I still marked them as very similar because they were the same. 
+I imagined overlapping the shapes to see if they 'fit' together. If they did not, then I rated them dissimilar. If they did overlap well, then I rated them similar.
+Any A and B shapes that were the same shape just rotated, I marked as 0 or no difference. If the two shapes were different but had the same number of sides, they landed on a spectrum of around 5-6 on the scale. If one shape was a closed shape and the other was a + or x or * type shape, and it had the same number of ""legs"" as the closed shape, I rated it an 8, because they had a single similarity. If the shapes were completely different with no visual or numerical similarities, I gave them a 9.
+If the basic shape was the same I rated it the same shape no matter the direction of it as to me it was still the same shape, such is a triangle is a triangle no matter which way it is pointing.
+Polygon vs star/cross.  also perfect match vs rotation.
+If they were difference shapes or had different number of sides, I gave them a higher score to indicate the difference.
+I look for corners, positioning, angles, if I could superimpose one over the other or if I could create one shape by using the prototype of the other.
+I just look at how closely related the shapes were.
+I had to look from all angles which took me a few times to realise
+Generally I just tried to see how the shapes ""matched up"". Sometimes the intersecting line segment shapes would form a shape in itself and I would score that with a little similarity if the other shape was a polygon in that shape. Other factors like how many line segments or how many sides a shape have contributed to my scoring differences. 
+I found this task to be a bit confusing.  When the letter(a or b) was in the middle of the giant dark blob, I did not see any shape whatsoever.  Most of those, I rated as different.  Sometimes, it looked like the shapes might have been the same, but turned upside down.  I rated those as nearly the same.  That's about it for my strategy!!  
+if the two shapes were identical, even if rotated, I counted that a 0, or identical.  If the shapes were both simple geometric shapes, such as square and circle, then I counted that a 5.  If the shapes were a simple cross and a geometric shape, then I counted that a 6.  If the shapes were a complex cross and a geometric shape I counted that a 7.  If the shapes were a simple and a complex cross I counted that a 6.  My scoring evolved slightly over time, but stabilized with these rules.
+I compared the two objects and decided how close in shape they were. If I saw no similarities, then I marked 9. But if I saw some similarity, I marked 6-9. If there was as much similarity as difference, I marked 4-5. And if there was a lot of similarity, I marked 2-3. 
+it the shape was the same but rotated different i would rate it a 5. if the shapes were totally different i would rate it very different
+I based it on the general structure of the shape if two shapes were closely similar. Those that were super similar were in the middle.

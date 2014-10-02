@@ -1,0 +1,5 @@
+no strategy just looked for same or different
+the more similar the lower the score 
+This was too subjective to explain.
+I use each number as a shade with zero being identical colors and each number after that a different shade. 9 would be completely different colors from each other.
+Are the colors opposite on the color wheel? Adjacent?

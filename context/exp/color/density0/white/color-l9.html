@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+    @import url(../../../../../lib/bootstrap/css/bootstrap.css);
+    @import url(../../../../../lib/bootstrap/css/bootstrap-responsive.css);
+    @import url(../../../../../shared/css/l9.css);
+	  @import url(white.css);	
+</style>
+
+<body>
+
+<div id="intro">
+    <h2 class="title">How different does a given color pair look?</h2>
+    <ul>
+        <li> In a series of tasks, we will show you collections of colors
+            scattered on the screen. In each collection, there will be two
+            colors labeled as 'a' and 'b'. Your job is to rate their visual dissimilarity
+            by entering a number between 0 and 9 (valid entries: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9).
+            Check out the task interface below; notice
+            the labels  refers to the colors right above them.</li>
+
+        <img id="intro-img" src="color-l9.png">
+
+        <li> <strong>0</strong> means NO DIFFERENCE between  two colors.</li>
+
+        <li> <strong>1</strong> means that the two colors look VERY SIMILAR.</li>
+
+        <li> <strong>9</strong> means that the two colors look VERY DIFFERENT (for example, 9 times as different
+            as a very similar color pair).</li>
+
+        <li>Any rating between 1 and 9 should reflect the degree of visual difference between the colors.</li>
+
+        <li>Complete each task as accurately and quickly as possible.</li>
+
+        <li>We will start with a short training session to get you
+            familiarized with the task interface.  Click the button
+            below to continue with the training session.</li>
+    </ul>
+    <button id="start-training" class="btn btn-large">start training</button>
+</div>
+
+<div id="orient-interface">
+    <div id="symbol-set"></div>
+    <div id="orient-instructs" class="instructs">
+
+        <ul>
+            <li>GREAT! You are done with training.</li>
+            <li>Take a moment and look at the colors above. How similar are they?
+                What are the most similar and different pairs?</li>
+            <li>When you are ready, click the following button to continue. <em>Thanks for helping!</em>
+            </li>
+        </ul>
+        <button id="start-testing" class="btn btn-large">continue</button>
+    </div>
+</div>
+
+
+<div id="task-interface" tabindex="0">
+    <!--  navigation bar  -->
+    <div id="tasknav">
+        <div id="rating-interface">
+            <div id="stim0" class="stimulus"></div>
+            <div id="stim0-a">a</div>
+            <div id="stim0-b">b</div>
+            <div id="stim1" class="stimulus"></div>
+            <div id="stim1-a">a</div>
+            <div id="stim1-b">b</div>
+            <div id="stim2" class="stimulus"></div>
+            <div id="stim2-a">a</div>
+            <div id="stim2-b">b</div>
+            <div id="rating" class="text-int"></div>
+            <div id="choice">
+                <input id="r0" class="radio" type="radio"  name="rating" value="0"> 0 (no difference)<br>
+                <input id="r1" class="radio" type="radio"  name="rating" value="1"> 1 <br>
+                <input id="r2" class="radio" type="radio"  name="rating" value="2"> 2<br>
+                <input id="r3" class="radio" type="radio"  name="rating" value="3"> 3<br>
+                <input id="r4" class="radio" type="radio"  name="rating" value="4"> 4<br>
+                <input id="r5" class="radio" type="radio"  name="rating" value="5"> 5<br>
+                <input id="r6" class="radio" type="radio"  name="rating" value="6"> 6<br>
+                <input id="r7" class="radio" type="radio"  name="rating" value="7"> 7<br>
+                <input id="r8" class="radio" type="radio"  name="rating" value="8"> 8<br>
+                <input id="r9" class="radio" type="radio"  name="rating" value="9"> 9 (very different)<br>
+            </div>
+
+            <button id="next"  class="btn" type="button">next</button>
+        </div>
+
+
+    </div>
+
+    <div id="progressbar" title="task completion progress">
+     <div id="progress"></div>
+
+    </div>    <!--<button id="done-button" class="btn btn-large" onclick="getComments()">continue</button>-->
+    <div id="textband">
+        <div id="task-instructs">
+            <p id="question">How different does the two colors, a
+                and b, look to you?</p>
+            Enter your rating as a number between 0 and 9 by clicking on its radio button or by typing the number directly.
+            <ul>
+                <li>A rating of <strong>0</strong> means there is NO DIFFERENCE between the two colors (THE SAME).</li>
+                <li><strong>1</strong> means the two colors look VERY SIMILAR.</li>
+                <li><strong>9</strong> means that the two colors look VERY DIFFERENT (for example, 9 times
+                    as different as a very similar color pair).</li>
+                <li>Any rating between 1 and 9 should reflect the degree of visual difference between
+                    the colors.</li>
+            </ul>
+            <p id="training-label"><em> training session </em></p>
+        </div>
+        <div id="key-help">
+            <ul>Shortcut Keys:
+                <li><strong>n</strong>:[0-9] - set rating to n</li>
+                <li><strong>up</strong> - move up in the radio buttons</li>
+                <li><strong>down</strong> - move down in the radio buttons</li>
+                <li><strong>enter</strong> or <strong>space bar</strong> - advance to next task</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="completion-instructs">
+        <p>DONE!  Please tell us about any strategy you have used for scoring
+            differences of colors with additional comments you might have
+            in the text box.</p>
+    </div>
+
+    <!-- submit (hidden)-->
+    <!--<form id="form" autocomplete="off" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit">-->
+    <form id="form" autocomplete="off" method="POST" action="https://www.mturk.com/mturk/externalSubmit">
+
+        <textarea id="comment-box" class="textbox" name="comment" cols="30" rows="3" onfocusout="stopCommenting()" onclick="startCommenting(this)">Enter your comments here ... </textarea>
+
+        <button id="submit-button" class="btn btn-large"  type="button" onclick="submitForm()">submit</button>
+
+        <!-- adapted from Jeff's area study code  -->
+        <input type="hidden" name="workerId" id="wid-field" value="-1" />
+        <input type="hidden" name="assignmentId" id="aid-field" value="-1" />
+
+        <input type="hidden" name="taskTimes" id="time-field" value=""/>
+        <input type="hidden" name="estimates" id="es-field" value="" />
+        <input type="hidden" name="permutation" id="perm-field" value="" />
+
+        <input type="hidden" name="trainTaskTimes" id="train-time-field" value=""/>
+        <input type="hidden" name="trainEstimates" id="train-es-field" value="" />
+        <input type="hidden" name="trainPermutation" id="train-perm-field" value="" />
+
+        <input type="hidden" name="studyTime" id="studytime-field" value="-1"/>
+
+        <input type="hidden" name="screenWidth" id="sw-field" value="-1" />
+        <input type="hidden" name="screenHeight" id="sh-field" value="-1" />
+        <input type="hidden" name="colorDepth" id="cd-field" value="-1" />
+        <input type="hidden" name="userAgent" id="ua-field" value="-1" />
+    </form>
+
+</div>
+
+<!-- control --->
+<script type="text/javascript" src="../../../../../lib/d3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../../../shared/utils.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../../../shared/stim.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../../../shared/scatter.js" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+
+
+
+
+function initStudy(s){
+    setOpts(s);
+    initData(s);
+    initInterface(s);
+}
+
+
+
+function setOpts(s){
+    var o = s.opts;
+    o.symbolScaleX = 25;
+    o.symbolScaleY = 25;
+}
+
+function pairs(n){
+
+    if(n === 0) return;
+
+    var p=[], i, j;
+
+    for(i=0;  i < n; i++){
+        for(j = i; j < n; j++){
+            p.push([i,j]);
+        }
+    }
+
+    return p;
+}
+
+function tripletData(s){
+
+//    s.trainStim =  d3.range(s.numTrainStim);
+    s.trainTriplet = utils.comb(d3.range(s.numTrainStim),3);
+//
+//    console.log(s.trainTriplet);
+
+
+//    s.testStim =  d3.range(s.numTestStim);
+    s.testTriplet = utils.comb(d3.range(s.numTestStim),3);
+
+
+    //permute each triplet within
+    for(var i = 0; i< s.trainTriplet.length; i++ )
+        utils.permute(s.trainTriplet[i])
+    for (i = 0; i< s.testTriplet.length; i++)
+        utils.permute(s.testTriplet[i]);
+
+    // append the "debugging" data:
+    // we expect well-behaving turkers to assign identical symbols to
+    // be more similar. The data is generated using tripletTurkerDebug()
+    // function in ../shared/utils.js and fixed across users.
+    var d0 = [[0, 0, 2],
+        [1, 3, 1],
+        [2, 1, 2],
+        [3, 1, 3],
+        //*** hack to make pair training and triplet training have the same size ***//
+        [2, 0, 0],
+        [1, 1, 3]
+    ];
+
+
+    s.trainTriplet = s.trainTriplet.concat(d0);
+
+    var d1 = [[0, 0, 3],
+        [1, 1, 5],
+        [2, 2, 7],
+        [3, 3, 2],
+        [4, 4, 1],
+        [5, 8, 5],
+        [6, 6, 8],
+        [7, 5, 7],
+        [8, 9, 8],
+        [9, 9, 4]];
+
+    s.testTriplet = s.testTriplet.concat(d1);
+
+
+}
+
+
+function initData(s) {
+
+    var m = s.numTrainStim, n = s.numTestStim;
+
+    trainData(s);
+    testData(s);
+
+    s.trainPairs = pairs(m);
+    s.testPairs = pairs(n);
+
+    tripletData(s);
+
+
+    for (var i = 0; i< s.trainPairs.length; utils.permute(s.trainPairs[i++]));
+    for (i = 0; i< s.testPairs.length; utils.permute(s.testPairs[i++]));
+
+
+
+    //permute the order of pairs
+    s.trainTaskOrder = utils.permute(d3.range(s.trainPairs.length));
+    s.testTaskOrder =  utils.permute(d3.range(s.testPairs.length));
+
+
+
+    s.trainScatter = [];
+    s.testScatter = [];
+    s.trainLayout = [];
+    s.testLayout = [];
+
+    s.trainTrimaps = [];
+    s.trainMapindx = [];
+    s.testTrimaps= [];
+    s.testMapindx = [];
+
+    s.mapcomb =   [
+        [0, 1, 2],
+        [1, 0, 2],
+        [0, 2, 1],
+        [2, 0, 1],
+        [1, 2, 0],
+        [2, 1, 0]
+    ];
+
+    function parseLayout(d){
+        d.x = +(d.x);
+        d.y = +(d.y);
+        return d;
+    }
+
+    function parse(d, trimap){
+        d.id = trimap[(+d.id)];
+        d.x = +(d.x);
+        d.y = +(d.y);
+
+        return d;
+    }
+
+    for(i = 0; i < s.trainPairs.length; i++){
+
+        d3.csv('../../../../../data/density0/train/s'+i+'.txt', function(coords) {
+
+            var mapindx = ~~(Math.random()* (s.mapcomb.length)),
+                    map  = s.mapcomb[mapindx],
+                    pair = s.trainPairs[i],
+                    triplet = s.trainTriplet[i],
+                    trimap = [];
+
+//            console.log(pair);
+//            console.log(map);
+//            console.log(triplet);
+
+            trimap[map[0]] = pair[0];
+            trimap[map[1]] = pair[1];
+            trimap[map[2]] = triplet[map[2]];
+
+            s.trainTrimaps.push(trimap);
+            s.trainMapindx.push(mapindx);
+
+            var map2pair = s.mapcomb[mapindx], t = s.trainTriplet[i][map2pair[2]];
+
+            coords.map(function (d) {
+                return parse(d, trimap)
+
+            });
+            s.trainScatter.push(coords);
+            d3.csv('../../../../../data/density0/train/t' + i + '.txt', parseLayout, function (layout) {
+                s.trainLayout.push(layout);
+            });
+        });
+
+    }
+
+
+    for(i = 0; i < s.testPairs.length; i++) {
+
+        d3.csv('../../../../../data/density0/test/s' + i + '.txt', function (coords) {
+
+            var mapindx = ~~(Math.random()* (s.mapcomb.length)),
+                    map = s.mapcomb[mapindx],
+                    pair = s.testPairs[i],
+                    triplet = s.testTriplet[i],
+                    trimap = [];
+
+            trimap[map[0]] = pair[0];
+            trimap[map[1]] = pair[1];
+            trimap[map[2]] = triplet[map[2]];
+
+            s.testTrimaps.push(trimap);
+            s.testMapindx.push(mapindx);
+
+            coords.map(function (d) {
+                return parse(d, trimap)
+            });
+
+            s.testScatter.push(coords);
+
+            d3.csv('../../../../../data/density0/test/t' + i + '.txt', parseLayout, function (layout) {
+                s.testLayout.push(layout);
+            });
+        });
+
+    }
+
+
+    //set the current data to training
+    s.matrixData = s.trainMatrixData;
+    s.matrixTime = s.trainMatrixData;
+    s.pairs = s.trainPairs;
+
+    s.scatterData = s.trainScatter; // .concat(s.testScatter);
+    s.layoutData = s.trainLayout;   //.concat(s.testLayout);
+    s.trimaps = s.trainTrimaps;     //.concat(s.testTrimaps);
+    s.mapindx = s.trainMapindx;     //.concat(s.testMapindx);
+    s.tripletData = s.trainTriplet;
+    s.taskOrder = s.trainTaskOrder;
+
+}
+
+
+function initInterface(s) {
+
+    s.intro = d3.select("#intro").style("visibility", "visible");
+    s.startTrainingButton = d3.select("#start-training").on('click', function(){startTraining(s);});
+
+    s.orientInterface = d3.select("#orient-interface").style("visibility", "hidden");
+    s.startButton = d3.select("#start-testing").on('click', function(){startTesting(s);});
+
+    taskInterface(s);
+
+    s.completionInstructs = d3.select("#completion-instructs").style("visibility", "hidden");
+    s.commentBox = d3.select("#comment-box").attr("disabled", true).style("visibility", "hidden");
+    s.submitButton = d3.select("#submit-button")
+            .attr("disabled", true)
+            .style("visibility", "hidden")
+            .on("click",function(){
+                //remove line breaks from the comments before submission
+                var v = d3.select('#comment-box').node().value;
+                d3.select('#comment-box').node().value = v.replace(/(\r\n|\n|\r)/gm," ");
+                submitForm(s)});
+
+    //init the submission form
+    d3.select("#sw-field").attr("value", screen.width);
+    d3.select("#sh-field").attr("value", screen.height);
+    d3.select("#cd-field").attr("value", screen.colorDepth);
+    d3.select("#ua-field").attr("value", navigator.userAgent + "||" + navigator.vendor);
+    d3.select("#aid-field").attr("value", utils.getParam("assignmentId"));
+    d3.select("#wid-field").attr("value", utils.getParam("workerId"));
+
+    //
+    // Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
+    if (utils.getParam("assignmentId") == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+
+        s.accepted = false;
+        s.startTrainingButton[0][0].disabled = true;
+        s.startTrainingButton.classed("btn-danger", true);
+        s.startTrainingButton.text("You must ACCEPT the HIT before you can start.");
+
+    } else {
+        s.accepted = true;
+        s.time = new Date().getTime();
+        s.startTrainingButton.text("start training");
+        s.startTrainingButton.classed("btn-danger", false);
+        s.startTrainingButton[0][0].disabled = false;
+
+    }
+
+}
+
+function taskInterface(s){
+    var o = s.opts,
+            ssx = o.symbolScaleX,
+            tx  = 0.5 * parseInt(d3.select('.stimulus').style('width'),10),
+            ssy = o.symbolScaleY,
+            ty = tx,
+            d = d3.range(s.numTrainStim + s.numTestStim),
+            ref, a, b;
+
+    s.ratingInterface = d3.select("#rating-interface");
+    s.nextButton = d3.select("#next").attr("disabled",true).on('click', function(){nextTask(s);});
+    s.ratingText = d3.select("#rating").append("text").attr("class","text-int").text("");
+
+    for(var i=0; i < 10; i++)
+    d3.select('#r'+i).on('click', function(){ console.log(this.value);
+        updateRating(s, this.value);});
+    s.clickedCell = "";
+
+    s.taskNav = d3.select("#tasknav");
+
+    s.sp = new Scatter('#rating-interface',
+            s.scatterData[0],
+            {width:750,
+                height:550,
+                drawfn:color4,
+                margin:{left:tx,right:tx,top:tx,bottom:tx},
+                scale:{x:ssx, y:ssy}});
+
+
+    //init view
+    ref = d3.select("#stim0")
+            .append("svg");
+
+    s.ref = ref.selectAll(".symbol")
+            .data(d)
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("transform",
+                    "translate("+tx+","+ty+") " +
+                    "scale("+ssx+","+ssy+")")
+            .each(appendStimuli)
+            .style("visibility","hidden");
+
+    //init view
+    a = d3.select("#stim1")
+            .append("svg");
+
+    s.stimuliA = a.selectAll(".symbol")
+            .data(d)
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("transform",
+                    "translate("+tx+","+ty+") " +
+                    "scale("+ssx+","+ssy+")")
+            .each(appendStimuli)
+            .style("visibility","hidden");
+
+    b =  d3.select("#stim2")
+            .append("svg");
+
+    s.stimuliB = b.selectAll(".symbol")
+            .data(d)
+            .enter()
+            .append("g")
+            .attr("class", "symbol")
+            .attr("transform",
+                    "translate(" + tx + "," + ty +") " +
+                    "scale(" + ssx + "," + ssy + ")")
+            .each(appendStimuli)
+            .style("visibility", "hidden");
+
+
+s.progressBar = d3.select("#progressbar");
+    s.progress = d3.select("#progress").style("width","0%");
+
+    s.taskInterface = d3.select("#task-interface")
+            .style("visibility","hidden")
+            .on("keydown", function(){
+
+                if(this.style.visibility == "hidden" ||
+                        s.ratingInterface[0][0].visibility == "hidden") return;
+
+                var v = s.currentRating, vmax = s.maxRating, k=d3.event.keyCode;
+
+
+                if(k >= 48 && k<=57){
+
+                    s.choice[0][k-48].checked=true;
+                    updateRating(s,k-48);
+
+                }else if(k == 40){ //up
+
+                    d3.event.preventDefault();
+                    v = ++v > vmax ? vmax : v;
+                    s.choice[0][v].checked=true;
+                    updateRating(s,v);
+
+                }else if(k == 38){ //down
+
+                    d3.event.preventDefault();
+                    v = --v < 0 ? 0 : v;
+                    s.choice[0][v].checked=true;
+
+                    updateRating(s,v);
+
+                }else if(k == 32 || k == 13) {
+
+                    if(!s.commentBoxFocus) d3.event.preventDefault();
+
+                    if(!(s.nextButton.node().disabled)) s.nextButton.node().click();
+                }
+
+            });
+
+}
+
+
+
+function getComments(s){
+    //hide previous
+    s.taskInterface[0][0].style.visibility = "hidden";
+    s.ratingInterface[0][0].style.visibility = "hidden";
+
+    //show the comment box
+    s.completionInstructs[0][0].style.visibility = "visible";
+    s.commentBox[0][0].disabled = false;
+    s.commentBox[0][0].style.visibility = "visible";
+    s.submitButton[0][0].style.visibility = "visible";
+
+}
+
+//submit the collected data back to amazon server
+function submitForm(){
+
+    if(study.accepted){
+
+        d3.select("#es-field").attr("value", study.matrixData.toString());  //joins matrix in row order
+        d3.select("#time-field").attr("value", study.matrixTime.toString());
+        d3.select("#perm-field").attr("value", study.testTaskOrder.toString());
+
+
+        //post also the training data
+        d3.select("#train-es-field").attr("value", study.trainMatrixData.toString());  //joins matrix in row order
+        d3.select("#train-time-field").attr("value", study.trainMatrixTime.toString());
+        d3.select("#train-perm-field").attr("value", study.trainTaskOrder.toString());
+
+
+        d3.select("#studytime-field").attr("value", (new Date().getTime())-study.time);
+        document.getElementById("form").submit(); // d3.select("#form")[0][0].submit() would also work
+
+    } else {
+
+        alert("You must ACCEPT the HIT before you can submit the results.");
+
+    }
+
+}
+
+
+function trainData(s){
+
+
+    var n = s.numTrainStim, data = [], time = [];
+
+    s.numTrainTasks = n*(n+1)/2;
+    s.numTasks = s.numTrainTasks;
+    s.numStim  = n;
+
+    for(var i=0; i < n;i++){
+        data[i]=d3.range(-n,0,+1);
+        time[i]=d3.range(-n,0,+1);
+    }
+
+    s.trainMatrixData = data;
+    s.trainMatrixTime = time;
+
+}
+
+
+function testData(s) {
+
+    var n = s.numTestStim;
+
+    s.numTestTasks = n*(n+1)/2;
+    s.numTasks = s.numTestTasks;
+    s.numStim = n;
+
+    var data = [], time = [];
+
+    for(var i=0; i < n;i++){
+        data[i]=d3.range(-n,0,+1);
+        time[i]=d3.range(-n,0,+1);
+    }
+
+    s.testMatrixData = data;
+    s.testMatrixTime = time;
+
+}
+
+
+function updateRating(s,val) {
+
+    var task = s.taskOrder[s.indx], pair = s.pairs[task];
+
+    s.ratingText.text(val);
+    s.currentRating = (+val);
+
+    var I = pair[0], J = pair[1];
+    s.matrixData[I][J] = s.matrixData[J][I]=+val;
+
+    if(!s.completed) s.nextButton[0][0].disabled=false;
+
+}
+
+function startCommenting(commentbox){
+
+    if(!study.startedCommenting){
+        commentbox.value="";
+        study.startedCommenting = true;
+        commentbox.style.color="black";
+        study.submitButton[0][0].disabled = false;
+    }
+
+    study.commentBoxFocus = true;
+}
+
+function stopCommenting(){
+    study.commentBoxFocus = false;
+}
+
+
+function showTask(s,i){
+
+//    console.log(s.taskOrder, i)
+
+    var task = s.taskOrder[i],
+            pair =  s.pairs[task],
+            trimap = s.trimaps[task],
+            map = s.mapcomb[s.mapindx[task]],
+            I = pair[0],
+            J = pair[1],
+            m = s.matrixData;
+
+    s.indx = i;
+
+    if( m[I][J] < 0) {
+        s.matrixTime[I][J] = new Date().getTime();
+        s.nextButton[0][0].disabled = true;
+        s.ratingText.text("");
+    }
+
+
+    s.sp.update([]);
+
+    if(!s.training)
+        s.sp.update(s.scatterData[s.taskOrder[i]], undefined, color10);
+    else
+        s.sp.update(s.scatterData[s.taskOrder[i]]);
+
+
+    updatePairLocation(s.layoutData[task], map);
+
+    // correct for the offset (the number of training stimuli)
+    // due to the linear stacking of the symbols in stimuliA
+    // and stimuliB
+    var  t0, t1, t2;
+    if(!s.training) {
+        t0 = trimap[0] + s.numTrainStim;
+        t1 = trimap[1] + s.numTrainStim;
+        t2 = trimap[2] + s.numTrainStim;
+    } else {
+        t0 = trimap[0];
+        t1 = trimap[1];
+        t2 = trimap[2];
+    }
+
+    s.ref.style("visibility",function(d,k){return t0 === k ? "visible" : "hidden"; });
+    s.stimuliA.style("visibility",function(d,k){return t1 === k ? "visible" : "hidden"; });
+    s.stimuliB.style("visibility",function(d,k){return t2 === k ? "visible" : "hidden"; });
+
+    if(s.currentRating >= 0)
+        s.choice[0][s.currentRating].checked=false; // clear last
+
+    s.currentRating = ~~(Math.random()*(s.maxRating+1));
+
+
+}
+
+
+
+function nextTask(s){
+
+    var i = s.indx, pair = s.pairs[s.taskOrder[i]],  I = pair[0], J = pair[1];
+
+    if(s.accepted && !(s.completed)){
+
+        s.matrixTime[I][J] =  (new Date().getTime()) - s.matrixTime[I][J];
+        s.matrixTime[J][I] = s.matrixTime[I][J];
+
+    }
+
+    ++s.indx;
+
+    s.progress.style("width", ((s.indx/ s.taskOrder.length)*100)+"%");
+
+    if(s.indx === s.taskOrder.length){
+
+        s.nextButton[0][0].disabled = true;
+
+        if(s.training){
+
+            s.training = false;
+              s.progress = d3.select("#progress").style("width","0%");
+
+            startOrientation(s);
+
+        }else{
+
+            s.completed = true;
+            s.ratingInterface.style("visibility","hidden");
+
+            getComments(s);
+        }
+
+    }else{
+
+        showTask(s, s.indx);
+
+    }
+
+}
+
+
+function updatePairLocation(c, map) {
+
+    var id = ['stim0', 'stim1', 'stim2'], label = ['-a', '-b'], ic =[0, 2, 5], i, j;
+
+    id.forEach(function (d, i){
+        j = ic[i];
+        d3.select('#' + d)
+                .style('left', c[j].x + 'px')
+                .style('top',  c[j].y + 'px');
+
+         d3.select('#' + d + '-a').style('display','none');
+         d3.select('#' + d + '-b').style('display','none');
+    });
+
+    for (i = 0; i < 2; i ++ ) {
+        j= map[i];
+        d3.select('#' + id[j] + label[i])
+                .style('left', c[ic[j] + 1].x + 'px')
+                .style('top',  c[ic[j] + 1].y + 'px')
+                .style('display', 'block');
+
+    }
+//
+//    console.log(pos);
+//    console.log(a,b,c)
+//
+//    d3.select("#stim"+a).style('left', pos[imap[a]].x + 'px')
+//            .style('left', pos[imap[a]].y + 'px');
+//    d3.select("#stim"+a+'label').style('left', pos[imap[a]+1].x + 'px')
+//            .style('left', pos[imap[a]+1].y + 'px');
+//
+//    d3.select("#stim"+b).style('left', pos[imap[b]].x + 'px')
+//            .style('left', pos[imap[b]].y + 'px');
+//    d3.select("#stim"+b+'label').style('left', pos[imap[a]+1].x + 'px')
+//            .style('left', pos[imap[b]+1].y + 'px');
+//
+//    d3.select("#stim"+c).style('left', pos[imap[a]].x + 'px')
+//            .style('left', pos[imap[a]].y + 'px');
+
+}
+
+
+
+function appendStimuli(d){
+    var g = d3.select(this);
+    return d < 4 ? color4(g,d) : color10(g,d-4);
+}
+
+
+
+function startOrientation(s){
+
+//    console.log('starting orientation');
+
+    var dx = 2*s.opts.symbolScaleX,
+            dy = dx,
+            halfdx = 0.5 * dx,
+            halfdy = 0.5 * dy;
+
+    //var dx=, dy=dx, halfdx=0.5*dx, halfdy=0.5*dy;
+    s.taskInterface.style("visibility","hidden");
+
+    d3.select("#symbol-set")
+            .append("svg")
+            .attr("id","symbol-set-svg")
+            .selectAll(".symbol")
+            .data(d3.range(s.numTrainStim, s.numTrainStim + s.numTestStim))
+            .enter()
+            .append("g")
+            .attr("class", "collabel")
+            .attr("id", function(d,i){return "collabel"+i; })
+            .attr("transform",
+            function(d,i){
+                return "translate("+(i*dx+dx)+","+(0.5*dy)+") scale("+halfdx+","+halfdy+")";
+            })
+            .each(appendStimuli);
+
+    s.orientInterface.style("visibility", "visible");
+}
+
+
+
+function startTraining(s){
+
+    //get the interface ready
+    s.training = true;
+    s.intro.style("visibility","hidden");
+    s.taskInterface.style("visibility", "visible");
+    s.taskInterface[0][0].focus();
+
+
+    showTask(s, 0); //start
+
+}
+
+
+
+function startTesting(s){
+
+    s.orientInterface.style("visibility","hidden");
+
+    d3.select("#training-label").style("visibility","hidden");
+    s.taskInterface.style("visibility", "visible");
+
+    s.taskInterface[0][0].focus();
+
+
+    s.matrixData = s.testMatrixData;
+    s.matrixTime = s.testMatrixTime;
+    s.pairs = s.testPairs;
+
+
+    s.scatterData = s.testScatter;
+    s.layoutData = s.testLayout;
+    s.trimaps = s.testTrimaps;
+    s.mapindx = s.testMapindx;
+    s.tripletData = s.testTriplet;
+    s.taskOrder = s.testTaskOrder;
+
+    s.training = false;
+
+    showTask(s,0); //start
+
+}
+
+
+
+var study ={
+
+    accepted:false,
+    completed:false,
+    training: true,
+    testing: false,
+    startedCommenting:false,
+    commentBoxFocus:false,
+    numTestStim: 10,
+    numTrainStim: 4,
+    time:0,
+    indx:0,
+    taskIndx:0,
+    rowIndx:0,
+    colIndx:0,
+    maxRating:9,//0-9
+    currentRating:-1,
+    choice:d3.select("#choice").selectAll(".radio"),
+    opts:{}
+};
+
+
+initStudy(study);
+
+</script>
+</body>
+

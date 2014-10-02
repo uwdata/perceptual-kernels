@@ -1,0 +1,2 @@
+How many lines were off from matching.
+I found this task to be a bit confusing.  When the letter(a or b) was in the middle of the giant dark blob, I did not see any shape whatsoever.  Most of those, I rated as different.  Sometimes, it looked like the shapes might have been the same, but turned upside down.  I rated those as nearly the same.  That's about it for my strategy!!  
