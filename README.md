@@ -177,7 +177,7 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 
 <h3> Visual embedding </h3> 
 
-Perceptual kernels can also guide [visual embedding](http://vis.stanford.edu/papers/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
+Perceptual kernels can also guide [visual embedding](http://github.com/uwdata/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
 The following scatter plot  compares color distance measures. 
 
 <img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
