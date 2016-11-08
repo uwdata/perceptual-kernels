@@ -137,6 +137,15 @@ on Amazon's site. Copy [color-sa.html](exp/color/sa/color-sa.html) (with its dep
 somewhere on your web server and provide its url address within `<ExternalURL></ExternalURL>` tags in [color-sa.question](exp/color/sa/color-sa.question). If you are  using an http server (as opposed to https), 
 remember to remove the http keyword from the url address---see [color-sa.question](/exp/color/sa/color-sa.question) for an example. Make sure that the .js and .css files that [color-sa.html](exp/color/sa/color-sa.html) uses are also publicly accessible, either on your web server or somewhere else on the web. Assuming you have set up your Amazon Mechanical Turk account properly, you are now ready to upload the task by running the script [`runSandbox.sh`](exp/color/sa/runSandbox.sh). This will try to  upload the task on Amazon Mechanical Turk's sandbox  site and, if successful, will create a file called `color-sa.success`.  Note that [`runSandbox.sh`](exp/color/sa/runSandbox.sh) calls [`$MTURKCLT_HOME/bin/loadHITs.sh`](http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkCLT/CLTReference_LoadHITsCommand.html) with `-sandbox` argument. If you're ready to use the production site, you should run  [`runProduction.sh`](exp/color/sa/runProduction.sh), while making sure `service_url` in `$MTURKCLT_HOME/bin/mturk.properties` is set to the Amazon Mechanical Turk's production site.
 
+How to get a perceptual kernel from raw triplet judgments? 
+----------------------------------------------------------
+Subject judgments from triplet experiments are stored in `data/raw/*-{tm,td}.txt` files. For example, `data/raw/color-tm.txt`
+contains the rank-ordered triplets for the color palette.  Each raw triplet file has **20** rows and **M** comma-separated indices, where each row has a single subject's sequentially-listed **M/3** triplet judgments. **M** equals **414** for univariate palettes and **1782** for bivariate. Each triplet is an ordered indices i, j, k of the respective palette elements x<sub>i</sub>, x<sub>j</sub>, and x<sub>k</sub>, where the subject indicated the  x<sub>i</sub> is more similar to x<sub>j</sub> than it is to x<sub>k</sub>.  In other words,  _perceptual_distance(x<sub>i</sub>, x<sub>j</sub>) < perceptual_distance(x<sub>i</sub>, x<sub>k</sub>)_ for the subject.
+
+We derive a perceptual kernel from these triplet orderings through generalized non-metric multidimensional scaling. 
+You can simply use the Matlab functions in [`shared/matlab/`](shared/matlab/) to turn triplet judgments of multiple subjects into an aggregated, normalized distance matrix of perceptual dissimilarities (i.e., perceptual kernel).
+
+For example,  running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from  Matlab command line in [`shared/matlab/`](shared/matlab) would compute a perceptual kernel for the color palette using the triplet matching judgments of **20** subjects stored in `data/raw/color-tm.txt`. 
 
 
 What is a perceptual kernel?
