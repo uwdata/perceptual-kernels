@@ -3,7 +3,8 @@ function  triplets =  getTestTriplets(M, opt)
 %
 % File  : getTestTriplets.m
 % Author: Cagatay Demiralp (cagatay)
-% Desc  : Extracts test triplets from a raw triplet matrix, which contains both %         training and test triplet judgments.  
+% Desc  : Extracts test triplets from a raw triplet matrix, which contains both 
+%         training and test triplet judgments.  
 %
 % Date    : Fri Sep 20 13:02:44 2013
 % Modified: $Id$
