@@ -142,7 +142,9 @@ How to get a perceptual kernel from raw triplet judgments?
 Subject judgments from triplet experiments are stored in `data/raw/*-{tm,td}.txt` files. For example, [`data/raw/color-tm.txt`](data/raw/color-tm.txt) contains the rank-ordered triplets for the color palette.  Each raw triplet file has **20** lines (rows) of **M** comma-separated indices. Each line corresponds to a single subject's sequentially-listed **M/3** triplet judgments. **M** equals **414** for univariate palettes and **1782** for bivariate. A triplet in our case is a set of ordered indices i, j, k of the respective palette elements x<sub>i</sub>, x<sub>j</sub>, and x<sub>k</sub>, where the subject indicated that  x<sub>i</sub> is more similar to x<sub>j</sub> than it is to x<sub>k</sub>.  In other words,  _perceptual_distance(x<sub>i</sub>, x<sub>j</sub>) < perceptual_distance(x<sub>i</sub>, x<sub>k</sub>)_ for the subject.
 
 We derive a perceptual kernel from these triplet orderings through generalized non-metric multidimensional scaling. 
-You can simply use the Matlab functions in [`shared/matlab/`](shared/matlab/) to turn triplet judgments of multiple subjects into an aggregated, normalized distance matrix of perceptual dissimilarities (i.e., perceptual kernel). For example,  running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from  Matlab command line in [`shared/matlab/`](shared/matlab) would compute a perceptual kernel for the color palette using the triplet matching judgments of **20** subjects stored in `data/raw/color-tm.txt`. 
+You can simply use the Matlab functions in [`shared/matlab/`](shared/matlab/) to turn triplet judgments of multiple subjects into an aggregated, normalized distance matrix of perceptual dissimilarities (i.e., perceptual kernel). 
+
+For example,  running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from  Matlab command line in [`shared/matlab/`](shared/matlab) would compute a perceptual kernel for the color palette using the triplet matching judgments of **20** subjects stored in `data/raw/color-tm.txt`. 
 
 
 What is a perceptual kernel?
