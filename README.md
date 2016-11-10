@@ -152,10 +152,11 @@ What is a perceptual kernel?
 Perceptual kernels are distance matrices derived from aggregate perceptual similarity judgments. 
 Here is an example of a perceptual kernel:
 
-![](https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png?raw=true)
+![http://uwdata.github.io/perceptual-kernels/view/shape-tm.html](https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png?raw=true)
 <p>(Left) A crowd-estimated perceptual kernel for a shape palette. Darker entries indicate 
 perceptually closer (similar) shapes. (Right) A two-dimensional projection of the palette 
-shapes obtained via [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) of the perceptual kernel. 
+shapes obtained via [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) 
+of the perceptual kernel. 
 
 What is it useful for? 
 ----------------------
@@ -186,7 +187,7 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 <h3><a href="http://github.com/uwdata/visual-embedding">Visual embedding</a></h3>
 
 Perceptual kernels can also guide [visual embedding](http://github.com/uwdata/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
-The following scatter plot  compares color distance measures. 
+The following scatter plot compares color distance measures. 
 
 <img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
 
