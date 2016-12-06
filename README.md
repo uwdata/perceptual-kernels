@@ -5,7 +5,7 @@ This repo contains the results and source code from our crowdsourced experiments
 perceptual kernels for color, shape, size and combinations thereof. 
 
 1. [Introduction](#Introduction)
-   - [Running the experiments](#Experiments)
+   - [Experiments](#Experiments)
 2. [How to use the data and source code in this repo?](#Use)
    - [Accessing the data](#Access)
    - [Viewing the kernels](#View)
@@ -14,7 +14,7 @@ perceptual kernels for color, shape, size and combinations thereof.
 3. [Reproducing the experiments](#Reproduce)
   - [How to get a perceptual kernel from raw triplet judgments?](#ReproduceTriplet)
 4. [What is a perceptual kernel](#Definition)
-5. [Why should you care about perceptual kernels](#UsefulFor)
+5. [Why care about perceptual kernels](#UsefulFor)
   - [Automatically designing new palettes](#UsefulForPaletteDesign)
   - [Visual embedding](#UsefulForVisualEmbedding)
 
