@@ -1,6 +1,5 @@
-Learning Perceptual Kernels for</br> Visualization Design
+Learning Perceptual Kernels for Visualization Design
 ===================================================
-
 This repo contains the results and source code from our crowdsourced experiments (see our [InfoVis'14 paper](http://cs.stanford.edu/~cagatay/projects/pk/PerceptualKernels-InfoVis14.pdf) for details) to estimate
 perceptual kernels for color, shape, size and combinations thereof. 
 
