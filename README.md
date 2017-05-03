@@ -159,7 +159,7 @@ Subject judgments from triplet experiments are stored in `data/raw/*-{tm,td}.txt
 We derive a perceptual kernel from these triplet orderings through generalized non-metric multidimensional scaling. 
 You can simply use the Matlab functions in [`shared/matlab/`](shared/matlab/) to turn triplet judgments of multiple subjects into an aggregated, normalized distance matrix of perceptual dissimilarities (i.e., perceptual kernel). 
 
-For example,  running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from  Matlab command line in [`shared/matlab/`](shared/matlab) would compute a perceptual kernel for the color palette using the triplet matching judgments of **20** subjects stored in `data/raw/color-tm.txt`. 
+For example, running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from  Matlab command line in [`shared/matlab/`](shared/matlab) would compute a perceptual kernel for the color palette using the triplet matching judgments of **20** subjects stored in `data/raw/color-tm.txt`. 
 
 
 <a name='Definition'></a>What is a perceptual kernel?
@@ -196,7 +196,7 @@ rather than categorical, data.)  To compute a subset with n elements, we first i
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
 whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
-<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg>
+<img width="768" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg>
  
 
 <h3><a href="http://github.com/uwdata/visual-embedding">Visual embedding</a></h3>
