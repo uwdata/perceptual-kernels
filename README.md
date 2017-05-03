@@ -122,9 +122,9 @@ the d3 module for you). The kernels in [data/kernels](data/kernels) can be then 
 ```
 will draw the corresponding color kernel as a grayscale heatmap in your default browser along with a two-dimensional projection of the kernel, where in-plane distances between the colors approximate the perceptual distances of the kernel.  We obtain the projection points with [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) on the perceptual kernel. 
 
-<a name="ss1"></a><img width="512" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png?raw=true>
+<a name="ss1"></a><img width="512" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample.png>
 
-<img width="512" style="float:left" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample2.png?raw=true>
+<img width="512" style="float:left" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/viewexample2.png>
 
 Hovering over a cell of the heatmap will show the corresponding perceptual kernel distance in a tooltip. Similarly, hovering over a projection point will isolate the corresponding row and column in the heatmap. The two bars under the projection scatter plot  show the overall and per-row (or column) rank correlations between the perceptual kernel and the distance matrix directly derived from the planar projection. They are there to give you an idea about the accuracy of the projection with respect to the kernel distances as two-dimensional projections are lossy representations in general. 
 
@@ -167,7 +167,7 @@ For example,  running  `K = rawTripletToKernel('../data/raw/color-tm.txt')` from
 Perceptual kernels are distance matrices derived from aggregate perceptual similarity judgments. 
 Here is an example of a perceptual kernel:
 
-<a href=http://uwdata.github.io/perceptual-kernels/view/shape-tm.html><img src="https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png?raw=true"></a>
+<a href=http://uwdata.github.io/perceptual-kernels/view/shape-tm.html><img src="https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmshape.png"></a>
 <p>(Left) A crowd-estimated perceptual kernel for a shape palette. Darker entries indicate 
 perceptually closer (similar) shapes. (Right) A two-dimensional projection of the palette 
 shapes obtained via [multidimensional scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) 
@@ -196,7 +196,7 @@ rather than categorical, data.)  To compute a subset with n elements, we first i
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
 whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
-<img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg?raw=true>
+<img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg>
  
 
 <h3><a href="http://github.com/uwdata/visual-embedding">Visual embedding</a></h3>
@@ -204,7 +204,7 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 <a name='UsefulForVisualEmbedding'></a>Perceptual kernels can also guide [visual embedding](http://github.com/uwdata/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
 The following scatter plot compares color distance measures. 
 
-<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg?raw=true>
+<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg>
 
 The plotting symbols were chosen automatically using [visual embedding](http://github.com/uwdata/visual-embedding). We use the correlation matrix of the 
 color models below  as the distances in the data domain, and the triplet matching (Tm) kernel for the shape palette as the distances in the perceptual range. 
@@ -224,4 +224,4 @@ This automatic assignment reflects the correlations between the variables. The c
 
 In a second example, we use [visual embedding](http://github.com/uwdata/visual-embedding) to encode community clusters in a character co-occurrence graph derived from [Victor Hugo](http://en.wikipedia.org/wiki/Victor_Hugo)’s novel [Les Miserables](http://en.wikipedia.org/wiki/Les_Miserables). Cluster memberships were computed using a standard modularity-based community-detection algorithm. For the data space distances, we count all inter-cluster edges and then normalize by the theoretically maximal number of edges between groups. To provide more dynamic range, we re-scale these normalized values to the range [0.2,0.8]. Clusters that share no connecting edges are given a maximal distance of 1. We then perform separate [visual embeddings](http://github.com/uwdata/visual-embedding) using univariate color and shape kernels (both estimated using triplet matching). As shown in the following figure, the assigned colors and shapes perceptually reflect the inter-cluster relations.
 
-<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg?raw=true>
+<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg>
