@@ -196,7 +196,7 @@ rather than categorical, data.)  To compute a subset with n elements, we first i
 the variable pair that  has the highest perceptual distance. We then add new elements to this set, by finding the variable 
 whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdorff distance](http://en.wikipedia.org/wiki/Hausdorff_distance) between two point sets).
 
-<img width="600"src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg>
+<img width="600" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/tmnewpalette.svg>
  
 
 <h3><a href="http://github.com/uwdata/visual-embedding">Visual embedding</a></h3>
@@ -204,7 +204,7 @@ whose minimum distance to the existing subset is the maximum (i.e., the  [Hausdo
 <a name='UsefulForVisualEmbedding'></a>Perceptual kernels can also guide [visual embedding](http://github.com/uwdata/visual-embedding) to choose encodings that preserve data-space distance metrics in terms of kernel-defined perceptual distances. To perform discrete embeddings, we find the optimal distance-preserving assignment of palette items to data points. 
 The following scatter plot compares color distance measures. 
 
-<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg>
+<img width="512" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/modelprojs.svg>
 
 The plotting symbols were chosen automatically using [visual embedding](http://github.com/uwdata/visual-embedding). We use the correlation matrix of the 
 color models below  as the distances in the data domain, and the triplet matching (Tm) kernel for the shape palette as the distances in the perceptual range. 
@@ -224,4 +224,4 @@ This automatic assignment reflects the correlations between the variables. The c
 
 In a second example, we use [visual embedding](http://github.com/uwdata/visual-embedding) to encode community clusters in a character co-occurrence graph derived from [Victor Hugo](http://en.wikipedia.org/wiki/Victor_Hugo)’s novel [Les Miserables](http://en.wikipedia.org/wiki/Les_Miserables). Cluster memberships were computed using a standard modularity-based community-detection algorithm. For the data space distances, we count all inter-cluster edges and then normalize by the theoretically maximal number of edges between groups. To provide more dynamic range, we re-scale these normalized values to the range [0.2,0.8]. Clusters that share no connecting edges are given a maximal distance of 1. We then perform separate [visual embeddings](http://github.com/uwdata/visual-embedding) using univariate color and shape kernels (both estimated using triplet matching). As shown in the following figure, the assigned colors and shapes perceptually reflect the inter-cluster relations.
 
-<img width="400" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg>
+<img width="512" src=https://rawgit.com/uwdata/perceptual-kernels/master/doc/imgs/lm.svg>
