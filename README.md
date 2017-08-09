@@ -14,8 +14,8 @@ perceptual kernels for color, shape, size and combinations thereof.
      * [How to get a perceptual kernel from raw triplet judgments?](#ReproduceTriplet)
 4. [What is a perceptual kernel?](#Definition)
 5. [Why care about perceptual kernels?](#UsefulFor)
-  - [Automatically designing new palettes](#UsefulForPaletteDesign)
-  - [Visual embedding](#UsefulForVisualEmbedding)
+   - [Automatically designing new palettes](#UsefulForPaletteDesign)
+   - [Visual embedding](#UsefulForVisualEmbedding)
 
 <a name='Introduction'></a>Introduction
 ---------------------------------------
